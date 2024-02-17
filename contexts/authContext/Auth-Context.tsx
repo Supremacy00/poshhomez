@@ -214,8 +214,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    fetchUser();
+    const token = localStorage.getItem("token");
+    if (token ) {
+      fetchUser()
+    } else {
+      setIsAuthChecking(false)
+    }
   }, []);
+
 
   return (
     <AuthContext.Provider
