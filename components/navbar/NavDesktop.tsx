@@ -14,7 +14,7 @@ import AuthenticatedNavProfile from "../profile/profileAuth/AuthenticatedNavProf
 const NavDesktop = () => {
   const pathname = usePathname();
   const { handleIsRightNav } = useModal();
-  const { isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
 
   return (
