@@ -12,12 +12,12 @@ function withAuth<T extends {}>(
     const router = useRouter();
 
     useEffect(() => {
-      if (!user && !isAuthChecking) {
+      if (!isAuthChecking && isLoading) {
         router.push("/auth/login");
       }
-    }, [user, isAuthChecking, router]);
+    }, [isAuthChecking, router]);
 
-    if (isAuthChecking && isLoading) {
+    if (isLoading || isAuthChecking) {
       return (
         <div>
           <PageLoader />

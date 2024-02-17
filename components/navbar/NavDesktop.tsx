@@ -20,7 +20,7 @@ const NavDesktop = () => {
   return (
     <>
       <nav className="font-nunito bg-white w-full border-b-[1px] border-b-gray-300 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
-        <div className=" px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
+        <div className="px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-12 xl:gap-16">
               <Link href="/">
