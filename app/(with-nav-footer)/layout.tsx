@@ -14,14 +14,15 @@ import { LoadingProvider } from "@/contexts/loadingContext/LoadingContext";
 import { Suspense } from "react";
 import PageLoader from "@/components/loader/PageLoader";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-};
+}
 
 export const metadata: Metadata = {
   title: "PosHHomez",
@@ -30,47 +31,40 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  isAuthChecking,
 }: {
   children: React.ReactNode;
-  isAuthChecking: boolean;
 }) {
   return (
+    
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
-        <Suspense fallback={<PageLoader />}>
-          <ModalProvider>
-            <AuthProvider>
-              <ContentMenuProvider>
-                <WishlistProvider>
-                  <LoadingProvider>
-                    {isAuthChecking ? (
-                      <PageLoader />
-                    ) : (
-                      <>
-                        <Navbar />
-                        <LoginModal />
-                        {children}
-                        <ToastContainer
-                          className="px-5"
-                          position="top-right"
-                          autoClose={5000}
-                          hideProgressBar={false}
-                          newestOnTop={false}
-                          closeOnClick
-                          rtl={false}
-                          pauseOnFocusLoss
-                          draggable
-                          pauseOnHover
-                        />
-                        <Footer />
-                      </>
-                    )}
-                  </LoadingProvider>
-                </WishlistProvider>
-              </ContentMenuProvider>
-            </AuthProvider>
-          </ModalProvider>
+      <Suspense fallback={<PageLoader/>}>
+        <ModalProvider>
+          <AuthProvider>
+            <ContentMenuProvider>
+              <WishlistProvider>
+                <LoadingProvider>
+                    <Navbar />
+                    <LoginModal />
+                    {children}
+                    <ToastContainer
+                      className="px-5"
+                      position="top-right"
+                      autoClose={5000}
+                      hideProgressBar={false}
+                      newestOnTop={false}
+                      closeOnClick
+                      rtl={false}
+                      pauseOnFocusLoss
+                      draggable
+                      pauseOnHover
+                    />
+                    <Footer />
+                </LoadingProvider>
+              </WishlistProvider>
+            </ContentMenuProvider>
+          </AuthProvider>
+        </ModalProvider>
         </Suspense>
       </body>
     </html>

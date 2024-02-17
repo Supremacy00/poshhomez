@@ -34,7 +34,7 @@ const LandlordContentMenu: React.FC <ContentHandleMenuProps> = ({handleMenu}) =>
         } group flex items-center text-primary-text hover:bg-primary-text hover:text-white  gap-3 px-4 py-3.5 rounded-lg transition-colors duration-300 ease-in-out cursor-pointer`}
         onClick={() => {handleContentMenu("Password & Security"), handleMenu()}}
       >
-        <VscLock className={`${contentMenu === 'Password And Security' ? "text-white" : "text-secondary" } text-[20px] group-hover:text-white transition-colors duration-300 ease-in-out`} />
+        <VscLock className={`${contentMenu === 'Password & Security' ? "text-white" : "text-secondary" } text-[20px] group-hover:text-white transition-colors duration-300 ease-in-out`} />
         <h1 className="text-base">Password & Security</h1>
       </div>
       <div

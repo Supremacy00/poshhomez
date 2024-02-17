@@ -16,7 +16,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
-
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
 
 const WishlistContext = createContext<WishlistContextType | undefined>(
@@ -170,12 +169,14 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
   };
   
 
-    useEffect(() => {
-      if (token && userRole === "Tenant") {
-        fetchWishlistDetails();
-      }
-      
-    }, []);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token && userRole === "Tenant") {
+      fetchWishlistDetails();
+    } else {
+      setWishlist([]);
+    }
+  }, [token, userRole]);
 
   const value = useMemo(
     () => ({

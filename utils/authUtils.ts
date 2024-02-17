@@ -38,6 +38,7 @@ export const getUserRole = (): string | undefined => {
   }
 };
 
+
 export const isTokenExpired = ( token: string ): boolean => {
     if (token === null) {
       console.error('Token is null or undefined.');
