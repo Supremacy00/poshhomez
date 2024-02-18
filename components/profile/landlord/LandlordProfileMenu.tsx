@@ -42,7 +42,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
               alt={`${user?.name || "User"}'s avatar`}
               width={1000}
               height={1000}
-              className="w-full h-full object-top"
+              className="w-full h-full object-cover"
               onError={(e) => {
                 e.currentTarget.src = defaultAvatarUrl;
               }}
