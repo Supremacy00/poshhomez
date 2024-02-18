@@ -5,6 +5,13 @@ import PrevButton from "./PrevButton";
 import Image from "next/image";
 import { ApartmentPhotoCarouselProps } from "@/@types";
 
+
+const defaultDetailsPhotos: { secure_url: string }[] = [
+  {
+    secure_url: "/assets/images/hero2.jpg",
+  },
+];
+
 const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
   photos,
   name,
@@ -30,11 +37,6 @@ const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
     transition: "transform 1s ease-in-out",
   };
 
-  const defaultDetailsPhotos: { secure_url: string }[] = [
-    {
-      secure_url: "/assets/images/hero2.jpg",
-    },
-  ];
 
   const renderPhotos = photos && photos.length > 0 ? photos : defaultDetailsPhotos;
 

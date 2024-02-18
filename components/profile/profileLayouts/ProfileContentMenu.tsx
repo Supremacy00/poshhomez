@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
+import ModalImage from "react-modal-image";
 import { getUserRole } from "@/utils/authUtils";
 import { useContentMenu } from "../ProfileContentMenuContext";
 import TenantContentMenu from "../tenant/tenantContentMenu/TenantContentMenu";
@@ -13,25 +13,15 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineMenu } from "react-icons/md";
 import Link from "next/link";
-import ProfilePictureModal from "../profileMenuComponents/profilePictureModal/ProfilePictureModal";
 
 const ProfileContentMenu = () => {
   const [isMenu, setIsMenu] = useState(false);
-  const { user, isLoading } = useAuth();
+  const { user } = useAuth();
   const { contentMenu, handleContentMenu } = useContentMenu();
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const userRole = getUserRole();
 
   const handleMenu = () => {
     setIsMenu(!isMenu);
-  };
-
-  const handleImageClick = () => {
-    setIsImageModalOpen(true);
-  };
-
-  const handleCloseImageModal = () => {
-    setIsImageModalOpen(false);
   };
 
   const gender = user?.gender;
@@ -65,13 +55,15 @@ const ProfileContentMenu = () => {
       </div>
       <div className="w-full mt-7 bg-white rounded-xl shadow-2xl p-5 overflow-hidden md:pt-7">
         <div className="flex gap-4 flex-wrap">
-          <div className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer" onClick={handleImageClick}>
-            <Image
-              src={`${isLoading ? defaultAvatarUrl : avatarUrl}`}
-              alt={`${user?.name || "User"}'s avatar`}
-              width={500}
-              height={500}
-              className="w-full h-full object-top"
+          <div
+            className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer"
+          >
+            <ModalImage
+              small={avatarUrl}
+              large={avatarUrl}
+              alt={`Profile Picture - ${user?.name || "User Profile Picture"}`}
+              hideDownload={true}
+              hideZoom={true}
             />
           </div>
           <div>
@@ -98,7 +90,10 @@ const ProfileContentMenu = () => {
           </div>
         </div>
         <div className="mt-7">
-          <div className="w-full bg-primary-text text-white py-4 font-medium font-poppins rounded-xl flex justify-center hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer" onClick={() => handleContentMenu("Add New Properties")}>
+          <div
+            className="w-full bg-primary-text text-white py-4 font-medium font-poppins rounded-xl flex justify-center hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer"
+            onClick={() => handleContentMenu("Add New Properties")}
+          >
             <span className="flex items-center gap-2">
               <h3 className="text-[15px]">Add New Property</h3>
               <RxArrowTopRight className="text-[22px]" />
@@ -120,20 +115,17 @@ const ProfileContentMenu = () => {
           <div className="w-fill h-[1px] bg-gray-200 mt-5"></div>
           {userRole === "Tenant" ? (
             <div>
-              <TenantContentMenu handleMenu={handleMenu}/>
+              <TenantContentMenu handleMenu={handleMenu} />
             </div>
           ) : (
             userRole === "LandLord" && (
               <div>
-                <LandlordContentMenu handleMenu={handleMenu}/>
+                <LandlordContentMenu handleMenu={handleMenu} />
               </div>
             )
           )}
         </div>
       </div>
-      {isImageModalOpen && (
-        <ProfilePictureModal imageUrl={avatarUrl} onClose={handleCloseImageModal} />
-      )}
     </section>
   );
 };
