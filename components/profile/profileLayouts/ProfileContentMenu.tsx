@@ -13,15 +13,25 @@ import { RiArrowRightSLine } from "react-icons/ri";
 import { FaStar } from "react-icons/fa";
 import { MdOutlineMenu } from "react-icons/md";
 import Link from "next/link";
+import ProfilePictureModal from "../profileMenuComponents/profilePictureModal/ProfilePictureModal";
 
 const ProfileContentMenu = () => {
   const [isMenu, setIsMenu] = useState(false);
   const { user, isLoading } = useAuth();
   const { contentMenu, handleContentMenu } = useContentMenu();
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const userRole = getUserRole();
 
   const handleMenu = () => {
     setIsMenu(!isMenu);
+  };
+
+  const handleImageClick = () => {
+    setIsImageModalOpen(true);
+  };
+
+  const handleCloseImageModal = () => {
+    setIsImageModalOpen(false);
   };
 
   const gender = user?.gender;
@@ -55,7 +65,7 @@ const ProfileContentMenu = () => {
       </div>
       <div className="w-full mt-7 bg-white rounded-xl shadow-2xl p-5 overflow-hidden md:pt-7">
         <div className="flex gap-4 flex-wrap">
-          <div className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer">
+          <div className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer" onClick={handleImageClick}>
             <Image
               src={`${isLoading ? defaultAvatarUrl : avatarUrl}`}
               alt={`${user?.name || "User"}'s avatar`}
@@ -121,6 +131,9 @@ const ProfileContentMenu = () => {
           )}
         </div>
       </div>
+      {isImageModalOpen && (
+        <ProfilePictureModal imageUrl={avatarUrl} onClose={handleCloseImageModal} />
+      )}
     </section>
   );
 };

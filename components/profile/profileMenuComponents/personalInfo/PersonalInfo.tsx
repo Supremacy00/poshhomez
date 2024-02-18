@@ -27,7 +27,7 @@ const PersonalInfo = () => {
               name="Bio"
               id="Bio"
               placeholder="Write your bio here. It will be displayed on your public profile."
-              className="w-full p-4 h-40 text-[15px] font-light placeholder:text-base placeholder-secondary rounded-lg border-custom11 outline-none"
+              className="w-full p-4 h-40 text-[15px] font-light placeholder:text-base placeholder-secondary rounded-lg border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] outline-none"
             ></textarea>
           <div>
             <UserFileUploader />

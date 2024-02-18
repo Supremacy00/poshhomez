@@ -29,7 +29,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
   const avatarUrl = user?.avatar?.secure_url || defaultAvatarUrl;
 
   return (
-    <section className={`${isOpen ? "py-[25px]" : ""} font-roboto`}>
+    <section className={`${isOpen ? "py-[25px]" : ""} font-nunito`}>
       <section
         className={`${
           isOpen ? "bg-white w-[270px] shadow-2xl rounded-xl" : ""

@@ -45,7 +45,7 @@ const PersonalInfoForm = () => {
                 type="text"
                 value={editFullName}
                 onChange={(e) => setEditFullName(e.target.value)}
-                className="w-full py-2.5 border-custom11 rounded-lg outline-none"
+                className="w-full py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
             </div>
           </div>
@@ -64,7 +64,7 @@ const PersonalInfoForm = () => {
                 type="text"
                 value={editEmail}
                 onChange={(e) => setEditEmail(e.target.value)}
-                className="w-full py-2.5 border-custom11 rounded-lg outline-none"
+                className="w-full py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
             </div>
           </div>
@@ -83,7 +83,7 @@ const PersonalInfoForm = () => {
                 type="text"
                 value={editPhoneNumber}
                 onChange={(e) => setEditPhoneNumber(e.target.value)}
-                className="w-full py-2.5 border-custom11 rounded-lg outline-none"
+                className="w-full py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
             </div>
           </div>
