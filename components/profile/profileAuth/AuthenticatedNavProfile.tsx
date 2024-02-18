@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { useContentMenu } from "../ProfileContentMenuContext";
 import { useNotifications } from "@/utils/hooks/useNotifications";
@@ -19,6 +20,16 @@ const AuthenticatedNavProfile = () => {
   const { handleContentMenu } = useContentMenu();
   const showProfileMenu = () => setIsProfileMenu(true);
   const hideProfileMenu = () => setIsProfileMenu(false);
+  const controls = useAnimation();
+
+  const handleHover = () => {
+    controls.start({ y: -2 });
+  };
+
+  const handleHoverExit = () => {
+    controls.start({ y: 0 });
+  };
+
   const handleClick = () => {
     setIsProfileMenu(!isProfileMenu);
   };
@@ -75,22 +86,34 @@ const AuthenticatedNavProfile = () => {
         {isProfileMenu && (
           <>
             {userRole === "Tenant" && (
-              <div className="absolute top-8 lg:top-10 right-0 z-50">
+              <motion.div
+                initial={{ opacity: 1, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute top-7 lg:top-10 right-0 z-50"
+              >
                 <TenantProfileMenu
                   isOpen={isProfileMenu}
                   userRole={userRole}
                   handleClick={handleClick}
                 />
-              </div>
+              </motion.div>
             )}
             {userRole === "LandLord" && (
-              <div className="absolute top-8 lg:top-10 right-0 z-50">
+              <motion.div
+                initial={{ opacity: 1, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-7 lg:top-10 right-0 z-50"
+              >
                 <LandlordProfileMenu
                   isOpen={isProfileMenu}
                   userRole={userRole}
                   handleClick={handleClick}
                 />
-              </div>
+              </motion.div>
             )}
           </>
         )}

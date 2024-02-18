@@ -12,12 +12,13 @@ const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
   const [currentImage, setCurrentImage] = useState(0);
 
   const previousSlide = () => {
-    setCurrentImage(currentImage === 0 ? photos?.length - 1 : currentImage - 1);
+    setCurrentImage(currentImage === 0 ? (photos?.length || defaultDetailsPhotos?.length) - 1 : currentImage - 1);
   };
+  
   const nextSlide = useCallback(() => {
-    setCurrentImage(currentImage === photos?.length - 1 ? 0 : currentImage + 1);
+    setCurrentImage(currentImage === (photos?.length || defaultDetailsPhotos?.length) - 1 ? 0 : currentImage + 1);
   }, [currentImage, photos]);
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -29,16 +30,24 @@ const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
     transition: "transform 1s ease-in-out",
   };
 
+  const defaultDetailsPhotos: { secure_url: string }[] = [
+    {
+      secure_url: "/assets/images/hero2.jpg",
+    },
+  ];
+
+  const renderPhotos = photos && photos.length > 0 ? photos : defaultDetailsPhotos;
+
   return (
     <section className="relative overflow-hidden">
       <div className="flex items-center" style={sliderStyles}>
-        {photos.map((photo) => (
+        {renderPhotos.map((photo, index) => (
           <div
-            key={photo.public_id}
+            key={index}
             className="relative w-full flex-shrink-0 h-[250px] sm:h-full sm:aspect-250/80 "
           >
             <Image
-              src={photo.secure_url}
+              src={photo?.secure_url || defaultDetailsPhotos[index]?.secure_url || ''}
               alt={name}
               width={1000}
               height={1000}

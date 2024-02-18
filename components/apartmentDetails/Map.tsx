@@ -53,7 +53,7 @@ const Map: React.FC<MapProps> = ({ address, zoom }) => {
         });
       }
     });
-  },);
+  });
 
   return (
     <div className="relative w-full h-full rounded-lg overflow-hidden">

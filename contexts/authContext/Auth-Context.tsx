@@ -198,7 +198,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       localStorage.removeItem("token");
       mutate(undefined, true);
       router.push("/");
-      toast.info("Logged out successfully!");
+      toast.info("Signed out successfully!");
     } catch (error) {
       toast.error("Logout failed. Please try again");
       throw error;
