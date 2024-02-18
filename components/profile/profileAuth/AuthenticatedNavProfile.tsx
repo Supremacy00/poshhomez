@@ -22,14 +22,6 @@ const AuthenticatedNavProfile = () => {
   const hideProfileMenu = () => setIsProfileMenu(false);
   const controls = useAnimation();
 
-  const handleHover = () => {
-    controls.start({ y: -2 });
-  };
-
-  const handleHoverExit = () => {
-    controls.start({ y: 0 });
-  };
-
   const handleClick = () => {
     setIsProfileMenu(!isProfileMenu);
   };
@@ -80,7 +72,7 @@ const AuthenticatedNavProfile = () => {
             alt={`${user?.name || "User"}'s avatar`}
             width={1000}
             height={1000}
-            className="w-full h-full object-top"
+            className="w-full h-full object-cover"
           />
         </div>
         {isProfileMenu && (
