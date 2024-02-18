@@ -22,7 +22,7 @@ const PasswordAndSecurity = () => {
               type="text"
               name=""
               id=""
-              className="w-full mt-1.5 py-2.5 border-custom11 rounded-lg outline-none"
+              className="w-full mt-1.5 py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
             />
           </div>
           <div className="mt-3 w-full xs:mt-9">
@@ -40,7 +40,7 @@ const PasswordAndSecurity = () => {
               type="text"
               name=""
               id=""
-              className="w-full mt-1.5 py-2.5 border-custom11 rounded-lg outline-none"
+              className="w-full mt-1.5 py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
             />
           </div>
           <div className="mt-5 w-full xs:mt-0">
@@ -51,7 +51,7 @@ const PasswordAndSecurity = () => {
               type="text"
               name=""
               id=""
-              className="w-full mt-1.5 py-2.5 border-custom11 rounded-lg outline-none"
+              className="w-full mt-1.5 py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
             />
           </div>
         </div>
