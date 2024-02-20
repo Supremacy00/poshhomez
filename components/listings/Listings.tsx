@@ -224,7 +224,7 @@ const Listings: React.FC = () => {
           fetchNextPage={fetchNextPage}
         />
         <div className="text-center text-base mt-4 text-secondary">
-          <h3>{`1 - ${limit} of ${totalProperties}+ Apartments Available`}</h3>
+          <h3>{`${currentPage} - ${limit} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>
     </section>
