@@ -162,7 +162,6 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       setWishlist(detailedProperties);
     } catch (error) {
       console.error("Error fetching wishlist details:", error);
-      toast.error("Failed to fetch wishlist details.");
     } finally {
       setLoading(false);
     }
