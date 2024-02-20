@@ -37,8 +37,6 @@ const PopularProperties: React.FC = () => {
   const properties: PropertyCardDetails[] = data?.data?.data || [];
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
 
-  console.log(properties.length)
-
   const formattedAmount = (price: number | string) => {
     const amountValue = typeof price === "string" ? parseFloat(price) : price;
     const roundedValue = Math.round(amountValue);
