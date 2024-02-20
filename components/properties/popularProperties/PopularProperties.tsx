@@ -32,12 +32,12 @@ const PopularProperties: React.FC = () => {
     removeFromWishlist,
     isItemInWishlist,
     loadingMap,
-    wishlist,
   } = useWishlist();
 
   const properties: PropertyCardDetails[] = data?.data?.data || [];
-
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
+
+  console.log(properties.length)
 
   const formattedAmount = (price: number | string) => {
     const amountValue = typeof price === "string" ? parseFloat(price) : price;
@@ -60,7 +60,7 @@ const PopularProperties: React.FC = () => {
             Aliquam lacinia diam quis lacus euismod
           </p>
         </div>
-        <h3 className="text-[14px] text-white inline-block font-dm py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
+        <h3 className="text-sm text-white inline-block font-dm py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
           For Rent
         </h3>
       </div>
@@ -84,7 +84,7 @@ const PopularProperties: React.FC = () => {
                       width={1000}
                       height={1000}
                       priority
-                      className="relative w-full h-full rounded-md group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
+                      className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
                     />
                   </div>
                   <div
@@ -141,14 +141,14 @@ const PopularProperties: React.FC = () => {
                     </Tooltip>
                     <Tooltip title="Fit to screen" placement="top" arrow>
                       <span className="bg-primary-text bg-opacity-90 px-[9px] py-[9px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out">
-                        <MdOutlineFitScreen className="text-[18px]" />
+                        <MdOutlineFitScreen className="text-lg" />
                       </span>
                     </Tooltip>
                   </div>
                 </div>
                 <div className="font-poppins text-primary-text mt-5">
                   <h3 className="text-[15px] font-semibold">
-                    <span className="text-[14px]">{`\u20A6 `}</span>
+                    <span className="text-14">{`\u20A6 `}</span>
                     {`${formattedAmount(item.rent_fee)} /`}
                     <span className="font-light font-dm ml-1">yr</span>
                   </h3>
