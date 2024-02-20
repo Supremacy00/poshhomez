@@ -22,6 +22,7 @@ import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import AppPagination from "../AppPagination";
 import ListingsSearch from "./ListingsSearch";
+import { VscSettings } from "react-icons/vsc";
 
 const Listings: React.FC = () => {
   const {
@@ -58,27 +59,35 @@ const Listings: React.FC = () => {
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 lg:pt-24 ">
       <div className="mx-auto px-4 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
-        <div className="pt-12">
-          <h1 className="text-[22px] font-semibold mb-3">
-            Poshhomez Houses For Rent
-          </h1>
-          <div className="flex items-center gap-1.5 text-secondary font-light text-sm lg:text-[15px]">
-            <Link href="/">
-              <h3 className="hover:text-primary-text transition-colors duration-300 ease-in-out">
-                Home
-              </h3>
-            </Link>
-            <span className="text-[19px]">
-              <RiArrowRightSLine />
-            </span>
-            <h3 className="text-sm">Listings</h3>
-            <span className="text-[19px]">
-              <RiArrowRightSLine />
-            </span>
-            <h3 className="text-sm text-custom2">For Rent</h3>
+        <div className="pt-12 flex justify-between items-center gap-2 flex-wrap transition-all duration-300 ease-in-out">
+          <div>
+            <h1 className="text-[22px] font-semibold mb-3">
+              Poshhomez Houses For Rent
+            </h1>
+            <div className="flex items-center gap-1.5 text-secondary font-light text-sm lg:text-[15px]">
+              <Link href="/">
+                <h3 className="hover:text-primary-text transition-colors duration-300 ease-in-out">
+                  Home
+                </h3>
+              </Link>
+              <span className="text-[19px]">
+                <RiArrowRightSLine />
+              </span>
+              <h3 className="text-sm">Listings</h3>
+              <span className="text-[19px]">
+                <RiArrowRightSLine />
+              </span>
+              <h3 className="text-sm text-custom2">For Rent</h3>
+            </div>
+          </div>
+          <div className="mt-5 lg:hidden">
+            <div className="text-sm bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer">
+              <VscSettings className="text-[17px]" />
+              <h3>Filter</h3>
+            </div>
           </div>
         </div>
-        <div className="mt-16">
+        <div className="mt-10 sm:mt-16">
           <ListingsSearch />
         </div>
         <article className="mt-7 grid grid-cols-1 xs:grid-cols-2 gap-8 xs:gap-x-6 lg:grid-cols-3 xl:grid-cols-4 lg:mt-8 ">

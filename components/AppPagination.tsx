@@ -14,7 +14,6 @@ const AppPagination: React.FC<AppPaginationProp> = ({
   fetchPreviousPage,
   fetchNextPage,
 }) => {
-  
   const handleChange = (
     _event: React.ChangeEvent<unknown>,
     newPage: number
