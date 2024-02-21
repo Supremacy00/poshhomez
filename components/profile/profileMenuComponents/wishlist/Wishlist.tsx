@@ -23,7 +23,6 @@ const formatCurrency = (rent_fee: number) => {
 
 const Wishlist = () => {
   const { wishlist } = useWishlist();
-  console.log(wishlist);
 
   return (
     <section>
@@ -34,19 +33,19 @@ const Wishlist = () => {
         <EmptyWishlist />
       ) : (
         <div className="grid grid-cols-1 gap-8">
-          {wishlist.map((item) => {
-            const photoObject = item.photos?.[1] as { secure_url?: string };
-            const imageUrl = photoObject?.secure_url || "";
+          {wishlist?.map((item, index) => {
+            const photoObject = item?.photos?.[1] as { secure_url?: string };
+            const imageUrl = photoObject?.secure_url || "/assets/images/hero1.jpg";
             return (
               <div
-                key={item.id}
+                key={index}
                 className="relative z-10 bg-white shadow-2xl rounded-xl overflow-hidden xs:flex items-center gap-2"
               >
                 <div className="relative w-full">
                   <div className="w-full aspect-150/80 xs:aspect-100/80 sm:h-[200px] ">
                     <Image
                       src={imageUrl}
-                      alt={item.name}
+                      alt={item?.name || "Wishlist Property"}
                       width={1000}
                       height={1000}
                       className="w-full h-full object-cover"
@@ -54,14 +53,14 @@ const Wishlist = () => {
                   </div>
                   <div
                     className={`${
-                      item.is_occupied
+                      item?.is_occupied
                         ? "absolute top-5 left-5 group-hover:top-16 group-hover:opacity-0 transition-all group duration-500 ease-in-out"
                         : "hidden"
                     } text-white bg-custom2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-md`}
                   >
                     <MdSensorOccupied className="text-[12px]" />
                     <h3 className="text-[12px] uppercase font-dm font-medium">
-                      {item.is_occupied ? "Occupied" : ""}
+                      {item?.is_occupied ? "Occupied" : ""}
                     </h3>
                   </div>
                   <span className="absolute top-5 right-5 bg-white bg-opacity-50 p-1.5 rounded-full">
@@ -72,31 +71,31 @@ const Wishlist = () => {
                   <p className="text-sm mb-[1px] text-custom2">For Rent</p>
                   <div>
                     <Link
-                      key={item.id}
-                      href={`/poshhomez/listings/apartment-details/${item.id}`}
+                      key={item?.id}
+                      href={`/poshhomez/listings/apartment-details/${item?.id}`}
                     >
                       <h1 className="text-[15px] font-semibold hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
-                        {item.name}
+                        {item?.name}
                       </h1>
                     </Link>
                   </div>
                   <span className="flex gap-1.5 text-[13.5px] text-secondary mt-1.5">
                     <p className="font-dm font-light ">
-                      {`${item.location?.city} City,`}
+                      {`${item?.location?.city || 'Zaria'} City,`}
                     </p>
                     <p className="font-d font-light">
-                      {`${item.location?.state},`}
+                      {`${item?.location?.state || "KD"},`}
                     </p>
                     <p className="font-dm uppercase font-light">
-                      {item.location?.country}
+                      {item?.location?.country || 'NG'}
                     </p>
                   </span>
                   <div className="flex items-center gap-1.5 mt-2">
                     <HiOutlineCash className="text-[23px] text-secondary" />
                     <h3 className="text-[15px] font-semibold text-primary-text">
-                      {item.rent_fee !== undefined
+                      {item?.rent_fee !== undefined
                         ? formatCurrency(item.rent_fee)
-                        : "N/A"}
+                        : formatCurrency(0.00)}
                     </h3>
                   </div>
                   <div className="w-full h-[1px] bg-custom11 mt-4"></div>
@@ -104,11 +103,11 @@ const Wishlist = () => {
                     <div className="flex items-center gap-3 flex-wrap mt-1 text-[13px] font-light lg:gap-4">
                       <span className="flex items-center gap-1.5">
                         <IoBedOutline className="text-[21px] text-secondary" />
-                        <p className="text-primary-text text-sm">{`${item.description?.bathroom_count} bed`}</p>
+                        <p className="text-primary-text text-sm">{`${item?.description?.bathroom_count || 0} bed`}</p>
                       </span>
                       <span className="flex items-center gap-1.5">
                         <LiaBathSolid className="text-[21px] text-secondary" />
-                        <p className="text-primary-text text-sm">{`${item.description?.bedroom_count} bath`}</p>
+                        <p className="text-primary-text text-sm">{`${item?.description?.bedroom_count || 0} bath`}</p>
                       </span>
                       <span className="flex items-center gap-1.5">
                         <TbRulerMeasure className="text-[19px] text-secondary" />

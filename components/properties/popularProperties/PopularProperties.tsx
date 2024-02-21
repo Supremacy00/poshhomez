@@ -191,7 +191,7 @@ const PopularProperties: React.FC = () => {
         <Link href="/listings">
           <div className="flex items-center gap-3 group cursor-pointer">
             <p className="text-sm text-primary-text font-semibold group-hover:text-custom2 transition-colors delay-100 duration-200 ease-in-out">
-              Show All Listings
+              See All Listings
             </p>
             <div className="relative bg-custom2 w-7 h-7 rounded-full group-hover:bg-primary-text transition-colors delay-100 duration-200 ease-in-out">
               <BsPlusLg className="absolute inset-1.5 text-[16px] text-white" />

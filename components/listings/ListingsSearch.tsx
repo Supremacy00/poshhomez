@@ -1,10 +1,15 @@
+'use client'
 import React from "react";
+import { useModal } from "@/contexts/modalContext/ModalContext";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { RxSlash } from "react-icons/rx";
 import { VscSettings } from "react-icons/vsc";
 
 const ListingsSearch = () => {
+    const { handleIsAdvanceSearch } =
+    useModal();
+
   return (
     <section className="xl:flex justify-center items-center xl:justify-between">
       <ul className="hidden text-sm lg:flex lg:justify-center items-center gap-3 xl:flex xl:justify-start">
@@ -24,7 +29,7 @@ const ListingsSearch = () => {
           <h3>Price</h3>
           <MdKeyboardArrowDown className="text-[22px]" />
         </li>
-        <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer">
+        <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer" onClick={handleIsAdvanceSearch}>
           <VscSettings className="text-[17px]" />
           <h3>More Filter</h3>
         </li>

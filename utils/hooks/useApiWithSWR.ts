@@ -39,7 +39,7 @@ const fetcher = async (url: string) => {
 const useApiWithSWR = (
   endpoint: string,
   initialPage: number = 1,
-  { defaultLimit = 8, ...config }: ApiWithSWRConfig = {}
+  { defaultLimit = 20, ...config }: ApiWithSWRConfig = {}
 ) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const [limit, setLimit] = useState(defaultLimit);

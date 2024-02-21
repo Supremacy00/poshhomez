@@ -9,7 +9,7 @@ const fetcher = async (url: string, token: string): Promise<Notification[]> => {
     headers: {
       Authorization: `Bearer ${token}`
     }
-  }).then(res => res.data.data.data,);
+  }).then(res => res?.data?.data?.data,);
 }
 
 
@@ -30,9 +30,9 @@ export function useNotifications() {
   const [unreadCount, setUnreadCount] = useState<number>(0);
 
   useEffect(() => {
-    const count = data?.filter(notification => notification.is_read === "False").length || 0;
+    const count = data?.filter(notification => notification.is_read === "False").length ?? 0;
     setUnreadCount(count);
-  }, [data]);
+  }, [data]);  
 
   const markAsRead = useCallback(async (notificationId: string) => {
     try {

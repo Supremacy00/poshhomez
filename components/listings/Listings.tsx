@@ -87,10 +87,10 @@ const Listings: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-10 sm:mt-16">
+        <div className="mt-12 md:mt-16">
           <ListingsSearch />
         </div>
-        <article className="mt-7 grid grid-cols-1 xs:grid-cols-2 gap-8 xs:gap-x-6 lg:grid-cols-3 xl:grid-cols-4 lg:mt-8 ">
+        <article className="mt-10 grid grid-cols-1 xs:grid-cols-2 gap-8 xs:gap-x-6 lg:grid-cols-3 xl:grid-cols-4 lg:mt-8">
           {((isLoading && properties.length === 0) || isError) &&
             Array.from({ length: 12 }).map((_, index) => (
               <SkeletonLoader key={index} />
@@ -136,7 +136,7 @@ const Listings: React.FC = () => {
                   <div className="text-primary-text p-5 bg-white rounded-b-xl shadow-2xl">
                     <div>
                       <Link href={`/listings/apartment-details/${item.id}`}>
-                        <h1 className="text-[15px] font-semibold group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
+                        <h1 className="text-[15px] font-semibold group-hover:underline group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
                           {item.name}
                         </h1>
                       </Link>
