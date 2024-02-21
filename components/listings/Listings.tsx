@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import useApiWithSWR from "@/utils/hooks/useApiWithSWR";
 import { PropertyCardDetails } from "@/@types";
@@ -36,7 +36,7 @@ const Listings: React.FC = () => {
     fetchNextPage,
     totalProperties,
   } = useApiWithSWR(process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || "", 1, {
-    defaultLimit: 12,
+    defaultLimit: 5,
   });
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
@@ -55,6 +55,10 @@ const Listings: React.FC = () => {
         : amountValue.toLocaleString();
     return formattedValue;
   };
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 lg:pt-24 ">
