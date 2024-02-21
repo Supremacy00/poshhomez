@@ -36,7 +36,7 @@ const Listings: React.FC = () => {
     fetchNextPage,
     totalProperties,
   } = useApiWithSWR(process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || "", 1, {
-    defaultLimit: 5,
+    defaultLimit: 12,
   });
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
@@ -56,9 +56,14 @@ const Listings: React.FC = () => {
     return formattedValue;
   };
 
+  const rangeStart = (currentPage - 1) * limit + 1;
+  const rangeEnd = Math.min(currentPage * limit, totalProperties);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
+
+  
 
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 lg:pt-24 ">
@@ -237,7 +242,7 @@ const Listings: React.FC = () => {
           fetchNextPage={fetchNextPage}
         />
         <div className="text-center text-base mt-4 text-secondary">
-          <h3>{`${currentPage} - ${limit} of ${totalProperties}+ Apartments Available`}</h3>
+        <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>
     </section>
