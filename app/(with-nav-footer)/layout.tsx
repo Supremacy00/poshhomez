@@ -11,9 +11,7 @@ import { ContentMenuProvider } from "@/components/profile/ProfileContentMenuCont
 import LoginModal from "@/components/Auth/login/LoginModal";
 import { WishlistProvider } from "@/contexts/wishlistContext/WishlistContext";
 import { LoadingProvider } from "@/contexts/loadingContext/LoadingContext";
-import { Suspense } from "react";
-import PageLoader from "@/components/loader/PageLoader";
-
+import AdvanceSearch from "@/components/search/AdvanceSearch";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +36,6 @@ export default function RootLayout({
     
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
-      <Suspense fallback={<PageLoader/>}>
         <ModalProvider>
           <AuthProvider>
             <ContentMenuProvider>
@@ -46,6 +43,7 @@ export default function RootLayout({
                 <LoadingProvider>
                     <Navbar />
                     <LoginModal />
+                    <AdvanceSearch />
                     {children}
                     <ToastContainer
                       className="px-5"
@@ -65,7 +63,6 @@ export default function RootLayout({
             </ContentMenuProvider>
           </AuthProvider>
         </ModalProvider>
-        </Suspense>
       </body>
     </html>
   );

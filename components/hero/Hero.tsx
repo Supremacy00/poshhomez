@@ -93,7 +93,6 @@ const Hero = () => {
       <div className="absolute -bottom-[7px] left-0 md:-bottom-3">
         <GiSpookyHouse className="text-[200px] text-custom10 opacity-30 md:text-[300px]" />
       </div>
-      <AdvanceSearch />
     </section>
   );
 };
