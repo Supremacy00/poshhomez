@@ -105,7 +105,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
 
       if (response.status === 200) {
         setWishlist((currentWishlist) =>
-          currentWishlist.filter((item) => item?.id !== propertyId)
+          currentWishlist?.filter((item) => item?.id !== propertyId)
         );
         toast.info("Item has been removed from your wishlist.");
       } else {
@@ -127,7 +127,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const isItemInWishlist = (propertyId: number) => {
-    return wishlist.some((item) => item?.id === propertyId);
+    return wishlist?.some((item) => item?.id === propertyId);
   };
 
   const fetchWishlistDetails = async () => {
