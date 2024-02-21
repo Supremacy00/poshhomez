@@ -45,7 +45,7 @@ const AuthenticatedNavProfile = () => {
         </span>
       </div>
       <Link
-        href="account/profile"
+        href="/account/profile"
         onClick={() => handleContentMenu("Notifications")}
       >
         <div className="relative group hidden lg:block">
