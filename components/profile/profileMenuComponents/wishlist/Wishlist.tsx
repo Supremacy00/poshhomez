@@ -72,7 +72,7 @@ const Wishlist = () => {
                   <div>
                     <Link
                       key={item?.id}
-                      href={`/poshhomez/listings/apartment-details/${item?.id}`}
+                      href={`/listings/apartment-details/${item?.id}`}
                     >
                       <h1 className="text-[15px] font-semibold hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
                         {item?.name}

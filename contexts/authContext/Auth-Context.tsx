@@ -139,7 +139,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           },
         }
       );
-      console.log(response);
+      
       if (response.data.access_token) {
         const token = response.data.access_token;
         localStorage.setItem("token", token);
