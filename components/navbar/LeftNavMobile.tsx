@@ -29,7 +29,7 @@ const LeftNavMobile = () => {
       <nav
         className={`${
           isLeftNav ? "transform -translate-x-0" : "transform -translate-x-full"
-        } font-nunito fixed top-0 left-0 h-[100dvh] w-[430px] max-w-full bg-primary-text text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
+        } font-nunito fixed top-0 left-0 h-[100dvh] w-[350px] max-w-full bg-primary-text text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
         ref={modalRef}
       >
         <section>
