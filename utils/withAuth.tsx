@@ -2,6 +2,7 @@
 import React, { useEffect, ComponentType, ReactElement } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
+import { isAuthenticated } from "./authUtils";
 import PageLoader from "@/components/loader/PageLoader";
 
 function withAuth<T extends {}>(
@@ -12,10 +13,12 @@ function withAuth<T extends {}>(
     const router = useRouter();
 
     useEffect(() => {
-      if (!isAuthChecking && isLoading) {
+      const token = localStorage.getItem('token')
+      const isLoggedIn = isAuthenticated(token as string)
+      if (!isLoggedIn) {
         router.push("/auth/login");
       }
-    }, [isAuthChecking, router]);
+    }, []);
 
     if (isLoading || isAuthChecking) {
       return (
