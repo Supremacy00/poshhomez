@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import { usePathname } from "next/navigation";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
@@ -16,6 +17,7 @@ const LeftNavMobile = () => {
   const { rights } = footerData;
   const { isLeftNav, setIsLeftNav, handleIsLeftNav } = useModal();
   const { isAuthenticated } = useAuth();
+  const pathname = usePathname();
   const modalRef = useRef(null);
   const userRole = getUserRole();
 
@@ -85,21 +87,21 @@ const LeftNavMobile = () => {
               </div>
             )}
           </div>
-          <ul className="text-[15px] mt-16 space-y-20  text-white font-medium">
+          <article className="text-[15px] mt-16 space-y-20  text-white font-medium">
             {navData.map((item, index) => (
               <Link href={item.link} key={index}>
                 <div
-                  className="flex items-center group"
+                  className="flex items-center group my-1"
                   onClick={handleIsLeftNav}
                 >
-                  <li className="w-full py-4 px-5 flex-grow group-hover:bg-custom2 group-hover:text-custom2 group-hover:bg-opacity-10 group-hover:py-4 group-hover:px-5 transition-colors duration-300 ease-in-out">
+                  <div className={`${pathname === item.link ? "bg-custom2 bg-opacity-10 text-custom2" : ""} w-full py-4 px-5 flex-grow group-hover:bg-custom2 group-hover:text-custom2 group-hover:bg-opacity-10 group-hover:py-4 group-hover:px-5 transition-colors duration-300 ease-in-out`}>
                     {item.title}
-                  </li>
-                  <li className="w-[5px] py-[26.5px] group-hover:bg-custom2 transition-colors duration-300 ease-in-out" />
+                  </div>
+                  <div className={`${pathname === item.link ? "bg-custom2" : ""} w-[5px] py-[27px] group-hover:bg-custom2 transition-colors duration-300 ease-in-out`} />
                 </div>
               </Link>
             ))}
-          </ul>
+          </article>
           <div className="absolute bottom-5 px-4">
             <div className="mt-8 mx-auto max-w-[1220px] ">
               <div className="flex items-center flex-wrap gap-2  text-white">
