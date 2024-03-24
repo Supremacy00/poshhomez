@@ -102,7 +102,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const signUp = async (formData: SignUpCredentials) => {
     setSignupLoading(true);
     try {
-      setLoginLoading(true);
       const response = await axios.post(`${API_URL}/auth/register`, formData, {
         headers: {
           "Content-Type": "application/json",
@@ -111,6 +110,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
       if (response.data.status_code === 201) {
         toast.success("Registration was sucessfull!");
+        router.push('/auth/login')
       } else if (response.data.status_code === 409) {
         toast.error(response.data.message || "Account already exist.");
       } else {
@@ -125,8 +125,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logIn = async (loginCredentials: LoginCredentials) => {
+    setLoginLoading(true);
     try {
-      setLoginLoading(true);
       const response = await axios.post(
         `${API_URL}/auth/login`,
         new URLSearchParams({
