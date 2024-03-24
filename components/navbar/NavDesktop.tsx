@@ -80,9 +80,9 @@ const NavDesktop = () => {
                 </div>
               )}
               {isAuthenticated && (<AuthenticatedNavProfile />)}
-              <div className="cursor-pointer" onClick={handleIsRightNav}>
-                <div className="w-7 h-[1.5px] bg-primary-text rounded-full mb-2" />
-                <div className="w-5 h-[1.5px] bg-primary-text rounded-full ml-2" />
+              <div className="cursor-pointer flex flex-col" onClick={handleIsRightNav}>
+                <div className="w-7 h-[1px] bg-primary-text rounded-full mb-2" />
+                <div className="w-5 h-[1px] bg-primary-text rounded-full ml-2" />
               </div>
             </div>
           </div>
