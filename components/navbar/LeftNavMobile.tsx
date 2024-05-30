@@ -11,7 +11,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { RxArrowTopRight, RxSlash } from "react-icons/rx";
 import { navData } from "../data";
 import { footerData, footerIcons } from "../data";
-import useCloseOnOutsideClick from "@/utils/hooks/useCloseOnOutsideClick";
+import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 
 const LeftNavMobile = () => {
   const { rights } = footerData;

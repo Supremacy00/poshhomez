@@ -1,5 +1,5 @@
 import React from 'react'
-import useFetchApartmentDetails from '@/utils/hooks/useFetchApartmentDetails';
+import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Map from '../Map';
 

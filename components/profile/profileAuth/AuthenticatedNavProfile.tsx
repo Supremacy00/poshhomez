@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { useContentMenu } from "../ProfileContentMenuContext";
-import { useNotifications } from "@/utils/hooks/useNotifications";
+import { useNotifications } from "@/hooks/useNotifications";
 import { GoBell } from "react-icons/go";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import Link from "next/link";

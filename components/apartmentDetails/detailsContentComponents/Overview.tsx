@@ -1,5 +1,5 @@
 import React from 'react'
-import useFetchApartmentDetails from '@/utils/hooks/useFetchApartmentDetails';
+import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
 import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { MdOutlineCalendarMonth } from "react-icons/md";

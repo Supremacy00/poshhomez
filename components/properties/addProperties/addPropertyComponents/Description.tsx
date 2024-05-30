@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyContext";
-import { useLocationSelector } from "@/utils/hooks/useLocationSelector";
+import { useLocationSelector } from "@/hooks/useLocationSelector";
 import { AddPropertyDetails } from "@/@types";
 import { BsArrowUpRight } from "react-icons/bs";
 import { FadeLoader } from "react-spinners";

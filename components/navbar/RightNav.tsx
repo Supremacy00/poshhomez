@@ -3,7 +3,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
-import useCloseOnOutsideClick from "@/utils/hooks/useCloseOnOutsideClick";
+import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 
 const RightNav: React.FC = () => {
