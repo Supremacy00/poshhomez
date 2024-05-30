@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { PropertyCardDetails } from "@/@types";
-import useApiWithSWR from "@/utils/hooks/useApiWithSWR";
+import useApiWithSWR from "@/hooks/useApiWithSWR";
 import { useWishlist } from "@/contexts/wishlistContext/WishlistContext";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";

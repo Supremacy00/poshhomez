@@ -7,7 +7,7 @@ import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
-import useCloseOnOutsideClick from "@/utils/hooks/useCloseOnOutsideClick";
+import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 
 const LoginModal: React.FC = () => {
   const { isLoginModal, setIsLoginModal, handleIsLoginModal } = useModal();

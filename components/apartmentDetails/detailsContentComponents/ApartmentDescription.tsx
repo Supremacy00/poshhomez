@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchApartmentDetails from '@/utils/hooks/useFetchApartmentDetails';
+import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
 
 const formatCurrency = (rent_fee: number) => {
     const formatter = new Intl.NumberFormat('en-NG', {

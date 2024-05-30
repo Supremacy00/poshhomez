@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import Image from "next/image";
-import useApiWithSWR from "@/utils/hooks/useApiWithSWR";
+import useApiWithSWR from "@/hooks/useApiWithSWR";
 import { PropertyCardDetails } from "@/@types";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";

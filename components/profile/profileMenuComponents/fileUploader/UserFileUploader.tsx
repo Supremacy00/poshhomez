@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
-import useUploadHook from "@/utils/hooks/useUploadHook";
+import useUploadHook from "@/hooks/useUploadHook";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserId } from "@/utils/authUtils";
 import { getUserRole } from "@/utils/authUtils";

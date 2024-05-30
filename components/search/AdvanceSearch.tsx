@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import useCloseOnOutsideClick from "@/utils/hooks/useCloseOnOutsideClick";
+import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IoMdArrowDropdown } from "react-icons/io";

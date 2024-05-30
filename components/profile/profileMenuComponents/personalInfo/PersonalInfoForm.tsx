@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
-import useUserProfile from "@/utils/hooks/useUserProfile";
+import useUserProfile from "@/hooks/useUserProfile";
 
 const PersonalInfoForm = () => {
   const {

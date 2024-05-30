@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import useFetchApartmentDetails from "@/utils/hooks/useFetchApartmentDetails";
+import useFetchApartmentDetails from "@/hooks/useFetchApartmentDetails";
 import PageLoader from "../loader/PageLoader";
 import ApartmentPhotoCarousel from "./ApartmentPhotoCarousel";
 import { formatDistanceToNow } from "date-fns";
