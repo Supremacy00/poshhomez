@@ -55,9 +55,7 @@ const ProfileContentMenu = () => {
       </div>
       <div className="w-full mt-7 bg-white rounded-xl shadow-2xl p-5 overflow-hidden md:pt-7">
         <div className="flex gap-4 flex-wrap">
-          <div
-            className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer"
-          >
+          <div className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer">
             <ModalImage
               small={avatarUrl}
               large={avatarUrl}
@@ -90,15 +88,17 @@ const ProfileContentMenu = () => {
           </div>
         </div>
         <div className="mt-7">
-          <div
-            className="w-full bg-primary-text text-white py-4 font-medium font-poppins rounded-xl flex justify-center hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer"
-            onClick={() => handleContentMenu("Add New Properties")}
-          >
-            <span className="flex items-center gap-2">
-              <h3 className="text-[15px]">Add New Property</h3>
-              <RxArrowTopRight className="text-[22px]" />
-            </span>
-          </div>
+          {userRole === "LandLord" && (
+            <div
+              className="w-full bg-primary-text text-white py-4 font-medium font-poppins rounded-xl flex justify-center hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer"
+              onClick={() => handleContentMenu("Add New Properties")}
+            >
+              <span className="flex items-center gap-2">
+                <h3 className="text-[15px]">Add New Property</h3>
+                <RxArrowTopRight className="text-[22px]" />
+              </span>
+            </div>
+          )}
           <button
             className="w-full py-2.5 mt-4 font-semibold text-custom2 border-[1px] border-gray-200 rounded-lg hover:bg-gray-100 flex justify-center items-center gap-1.5 transition-colors duration-300 ease-in-out lg:hidden"
             onClick={handleMenu}

@@ -129,8 +129,8 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
               className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg cursor-pointer transition-colors duration-300 ease-in-out "
               onClick={handleLogout}
             >
-              <IoLogOutOutline className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">Sign Out</h1>
+              <IoLogOutOutline className="text-[20px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out " />
+              <h1 className="text-[15px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out">Sign Out</h1>
             </div>
           </div>
         </div>
