@@ -12,6 +12,8 @@ const Map: React.FC<MapProps> = ({ address, zoom }) => {
     const loader = new Loader({
       apiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY as string,
       version: "weekly",
+      libraries: ["places", "marker"],
+      mapIds: [process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string],
     });
 
     loader.importLibrary("core").then(() => {
@@ -37,12 +39,18 @@ const Map: React.FC<MapProps> = ({ address, zoom }) => {
                   google.maps.MapTypeId.SATELLITE,
                 ],
               },
+              mapId: process.env.NEXT_PUBLIC_GOOGLE_MAP_ID as string,
             });
 
-            new google.maps.Marker({
-              map: map,
-              position: results[0]?.geometry.location,
-            });
+            // Ensure the 'marker' library is loaded
+            if (google.maps.marker.AdvancedMarkerElement) {
+              new google.maps.marker.AdvancedMarkerElement({
+                map: map,
+                position: results[0]?.geometry.location,
+              });
+            } else {
+              console.error("AdvancedMarkerElement is not available.");
+            }
 
             setIsMapLoading(false);
           } else {
@@ -53,20 +61,20 @@ const Map: React.FC<MapProps> = ({ address, zoom }) => {
         });
       }
     });
-  });
+  }, [address, zoom]);
 
   return (
     <div className="relative w-full h-full rounded-lg overflow-hidden">
       {isMapLoading && (
-          <div className="relative w-full h-full flex justify-center items-center bg-gray-300 bg-opacity-40 animate-pulse">
-            <FadeLoader
-              color="#646464"
-              height={7}
-              margin={-9}
-              radius={0}
-              width={2.5}
-            />
-          </div>
+        <div className="relative w-full h-full flex justify-center items-center bg-gray-300 bg-opacity-40 animate-pulse">
+          <FadeLoader
+            color="#646464"
+            height={7}
+            margin={-9}
+            radius={0}
+            width={2.5}
+          />
+        </div>
       )}
       <div ref={mapRef} className="w-full h-full outline-none" tabIndex={-1} />
       <div className="absolute top-2.5 mx-2.5 ss:absolute ss:right-auto text-[15px] text-secondary bg-white py-2.5 px-4">
