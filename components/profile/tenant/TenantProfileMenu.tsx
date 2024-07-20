@@ -15,7 +15,7 @@ import Link from "next/link";
 const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
   isOpen,
   userRole,
-  handleClick
+  handleClick,
 }) => {
   const { handleLogout, user } = useAuth();
   const { handleContentMenu } = useContentMenu();
@@ -39,9 +39,12 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
             <Image
               src={avatarUrl}
               alt={`${user?.name || "User"}'s avatar`}
-              width={1000}
-              height={1000}
+              width={100}
+              height={100}
               className="w-full h-full object-cover"
+              layout="responsive"
+              objectFit="cover"
+              quality={100}
               onError={(e) => {
                 e.currentTarget.src = defaultAvatarUrl;
               }}
@@ -58,7 +61,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
         <div className="mt-1.5 px-1 ">
           <Link
             href="/account/profile"
-            onClick={() => {handleContentMenu("Personal Info"), handleClick()}}
+            onClick={() => {
+              handleContentMenu("Personal Info"), handleClick();
+            }}
           >
             <div className="group flex items-center gap-2 text-primary-text px-4 py-3  hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out cursor-pointer">
               <BsPerson className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -67,7 +72,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           </Link>
           <Link
             href="/account/profile"
-            onClick={() => {handleContentMenu("Password & Security"), handleClick()}}
+            onClick={() => {
+              handleContentMenu("Password & Security"), handleClick();
+            }}
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <VscLock className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -76,7 +83,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           </Link>
           <Link
             href="/account/profile"
-            onClick={() => {handleContentMenu("Wishlist"), handleClick()}}
+            onClick={() => {
+              handleContentMenu("Wishlist"), handleClick();
+            }}
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <IoIosHeartEmpty className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -85,7 +94,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           </Link>
           <Link
             href="/account/profile"
-            onClick={() => {handleContentMenu("Reviews"), handleClick()}}
+            onClick={() => {
+              handleContentMenu("Reviews"), handleClick();
+            }}
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <HiOutlineStar className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -94,7 +105,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           </Link>
           <Link
             href="/account/profile"
-            onClick={() => {handleContentMenu("Notifications"), handleClick()}}
+            onClick={() => {
+              handleContentMenu("Notifications"), handleClick();
+            }}
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <GoBell className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -105,7 +118,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           <div>
             <Link
               href="/account/profile"
-              onClick={() => {handleContentMenu("Help"), handleClick()}}
+              onClick={() => {
+                handleContentMenu("Help"), handleClick();
+              }}
             >
               <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
                 <IoHelpCircleOutline className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
@@ -117,7 +132,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
               onClick={handleLogout}
             >
               <IoLogOutOutline className="text-[20px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out">Sign Out</h1>
+              <h1 className="text-[15px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out">
+                Sign Out
+              </h1>
             </div>
           </div>
         </div>

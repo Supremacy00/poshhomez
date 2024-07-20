@@ -109,7 +109,7 @@ const ProfileContentMenu = () => {
         </div>
         <div
           className={`${
-            isMenu ? "hidden" : "block"
+            !isMenu ? "hidden" : "block"
           } transition-all duration-300 ease-in-out mt-8 lg:block`}
         >
           <div className="w-fill h-[1px] bg-gray-200 mt-5"></div>
