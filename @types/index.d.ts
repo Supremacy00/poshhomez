@@ -130,6 +130,7 @@ export interface AuthContextProps {
   logIn: (formData: LoginCredentials) => Promise<void>;
   logOut: () => Promise<void>;
   handleLogout: () => Promise<void>;
+  
 }
 
 export interface Users {

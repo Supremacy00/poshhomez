@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import useUploadHook from "@/hooks/useUploadHook";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
@@ -12,10 +12,10 @@ import "react-toastify/dist/ReactToastify.css";
 const UserFileUploader = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
-  const { user } = useAuth(); 
+  const { user } = useAuth();
   const userRole = getUserRole();
-
   const userId = getUserId();
+
   const uploadEndpoint = user && userRole === "Tenant"
     ? `${process.env.NEXT_PUBLIC_TENANT_UPLOAD_ENDPOINT}/${userId}`
     : `${process.env.NEXT_PUBLIC_LANDLORD_UPLOAD_ENDPOINT}/${userId}`;
@@ -28,6 +28,74 @@ const UserFileUploader = () => {
     },
   });
 
+  const resetUploadState = () => {
+    setUploadProgress(0);
+    setUploadedImageUrl(null);
+  };
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null;
+    if (uploadProgress === 100) {
+      timeout = setTimeout(() => {
+        resetUploadState();
+      }, 5000);
+    }
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+    
+  }, [uploadProgress]);
+
+  const resizeAndCompressImage = async (file: File): Promise<Blob> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (event) => {
+        const img = new Image();
+        img.src = event.target?.result as string;
+        img.onload = () => {
+          const MAX_WIDTH = 1500;
+          const MAX_HEIGHT = 1000;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+
+          const canvas = document.createElement("canvas");
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, width, height);
+            canvas.toBlob(
+              (blob) => {
+                if (blob) {
+                  resolve(blob);
+                } else {
+                  reject(new Error("Failed to compress image"));
+                }
+              },
+              file.type,
+              0.5
+            );
+          } else {
+            reject(new Error("Failed to compress image"));
+          }
+        };
+      };
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
   const onDrop = async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
 
@@ -39,7 +107,11 @@ const UserFileUploader = () => {
     setUploadProgress(0);
 
     try {
-      const response = await uploadFile(file);
+      const compressedImageBlob = await resizeAndCompressImage(file);
+      const compressedFile = new File([compressedImageBlob], file.name, {
+        type: file.type,
+      });
+      const response = await uploadFile(compressedFile);
       setUploadedImageUrl(response.imageUrl);
       console.log("Upload successful:", response);
     } catch (error) {
@@ -47,6 +119,7 @@ const UserFileUploader = () => {
       toast.error("Error uploading file.");
     }
   };
+
 
   const { getRootProps, getInputProps, isDragActive, fileRejections } =
     useDropzone({

@@ -5,6 +5,7 @@ import React, {
   ReactNode,
   useState,
   useEffect,
+  useCallback,
 } from "react";
 import useSWR from "swr";
 import axios from "axios";
@@ -50,6 +51,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loginLoading, setLoginLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
+  const [profilePictureUrl, setProfilePictureUrl] = useState<string | null>(null);
 
   const {
     data: user,
@@ -90,6 +92,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       if (!response.status) {
         throw new Error(`Error fetching user data: ${response.statusText}`);
       }
+      setProfilePictureUrl(response.data.avatar?.secure_url || null);
       return response.data;
     } catch (error) {
       console.error("Error fetching user data", error);
@@ -212,6 +215,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.error("Logout failed", error);
     }
   };
+
+  const updateProfilePicture = useCallback((url: string | null) => {
+    setProfilePictureUrl(url);
+    // Use mutate to update cached user data with the new profile picture URL
+    mutate((data: any) => ({
+      ...data,
+      avatar: {
+        ...data.avatar,
+        secure_url: url,
+      },
+    }), false); // Set to false to prevent automatic revalidation
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

@@ -70,9 +70,12 @@ const AuthenticatedNavProfile = () => {
           <Image
             src={avatarUrl}
             alt={`${user?.name || "User"}'s avatar`}
-            width={1000}
-            height={1000}
+            width={100}
+            height={100}
             className="w-full h-full object-cover"
+            layout="responsive"
+            objectFit="cover"
+            quality={100}
           />
         </div>
         {isProfileMenu && (

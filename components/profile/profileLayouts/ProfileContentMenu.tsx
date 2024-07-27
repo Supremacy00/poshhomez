@@ -31,6 +31,8 @@ const ProfileContentMenu = () => {
       : "/assets/images/fallback-female-profile.jpeg";
   const avatarUrl = user?.avatar?.secure_url || defaultAvatarUrl;
 
+  
+
   return (
     <section className="px-4 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
       <div className="flex items-center gap-1.5 text-secondary font-light text-[14px] lg:text-[15px]">
@@ -109,7 +111,7 @@ const ProfileContentMenu = () => {
         </div>
         <div
           className={`${
-            isMenu ? "hidden" : "block"
+            !isMenu ? "hidden" : "block"
           } transition-all duration-300 ease-in-out mt-8 lg:block`}
         >
           <div className="w-fill h-[1px] bg-gray-200 mt-5"></div>
