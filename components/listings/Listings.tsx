@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import useApiWithSWR from "@/hooks/useApiWithSWR";
 import { PropertyCardDetails } from "@/@types";
@@ -63,6 +63,21 @@ const Listings: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
+
+  const [debounce, setDebounce] = useState(false);
+
+  // Function to handle wishlist click
+  const handleWishlistClick = (item: PropertyCardDetails) => {
+    if (debounce) return;
+    setDebounce(true);
+    setTimeout(() => setDebounce(false), 500);
+
+    if (!loadingMap[item.id]) {
+      isItemInWishlist(item.id)
+        ? removeFromWishlist(item.id)
+        : addToWishlist(item);
+    }
+  };
 
   
 
@@ -205,13 +220,7 @@ const Listings: React.FC = () => {
                                   ? "bg-primary-text bg-opacity-10"
                                   : "hover:bg-custom4"
                               } relative text-lg w-9 h-9 rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
-                              onClick={() => {
-                                if (!loadingMap[item.id]) {
-                                  isItemInWishlist(item.id)
-                                    ? removeFromWishlist(item.id)
-                                    : addToWishlist(item);
-                                }
-                              }}
+                              onClick={() => handleWishlistClick(item)}
                             >
                               {loadingMap[item.id] ? (
                                 <span className="flex justify-center items-center absolute top-[22px] left-[23px]">

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { PropertyCardDetails } from "@/@types";
 import useApiWithSWR from "@/hooks/useApiWithSWR";
@@ -45,6 +45,21 @@ const PopularProperties: React.FC = () => {
         ? roundedValue.toLocaleString() + ".00"
         : amountValue.toLocaleString();
     return formattedValue;
+  };
+
+  const [debounce, setDebounce] = useState(false);
+
+  // Function to handle wishlist click
+  const handleWishlistClick = (item: PropertyCardDetails) => {
+    if (debounce) return;
+    setDebounce(true);
+    setTimeout(() => setDebounce(false), 500);
+
+    if (!loadingMap[item.id]) {
+      isItemInWishlist(item.id)
+        ? removeFromWishlist(item.id)
+        : addToWishlist(item);
+    }
   };
 
   return (

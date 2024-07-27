@@ -31,6 +31,8 @@ const ProfileContentMenu = () => {
       : "/assets/images/fallback-female-profile.jpeg";
   const avatarUrl = user?.avatar?.secure_url || defaultAvatarUrl;
 
+  
+
   return (
     <section className="px-4 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
       <div className="flex items-center gap-1.5 text-secondary font-light text-[14px] lg:text-[15px]">
