@@ -251,8 +251,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         logIn,
         logOut,
         handleLogout,
-        profilePictureUrl,
-        updateProfilePicture,
       }}
     >
       {children}
