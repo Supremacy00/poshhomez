@@ -128,7 +128,7 @@ const Listings: React.FC = () => {
               return (
                 <article key={item.id} className="group">
                   <div className="relative overflow-hidden">
-                    <div className="relative rounded-t-xl overflow-hidden w-full h-full aspect-4/3 xs:h-[180px] md:h-[230px] lg:h-[200px]">
+                    <div className="relative bg-gray-400 rounded-t-xl overflow-hidden w-full h-full aspect-4/3 xs:h-[180px] md:h-[230px] lg:h-[200px]">
                       <Image
                         src={imageUrl}
                         alt={item.name}
