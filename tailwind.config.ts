@@ -26,7 +26,7 @@ const config = {
         "primary-text": "#171717",
         secondary: "#646464",
         custom1: "#CCCCCC",
-        custom2: "#EB6753",
+        custom2: "#FD5631",
         custom3: "#181A20D8",
         custom4: "#F7F7F7",
         custom5: "#6E6D7A",
@@ -37,6 +37,7 @@ const config = {
         custom10: "#E3E3E3",
         custom11: "#E8E8E8",
         custom12: "#0A2357",
+        custom13: "#AEAEAE"
       },
       fontFamily: {
         nunito: ["Nunito Sans", "sans-serif"],
