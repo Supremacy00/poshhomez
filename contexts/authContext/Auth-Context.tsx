@@ -216,18 +216,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const updateProfilePicture = useCallback((url: string | null) => {
-    setProfilePictureUrl(url);
-    // Use mutate to update cached user data with the new profile picture URL
-    mutate((data: any) => ({
-      ...data,
-      avatar: {
-        ...data.avatar,
-        secure_url: url,
-      },
-    }), false); // Set to false to prevent automatic revalidation
-  }, []);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token ) {

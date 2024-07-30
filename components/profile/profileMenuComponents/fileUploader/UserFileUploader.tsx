@@ -15,9 +15,10 @@ const UserFileUploader = () => {
   const userRole = getUserRole();
   const userId = getUserId();
 
-  const uploadEndpoint = user && userRole === "Tenant"
-    ? `${process.env.NEXT_PUBLIC_TENANT_UPLOAD_ENDPOINT}/${userId}`
-    : `${process.env.NEXT_PUBLIC_LANDLORD_UPLOAD_ENDPOINT}/${userId}`;
+  const uploadEndpoint =
+    user && userRole === "Tenant"
+      ? `${process.env.NEXT_PUBLIC_TENANT_UPLOAD_ENDPOINT}/${userId}`
+      : `${process.env.NEXT_PUBLIC_LANDLORD_UPLOAD_ENDPOINT}/${userId}`;
 
   const { uploadFile } = useUploadHook({
     uploadEndpoint,
@@ -42,7 +43,6 @@ const UserFileUploader = () => {
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-    
   }, [uploadProgress]);
 
   const resizeAndCompressImage = async (file: File): Promise<Blob> => {
@@ -119,14 +119,12 @@ const UserFileUploader = () => {
     }
   };
 
-
   const { getRootProps, getInputProps, isDragActive, fileRejections } =
     useDropzone({
       onDrop,
       accept: {
         "image/jpeg": [],
         "image/png": [],
-        "image/svg+xml": [],
         "image/jpg": [],
       },
       onDropRejected: () => {
@@ -171,9 +169,14 @@ const UserFileUploader = () => {
         (isDragActive ? (
           <p className="text-secondary">Drop the profile picture here...</p>
         ) : (
-          <p className="text-secondary">
-            Drag n drop a profile picture here, or click to select
-          </p>
+          <>
+            <p className="text-secondary hidden lg:block">
+              Drag n drop a profile picture here, or click to select
+            </p>
+            <p className="text-secondary lg:hidden">
+              Click to upload profile picture
+            </p>
+          </>
         ))}
     </div>
   );

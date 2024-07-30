@@ -19,15 +19,21 @@ const PersonalInfoForm = () => {
     updateUserData,
     loading,
     handleChange,
-    hasChanges
+    hasChanges,
   } = useUserProfile();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const updatedData: { [key: string]: string } = {};
-    if (editModes.fullName) updatedData.name = editFullName;
-    if (editModes.email) updatedData.email = editEmail;
-    if (editModes.phoneNumber) updatedData.phone_number = editPhoneNumber;
+    if (editModes.fullName) {
+      updatedData.name = editFullName;
+    }
+    if (editModes.email) {
+      updatedData.email = editEmail;
+    }
+    if (editModes.phoneNumber) {
+      updatedData.phone_number = editPhoneNumber;
+    }
 
     updateUserData(updatedData);
   };
@@ -126,7 +132,9 @@ const PersonalInfoForm = () => {
               <input
                 type="text"
                 value={editPhoneNumber}
-                onChange={(e) => handleChange(setEditPhoneNumber, e.target.value)}
+                onChange={(e) =>
+                  handleChange(setEditPhoneNumber, e.target.value)
+                }
                 className="w-full py-2.5 border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
             </div>
@@ -134,8 +142,10 @@ const PersonalInfoForm = () => {
           <div className="mt-7">
             <button
               type="submit"
-              disabled={!hasChanges || loading} 
-              className={`${!hasChanges || loading ? 'bg-custom6 cursor-not-allowed' : ''} flex justify-center items-center gap-1.5 text-[15px] text-white bg-custom2 py-3 px-5 rounded-md hover:bg-custom6 transition-colors duration-300 ease-in-out`}
+              disabled={!hasChanges || loading}
+              className={`${
+                !hasChanges || loading ? "bg-custom6 cursor-not-allowed" : ""
+              } flex justify-center items-center gap-1.5 text-[15px] text-white bg-custom2 py-3 px-5 rounded-md hover:bg-custom6 transition-colors duration-300 ease-in-out`}
             >
               {loading && <ClipLoader color="#ffffff" size={19} />}
               Save Changes

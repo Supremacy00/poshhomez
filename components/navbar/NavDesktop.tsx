@@ -39,13 +39,13 @@ const NavDesktop = () => {
                 </div>
               </Link>
             </div>
-            <ul className="flex items-center space-x-12 text-sm  xl:space-x-14">
+            <ul className="flex items-center space-x-10 text-sm  xl:space-x-12">
               {navData.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <li
                     className={`${
                       pathname === item.link ? "text-custom2" : ""
-                    } py-2 text-[14px] font-medium hover:text-custom2 transition-colors duration-500 ease-in-out`}
+                    } py-2 text-[15px] font-medium hover:text-custom2 transition-colors duration-500 ease-in-out`}
                   >
                     {item.title}
                   </li>
@@ -58,12 +58,12 @@ const NavDesktop = () => {
                   <Link href="/auth/login">
                     <span className="flex items-center gap-1.5 cursor-pointer">
                       <IoPersonCircleOutline className="text-[23px]" />
-                      <h3 className="hidden xl:block text-[14px] font-medium hover:underline underline-offset-2 py-2 -mr-2">
+                      <h3 className="hidden xl:block text-[15px] font-medium hover:underline underline-offset-2 py-2 -mr-2">
                         Login
                       </h3>
                     </span>
                   </Link>
-                  <span className="hidden xl:flex items-center text-[14px] font-medium cursor-pointer">
+                  <span className="hidden xl:flex items-center text-[15px] font-medium cursor-pointer">
                     <RxSlash className="text-lg" />
                     <Link href="/auth/signup">
                       <h3 className="hover:underline underline-offset-2 py-2">
@@ -91,8 +91,8 @@ const NavDesktop = () => {
                 className="cursor-pointer flex flex-col"
                 onClick={handleIsRightNav}
               >
-                <div className="w-7 h-[1px] bg-primary-text rounded-full mb-2" />
-                <div className="w-5 h-[1px] bg-primary-text rounded-full ml-2" />
+                <span className="w-7 h-[1.5px] bg-primary-text rounded-full mb-2" />
+                <span  className="w-5 h-[1.5px] bg-primary-text rounded-full ml-2" />
               </div>
             </div>
           </div>

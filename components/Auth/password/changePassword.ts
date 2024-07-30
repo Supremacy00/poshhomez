@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getToken, getUserRole, getUserId } from "@/utils/authUtils";
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
 const changePassword = async (
   oldPassword: string,
