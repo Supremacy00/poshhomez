@@ -35,15 +35,6 @@ const AuthenticatedNavProfile = () => {
 
   return (
     <nav className="relative flex items-center gap-2 z-40">
-      <div className="relative group hidden lg:block">
-        <div className="relative bg-opacity-0 group-hover:bg-opacity-30 p-[25px] bg-gray-300 rounded-full cursor-pointer transition-colors duration-500 ease-in-out"></div>
-        <div className="absolute top-[6.5px] left-[6.5px] p-[9px] text-[19px] bg-gray-300 bg-opacity-40 rounded-full cursor-pointer">
-          <HiOutlineEnvelope />
-        </div>
-        <span className="absolute top-0 right-0 text-white text-[13px] py-[0.5px] px-[7px] bg-custom6 rounded-full">
-          0
-        </span>
-      </div>
       <Link
         href="/account/profile"
         onClick={() => handleContentMenu("Notifications")}
@@ -53,7 +44,7 @@ const AuthenticatedNavProfile = () => {
           <div className="absolute top-[6.5px] left-[6.5px] p-[9px] text-[19px] bg-gray-300 bg-opacity-40 rounded-full cursor-pointer">
             <GoBell />
           </div>
-          <span className="absolute top-0 right-0 text-white text-[13px] py-[0.5px] px-[7px] bg-custom6 rounded-full">
+          <span className="absolute top-0 right-0 text-white text-[13px] py-[0.5px] px-[7px] bg-custom2 rounded-full">
             {unreadCount}
           </span>
         </div>
@@ -73,8 +64,6 @@ const AuthenticatedNavProfile = () => {
             width={100}
             height={100}
             className="w-full h-full object-cover"
-            layout="responsive"
-            objectFit="cover"
             quality={100}
           />
         </div>

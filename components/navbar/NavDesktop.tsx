@@ -10,12 +10,14 @@ import { useModal } from "@/contexts/modalContext/ModalContext";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import AuthenticatedNavProfile from "../profile/profileAuth/AuthenticatedNavProfile";
+import { useContentMenu } from "../profile/ProfileContentMenuContext";
 
 const NavDesktop = () => {
   const pathname = usePathname();
   const { handleIsRightNav } = useModal();
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
+  const { handleContentMenu } = useContentMenu();
 
   return (
     <>
@@ -43,7 +45,7 @@ const NavDesktop = () => {
                   <li
                     className={`${
                       pathname === item.link ? "text-custom2" : ""
-                    } py-2 hover:text-custom2 transition-colors duration-500 ease-in-out`}
+                    } py-2 text-[14px] font-medium hover:text-custom2 transition-colors duration-500 ease-in-out`}
                   >
                     {item.title}
                   </li>
@@ -72,15 +74,23 @@ const NavDesktop = () => {
                 </div>
               )}
               {isAuthenticated && userRole === "LandLord" && (
-                <div className="bg-primary-text text-white px-8 py-4 font-medium font-poppins rounded-xl hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer">
-                  <span className="flex items-center gap-2">
-                    <h3 className="text-[15px]">Add Property</h3>
-                    <RxArrowTopRight className="text-[22px]" />
-                  </span>
-                </div>
+                <Link
+                  href="/account/profile"
+                  onClick={() => handleContentMenu("Add New Properties")}
+                >
+                  <div className="bg-primary-text text-white px-6 py-4 font-medium font-poppins rounded-xl hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer">
+                    <span className="flex items-center gap-2">
+                      <h3 className="text-[15px]">Add New Property</h3>
+                      <RxArrowTopRight className="text-[22px]" />
+                    </span>
+                  </div>
+                </Link>
               )}
-              {isAuthenticated && (<AuthenticatedNavProfile />)}
-              <div className="cursor-pointer flex flex-col" onClick={handleIsRightNav}>
+              {isAuthenticated && <AuthenticatedNavProfile />}
+              <div
+                className="cursor-pointer flex flex-col"
+                onClick={handleIsRightNav}
+              >
                 <div className="w-7 h-[1px] bg-primary-text rounded-full mb-2" />
                 <div className="w-5 h-[1px] bg-primary-text rounded-full ml-2" />
               </div>
