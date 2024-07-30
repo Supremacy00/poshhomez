@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import changePassword from "./changePassword";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ClipLoader } from "react-spinners";
 
 interface FormInputs {
   currentPassword: string;
@@ -23,6 +24,7 @@ const PasswordAndSecurity: React.FC = () => {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const errorMessages = Object.values(errors).map((error) => error.message);
 
@@ -36,7 +38,7 @@ const PasswordAndSecurity: React.FC = () => {
       });
       return;
     }
-
+    setLoading(true);
     try {
       const response = await changePassword(
         data.currentPassword,
@@ -45,6 +47,8 @@ const PasswordAndSecurity: React.FC = () => {
       reset();
     } catch (err) {
       alert("An error occurred while changing the password");
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -110,7 +114,7 @@ const PasswordAndSecurity: React.FC = () => {
             </label>
             <div className="relative">
               <input
-                type={showNewPassword? "text" : "password"}
+                type={showNewPassword ? "text" : "password"}
                 id="newPassword"
                 {...register("newPassword", {
                   required: "New password is required",
@@ -136,7 +140,7 @@ const PasswordAndSecurity: React.FC = () => {
             </label>
             <div className="relative">
               <input
-                type={showConfirmPassword? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 id="confirmPassword"
                 {...register("confirmPassword", {
                   required: "Confirm password is required",
@@ -158,7 +162,12 @@ const PasswordAndSecurity: React.FC = () => {
           </div>
         </div>
         <div className="mt-5">
-          <button className="text-base text-custom2 font-semibold px-7 py-2.5 border-[1px] border-custom2 rounded-lg hover:bg-custom2 hover:text-white transition-colors duration-300 ease-in-out">
+          <button
+            type="submit"
+            disabled={loading}
+            className={`${loading ? "text-white bg-custom2" : " hover:text-white" } text-base text-custom2 font-semibold px-7 py-2.5 flex justify-center items-center gap-1.5 border-[1px] border-custom2 hover:bg-custom2 rounded-lg transition-colors duration-300 ease-in-out`}
+          >
+            {loading && <ClipLoader color="#ffffff" size={19} />}
             Update Password
           </button>
         </div>

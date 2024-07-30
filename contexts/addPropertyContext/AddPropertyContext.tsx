@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import axios, { CancelTokenSource } from "axios";
 import { AddPropertyDetails, AddPropertyAmenities } from "@/@types";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 
 interface LoadingState {
   details: boolean;

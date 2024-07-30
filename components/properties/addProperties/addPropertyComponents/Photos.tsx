@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyContext";
 import { BsArrowUpRight } from "react-icons/bs";
 import { ImFilePicture } from "react-icons/im";

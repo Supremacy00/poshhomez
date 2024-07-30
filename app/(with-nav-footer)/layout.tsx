@@ -5,8 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { AuthProvider } from "@/contexts/authContext/Auth-Context";
 import { ModalProvider } from "@/contexts/modalContext/ModalContext";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "sonner";
 import { ContentMenuProvider } from "@/components/profile/ProfileContentMenuContext";
 import LoginModal from "@/components/Auth/login/LoginModal";
 import { WishlistProvider } from "@/contexts/wishlistContext/WishlistContext";
@@ -16,11 +15,11 @@ import AdvanceSearch from "@/components/search/AdvanceSearch";
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-}
+};
 
 export const metadata: Metadata = {
   title: "PosHHomez",
@@ -33,7 +32,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    
     <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
         <ModalProvider>
@@ -41,23 +39,17 @@ export default function RootLayout({
             <ContentMenuProvider>
               <WishlistProvider>
                 <LoadingProvider>
-                    <Navbar />
-                    <LoginModal />
-                    <AdvanceSearch />
-                    {children}
-                    <ToastContainer
-                      className="px-5"
-                      position="top-right"
-                      autoClose={5000}
-                      hideProgressBar={false}
-                      newestOnTop={false}
-                      closeOnClick
-                      rtl={false}
-                      pauseOnFocusLoss
-                      draggable
-                      pauseOnHover
-                    />
-                    <Footer />
+                  <Navbar />
+                  <LoginModal />
+                  <AdvanceSearch />
+                  {children}
+                  <Toaster
+                    className="px-5"
+                    position="top-right"
+                    richColors
+                    duration={3500}
+                  />
+                  <Footer />
                 </LoadingProvider>
               </WishlistProvider>
             </ContentMenuProvider>

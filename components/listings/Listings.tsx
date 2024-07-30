@@ -23,7 +23,6 @@ import { getUserRole } from "@/utils/authUtils";
 import AppPagination from "../AppPagination";
 import ListingsSearch from "./ListingsSearch";
 import { VscSettings } from "react-icons/vsc";
-import { ToastContainer } from "react-toastify";
 
 const Listings: React.FC = () => {
   const {
@@ -79,10 +78,8 @@ const Listings: React.FC = () => {
     }
   };
 
-  
-
   return (
-    <section className="font-nunito bg-custom4 text-primary-text pb-24 lg:pt-24 ">
+    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-12 lg:pt-24 ">
       <div className="mx-auto px-4 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div className="pt-12 flex justify-between items-center gap-2 flex-wrap">
           <div>
@@ -255,7 +252,6 @@ const Listings: React.FC = () => {
         <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
 };
