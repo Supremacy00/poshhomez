@@ -5,9 +5,8 @@ import useUploadHook from "@/hooks/useUploadHook";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserId } from "@/utils/authUtils";
 import { getUserRole } from "@/utils/authUtils";
-import { TbDiscountCheckFilled } from "react-icons/tb";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { TbRosetteDiscountCheckFilled } from "react-icons/tb";
+import { toast } from "sonner";
 
 const UserFileUploader = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -166,7 +165,7 @@ const UserFileUploader = () => {
           uploadProgress >= 100 ? "bottom-2" : "-bottom-20"
         } absolute left-0 right-0 text-[70px] text-green-500 flex justify-center items-center transition-all duration-500 ease-in-out`}
       >
-        <TbDiscountCheckFilled />
+        <TbRosetteDiscountCheckFilled />
       </div>
       {!uploadProgress &&
         (isDragActive ? (
@@ -176,7 +175,6 @@ const UserFileUploader = () => {
             Drag n drop a profile picture here, or click to select
           </p>
         ))}
-         <ToastContainer />
     </div>
   );
 };

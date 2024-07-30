@@ -23,7 +23,6 @@ import { getUserRole } from "@/utils/authUtils";
 import AppPagination from "../AppPagination";
 import ListingsSearch from "./ListingsSearch";
 import { VscSettings } from "react-icons/vsc";
-import { ToastContainer } from "react-toastify";
 
 const Listings: React.FC = () => {
   const {
@@ -78,8 +77,6 @@ const Listings: React.FC = () => {
         : addToWishlist(item);
     }
   };
-
-  
 
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 lg:pt-24 ">
@@ -255,7 +252,6 @@ const Listings: React.FC = () => {
         <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>
-      <ToastContainer />
     </section>
   );
 };

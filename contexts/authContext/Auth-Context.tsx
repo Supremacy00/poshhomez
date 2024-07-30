@@ -9,7 +9,7 @@ import React, {
 } from "react";
 import useSWR from "swr";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from 'sonner';
 import { useModal } from "../modalContext/ModalContext";
 import { isTokenExpired } from "@/utils/authUtils";
 import { useRouter } from "next/navigation";

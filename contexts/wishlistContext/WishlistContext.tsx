@@ -12,8 +12,7 @@ import { WishlistContextType } from "@/@types";
 import { PropertyCardDetails } from "@/@types";
 import { getUserId } from "@/utils/authUtils";
 import { getUserRole } from "@/utils/authUtils";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "sonner";
 
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";

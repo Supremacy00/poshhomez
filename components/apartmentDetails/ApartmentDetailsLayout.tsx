@@ -6,7 +6,7 @@ const ApartmentDetailsLayout = () => {
 
   return (
     <ApartmentIdProvider>
-    <div className="lg:mt-[83px]">
+    <div className="mt-[50px] lg:mt-[90px]">
       <ApartmentDetailsPage  />
     </div>
     </ApartmentIdProvider>

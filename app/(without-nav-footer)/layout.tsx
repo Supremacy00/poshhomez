@@ -2,18 +2,17 @@ import { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/authContext/Auth-Context";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { ModalProvider } from "@/contexts/modalContext/ModalContext";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-}
+};
 
 export const metadata: Metadata = {
   title: "PosHHomez",
@@ -29,20 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ModalProvider>
-        <AuthProvider>
-          {children}
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </AuthProvider>
+          <AuthProvider>
+            {children}
+            <Toaster className="px-5" position="top-right" richColors duration={3500} />
+          </AuthProvider>
         </ModalProvider>
       </body>
     </html>
