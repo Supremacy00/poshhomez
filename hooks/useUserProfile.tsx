@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { mutate } from "swr";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getToken, getUserId, getUserRole } from "@/utils/authUtils";
-import axios from "axios";
+import { toast } from "sonner";
 
 interface IUpdateUserData {
   name?: string;
   email?: string;
   phone_number?: string;
   gender?: string;
-  password?: string;
 }
 
 interface EditModes {
@@ -32,15 +32,9 @@ const useUserProfile = () => {
   const userId = getUserId();
   const token = getToken();
 
-  const apiEndpoint = process.env.NEXT_PUBLIC_API_ENDPOINT;
-  if (!apiEndpoint) {
-    throw new Error("API endpoint is not defined");
-  }
-
-  const endpoint =
-    user && userRole === "Tenant"
-      ? `${apiEndpoint}/api/tenant/${userId}`
-      : `${apiEndpoint}/api/landlord/${userId}`;
+  const endpoint = user && userRole === "Tenant"
+    ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/tenant/${userId}`
+    : `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/landlord/${userId}`;
 
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -70,6 +64,7 @@ const useUserProfile = () => {
     }
   }, [user]);
 
+  
   const handleChange = (
     setter: React.Dispatch<React.SetStateAction<string>>,
     value: string
@@ -88,26 +83,22 @@ const useUserProfile = () => {
   const updateUserData = async (updatedData: IUpdateUserData) => {
     setLoading(true);
     setError(null);
+    console.log(updatedData)
     try {
-      const dataToUpdate = {
-        ...user,
-        ...updatedData,
-      };
-
-      const { password, ...dataWithoutPassword } = dataToUpdate;
-      const finalData =
-        password === undefined ? dataWithoutPassword : dataToUpdate;
-
-      console.log("This is a full data", dataToUpdate);
-      const response = await axios.put(endpoint, finalData, {
+      
+      
+      const response = await axios.put(endpoint, updatedData, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`,
         },
       });
 
-      if (response.status !== 200)
-        throw new Error("Failed to update user data");
+      console.log("This is the user response", response, "user :", user)
+
+      if (response.data.status_code === 200) {
+        toast.success("Profile updated successfully")
+      }
 
       const updatedUser = response.data;
       setFullName(updatedUser.name || fullName);
@@ -128,18 +119,22 @@ const useUserProfile = () => {
     fullName,
     email,
     phoneNumber,
+    gender,
     editFullName,
     setEditFullName,
     editEmail,
     setEditEmail,
     editPhoneNumber,
     setEditPhoneNumber,
+    editGender,
+    setEditGender,
     editModes,
     toggleFieldEditMode,
     updateUserData,
     loading,
+    error,
     handleChange,
-    hasChanges,
+    hasChanges
   };
 };
 
