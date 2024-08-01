@@ -4,11 +4,12 @@ import { toast } from "sonner";
 import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyContext";
 import { BsArrowUpRight } from "react-icons/bs";
 import { ImFilePicture } from "react-icons/im";
-import { FadeLoader } from "react-spinners";
+import { ClipLoader, FadeLoader } from "react-spinners";
 import Image from "next/image";
 
 const Photos = () => {
-  const { propertyId, uploadPhotos, loading, setCurrentStep, currentStep } = usePropertyContext();
+  const { propertyId, uploadPhotos, loading, setCurrentStep, currentStep } =
+    usePropertyContext();
   const [photos, setPhotos] = useState<File[]>([]);
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
@@ -91,39 +92,30 @@ const Photos = () => {
           );
         })}
       </div>
-      <section className="text-primary-text flex justify-between items-center pt-12 pb-5">
+      <section className="text-primary-text flex justify-between items-center gap-2 pt-12 pb-5">
         <div className="relative">
           <button
             onClick={handleSkip}
-            className={`${
-              loading.photos ? "bg-primary-text text-white" : ""
-            } relative flex items-center gap-2.5 px-[50px] py-3.5 border-[1px] border-primary-text rounded-xl hover:bg-primary-text hover:text-white transition-colors duration-300 ease-in-out`}
+            className="relative flex items-center gap-2.5 px-6 md:px-[50px] py-3.5 border-[1px] border-primary-text rounded-xl hover:bg-primary-text hover:text-white transition-colors duration-300 ease-in-out"
           >
-            <h4 className="text-[15px] font-semibold">Skip Step</h4>
-            {loading.photos ? (
-              <span className="flex justify-center items-center relative -right-4 top-3.5">
-                <FadeLoader
-                  color="#ffffff"
-                  height={4}
-                  margin={-12}
-                  radius={2}
-                  width={2}
-                />
-              </span>
-            ) : (
-              <BsArrowUpRight className="text-[17px]" />
-            )}
+            <h4 className="text-[15px] font-semibold">Skip</h4>
+            <BsArrowUpRight className="text-[15px] md:text-[17px]" />
           </button>
         </div>
         <div className="relative">
           <button
-            onClick={handleSkip}
+            disabled={loading.photos}
+            onClick={handleUploadClick}
             className={`${
               loading.photos ? "bg-primary-text text-white" : ""
-            } relative flex items-center gap-2.5 px-[50px] py-3.5 border-[1px] border-primary-text rounded-xl hover:bg-primary-text hover:text-white transition-colors duration-300 ease-in-out`}
+            } relative flex items-center gap-2.5 px-6 md:px-[50px] py-3.5 border-[1px] border-primary-text rounded-xl hover:bg-primary-text hover:text-white transition-colors duration-300 ease-in-out`}
           >
-            <h4 className="text-[15px] font-semibold">Continue</h4>
-            <BsArrowUpRight className="text-[17px]" />
+            <h4 className="text-[15px] font-semibold">Next</h4>
+            {loading.photos ? (
+              <ClipLoader color="#ffffff" size={19} />
+            ) : (
+              <BsArrowUpRight className="text-[15px] md:text-[17px]" />
+            )}
           </button>
         </div>
       </section>

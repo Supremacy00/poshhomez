@@ -10,7 +10,6 @@ import { toast } from "sonner";
 
 const UserFileUploader = () => {
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [uploadedImageUrl, setUploadedImageUrl] = useState<string | null>(null);
   const { user } = useAuth();
   const userRole = getUserRole();
   const userId = getUserId();
@@ -23,14 +22,12 @@ const UserFileUploader = () => {
   const { uploadFile } = useUploadHook({
     uploadEndpoint,
     onProgress: (progress) => {
-      console.log("Progress in Component:", progress);
       setUploadProgress(progress);
     },
   });
 
   const resetUploadState = () => {
     setUploadProgress(0);
-    setUploadedImageUrl(null);
   };
 
   useEffect(() => {
@@ -111,8 +108,9 @@ const UserFileUploader = () => {
         type: file.type,
       });
       const response = await uploadFile(compressedFile);
-      setUploadedImageUrl(response.imageUrl);
-      console.log("Upload successful:", response);
+      if (response.statuse_code === 200) {
+        toast.success("Image uploaded successfully!");
+      }
     } catch (error) {
       console.error("Error uploading file:", error);
       toast.error("Error uploading file.");
