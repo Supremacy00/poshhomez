@@ -9,7 +9,7 @@ function withAuth<T extends {}>(
   WrappedComponent: ComponentType<T>
 ): ComponentType<T> {
   const RequiresAuth = (props: T): ReactElement | null => {
-    const { isAuthChecking, isLoading, user } = useAuth();
+    const { isAuthChecking, isLoading } = useAuth();
     const router = useRouter();
 
     useEffect(() => {

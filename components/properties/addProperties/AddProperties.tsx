@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import AddPropertyLayout from "./AddPropertyLayout";
 import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyContext";
 
 
 const AddProperties = () => {
   const { currentStep, setCurrentStep } = usePropertyContext();
+  const stepContainerRef = useRef<HTMLDivElement>(null);
 
-
+  useEffect(() => {
+    if (stepContainerRef.current) {
+      stepContainerRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [currentStep]);
+  
   return (
-    <>
+    <div ref={stepContainerRef}>
       <h1 className="text-[22px] font-semibold text-primary-text">
         Add New Properties
       </h1>
@@ -80,7 +86,7 @@ const AddProperties = () => {
           <AddPropertyLayout />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

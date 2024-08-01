@@ -5,7 +5,7 @@ import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyCon
 import { useLocationSelector } from "@/hooks/useLocationSelector";
 import { AddPropertyDetails } from "@/@types";
 import { BsArrowUpRight } from "react-icons/bs";
-import { FadeLoader } from "react-spinners";
+import { ClipLoader, FadeLoader } from "react-spinners";
 
 const Description: React.FC = () => {
   const {
@@ -106,7 +106,9 @@ const Description: React.FC = () => {
   const dropdownTopState = dropdownPosition.state ? "auto" : "84px";
   const dropdownBottomState = dropdownPosition.state ? "52px" : "auto";
   const dropdownTopGender = dropdownPosition.occupant_gender ? "auto" : "84px";
-  const dropdownBottomGender = dropdownPosition.occupant_gender ? "52px" : "auto";
+  const dropdownBottomGender = dropdownPosition.occupant_gender
+    ? "52px"
+    : "auto";
 
   return (
     <>
@@ -236,7 +238,10 @@ const Description: React.FC = () => {
                   className={`absolute z-20 py-1.5 w-full bg-white text-[15px] font-medium border border-custom11 rounded-lg overflow-hidden ${
                     dropdownPosition.country ? "bottom-0 top-auto" : ""
                   }`}
-                  style={{ top: dropdownTopCountry, bottom: dropdownBottomCountry }}
+                  style={{
+                    top: dropdownTopCountry,
+                    bottom: dropdownBottomCountry,
+                  }}
                 >
                   {countryData.map((country, index) => (
                     <li
@@ -340,7 +345,10 @@ const Description: React.FC = () => {
                   className={`absolute z-20 py-1.5 w-full bg-white text-[15px] font-medium border border-custom11 rounded-lg overflow-hidden ${
                     dropdownPosition.occupant_gender ? "bottom-0 top-auto" : ""
                   }`}
-                  style={{ top: dropdownTopGender, bottom: dropdownBottomGender }}
+                  style={{
+                    top: dropdownTopGender,
+                    bottom: dropdownBottomGender,
+                  }}
                 >
                   {genderData.map((gender, index) => (
                     <li
@@ -369,6 +377,7 @@ const Description: React.FC = () => {
         <section className="text-primary-text flex justify-center items-center pt-12 pb-5">
           <div className="relative">
             <button
+            disabled={loading.details}
               type="submit"
               className={`${
                 loading.details ? "bg-primary-text text-white" : ""
@@ -376,15 +385,7 @@ const Description: React.FC = () => {
             >
               <h4 className="text-[15px] font-semibold">Continue</h4>
               {loading.details ? (
-                <span className="flex justify-center items-center relative -right-4 top-3.5">
-                  <FadeLoader
-                    color="#ffffff"
-                    height={4}
-                    margin={-12}
-                    radius={2}
-                    width={2}
-                  />
-                </span>
+                <ClipLoader color="#ffffff" size={19} />
               ) : (
                 <BsArrowUpRight className="text-[17px]" />
               )}

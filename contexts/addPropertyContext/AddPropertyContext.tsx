@@ -26,16 +26,13 @@ interface PropertyContextType {
   setCurrentStep: (step: number) => void;
   submitPropertyDetails: (details: AddPropertyDetails) => Promise<void>;
   uploadPhotos: (photos: File[], propertyId: string) => Promise<void>;
-  addAmenities: (
-    amenities: AddPropertyAmenities,
-    propertyId: string
-  ) => Promise<void>;
+  addAmenities: (amenities: AddPropertyAmenities[], propertyId: string) => Promise<void>;
   propertyId: string | null;
   loading: LoadingState;
   error: ErrorState;
   submissionStatus: SubmissionStatus;
   handleSkip: () => void;
-  handleNext: () => void; 
+  handleNext: () => void;
 }
 
 export const PropertyContext = createContext<PropertyContextType | undefined>(
@@ -74,12 +71,12 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
   });
 
   const handleSkip = () => {
-    setCurrentStep(currentStep + 1)
-  }
+    setCurrentStep(currentStep + 1);
+  };
 
   const handleNext = () => {
-    setCurrentStep(currentStep + 1)
-  }
+    setCurrentStep(currentStep + 1);
+  };
 
   const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
   const getToken = () =>
@@ -119,27 +116,30 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
         }),
       "details"
     )
-    .then((response) => {
-      if (response.data.status_code === 201) {
-        setPropertyId(response.data.data);
-        toast.success("Property details submitted successfully!");
-        handleNext();
-      } else if (response.data.status_code === 409) {
-        toast.error("Property with such name exists.");
-      } else {
-        toast.error(`An unexpected status code was received: ${response.data.status_code}`);
-      }
-    })
-    .catch((error) => {
-      if (error.response && error.response.status === 409) {
-        toast.error("Property with such name exists.");
-      } else {
-        toast.error(`Failed to continue: ${error.message || "Unknown error"}`);
-      }
-    });
+      .then((response) => {
+        if (response.data.status_code === 201) {
+          setPropertyId(response.data.data);
+          toast.success("Property details submitted successfully!");
+          handleNext();
+        } else if (response.data.status_code === 409) {
+          toast.error("Property with such name exists.");
+        } else {
+          toast.error(
+            `An unexpected status code was received: ${response.data.status_code}`
+          );
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 409) {
+          toast.error("Property with such name exists.");
+        } else {
+          toast.error(
+            `Failed to continue: ${error.message || "Unknown error"}`
+          );
+        }
+      });
   };
-  
-  
+
   const uploadPhotos = async (photos: File[]) => {
     if (!propertyId) return;
 
@@ -147,7 +147,7 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
       toast.error("Please select at least one photo to upload.");
       return;
     }
-    
+
     const formData = new FormData();
     photos.forEach((photo) => formData.append("photos", photo));
 
@@ -167,32 +167,43 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
       "photos"
     )
       .then((response) => {
-        setCurrentStep(currentStep + 1)
-        console.log(response);
+        if (response.data.status_code === 200) {
+          toast.success("Property photo added successfully!");
+          handleNext();
+        }
       })
       .catch((error) => {
         toast.error(`Failed to continue: ${error.message || "Unknown error"}`);
       });
   };
 
-  const addAmenities = async (amenities: AddPropertyAmenities) => {
+  const addAmenities = async (payload: AddPropertyAmenities[], propertyId: string) => {
     if (!propertyId) return;
+    console.log("Amenity", payload)
 
     return handleAxiosRequest(
       (cancelToken) =>
         axios.put(
           `${apiUrl}/api/property/add_amenities/${propertyId}`,
-          amenities,
+          payload,
           {
-            headers: { Authorization: `Bearer ${getToken()}` },
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${getToken()}`,
+            },
             cancelToken: cancelToken.token,
           }
         ),
       "amenities"
     )
-      .then(() => {
-        toast.success("Property Added Succesfully")
-        setCurrentStep(currentStep);
+      .then((response) => {
+        console.log(response)
+        if (response.data.status_code === 200) {
+          toast.success("Amenities Added Succesfully");
+          setCurrentStep(1)
+        } else {
+          toast.error("Error Adding Amenities");
+        }
       })
       .catch((error) => {
         toast.error(`Failed to continue: ${error.message || "Unknown error"}`);

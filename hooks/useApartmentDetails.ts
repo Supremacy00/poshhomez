@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { PropertyDetails, ApiError } from '@types';
+import { getToken } from '@/utils/authUtils';
 
+
+const token = getToken()
 const fetcher = async (url: string) => {
     try {
-      const token = localStorage.getItem('token');
       const response = await axios.get<PropertyDetails>(url, {
         headers: {
           'Authorization': `Bearer ${token}`,

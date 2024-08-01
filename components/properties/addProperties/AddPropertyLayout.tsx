@@ -1,4 +1,5 @@
-import React from 'react';
+'use client'
+import React, { useEffect, useRef } from 'react';
 import { usePropertyContext } from '@/contexts/addPropertyContext/AddPropertyContext';
 import Description from "./addPropertyComponents/Description";
 import Photos from "./addPropertyComponents/Photos";
@@ -8,13 +9,15 @@ const AddPropertyLayout = () => {
   const { currentStep } = usePropertyContext();
 
   const renderStepComponent = () => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 1:
         return <Description />;
       case 2:
         return <Photos />;
       case 3:
         return <Amenities />;
+      default:
+        return <Description />;
     }
   };
 

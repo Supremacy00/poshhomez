@@ -83,7 +83,6 @@ const useUserProfile = () => {
   const updateUserData = async (updatedData: IUpdateUserData) => {
     setLoading(true);
     setError(null);
-    console.log(updatedData)
     try {
       
       
@@ -93,8 +92,6 @@ const useUserProfile = () => {
           "Authorization": `Bearer ${token}`,
         },
       });
-
-      console.log("This is the user response", response, "user :", user)
 
       if (response.data.status_code === 200) {
         toast.success("Profile updated successfully")

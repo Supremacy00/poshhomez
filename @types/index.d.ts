@@ -295,11 +295,9 @@ export interface LocationSelectorHook {
 }
 
 export interface AddPropertyAmenities {
-  amenities: {
     name: string;
-    description: string;
-  }[];
-}
+    description: string | null;
+}[]
 
 export interface PropertyLocation {
   city: string;
