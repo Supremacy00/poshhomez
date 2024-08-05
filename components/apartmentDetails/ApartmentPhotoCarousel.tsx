@@ -51,9 +51,10 @@ const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
             <Image
               src={photo?.secure_url || defaultDetailsPhotos[index]?.secure_url || ''}
               alt={name}
-             objectFit="cover"
-             layout="fill"
-              className="w-full h-[250px]"
+              width={1000}
+              height={1000}
+              priority
+              className="w-full h-full object-cover"
             />
           </div>
         ))}

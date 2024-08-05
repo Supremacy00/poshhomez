@@ -54,7 +54,7 @@ const PasswordAndSecurity: React.FC = () => {
   return (
     <section className="text-primary-text font-noto pb-5">
       <div>
-        <h1 className="text-[22px] font-semibold text-primary-text mb-4">
+        <h1 className="text-[22px] font-semibold text-primary-text mb-5 lg:text-[28px]">
           Password & Security
         </h1>
         <p className="text-base text-secondary font-light mb-5">

@@ -1,5 +1,4 @@
-'use client'
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { usePropertyContext } from '@/contexts/addPropertyContext/AddPropertyContext';
 import Description from "./addPropertyComponents/Description";
 import Photos from "./addPropertyComponents/Photos";

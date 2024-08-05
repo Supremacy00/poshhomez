@@ -149,10 +149,13 @@ const SignUp: React.FC = () => {
                   <input
                     type="text"
                     placeholder="Email"
-                    {...register("email", { required: "Email is required", pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "Invalid email address",
-                    }, })}
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Invalid email address",
+                      },
+                    })}
                     className={`w-full text-sm py-4 px-4 border-b-[2px] placeholder:text-sm ${
                       errors.email
                         ? "border-red-500 animate-shake bg-custom8"
@@ -263,6 +266,7 @@ const SignUp: React.FC = () => {
                 </div>
                 <div className="mt-12 w-full">
                   <button
+                    disabled={signupLoading}
                     type="submit"
                     className={`${
                       signupLoading ? "bg-opacity-70" : ""

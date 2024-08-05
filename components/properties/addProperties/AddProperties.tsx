@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useRef } from "react";
 import AddPropertyLayout from "./AddPropertyLayout";
 import { usePropertyContext } from "@/contexts/addPropertyContext/AddPropertyContext";

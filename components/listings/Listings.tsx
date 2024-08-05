@@ -14,10 +14,9 @@ import {
   MdOutlineFitScreen,
 } from "react-icons/md";
 import { TbRulerMeasure } from "react-icons/tb";
-import { FadeLoader } from "react-spinners";
 import SkeletonLoader from "../loader/SkeletonLoader";
-import WishlistIcon from "../profile/profileMenuComponents/wishlist/WishlistIcon";
-import { useWishlist } from "@/contexts/wishlistContext/WishlistContext";
+import WishlistButton from "../profile/profileMenuComponents/wishlist/WishlistButton";
+import { formattedAmount } from "@/utils/formattedAmount";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import AppPagination from "../AppPagination";
@@ -40,21 +39,9 @@ const Listings: React.FC = () => {
   });
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
-  const { addToWishlist, removeFromWishlist, isItemInWishlist, loadingMap } =
-    useWishlist();
 
   const properties: PropertyCardDetails[] = data?.data?.data || [];
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
-
-  const formattedAmount = (price: number | string) => {
-    const amountValue = typeof price === "string" ? parseFloat(price) : price;
-    const roundedValue = Math.round(amountValue);
-    const formattedValue =
-      roundedValue % 1 === 0
-        ? roundedValue.toLocaleString() + ".00"
-        : amountValue.toLocaleString();
-    return formattedValue;
-  };
 
   const rangeStart = (currentPage - 1) * limit + 1;
   const rangeEnd = Math.min(currentPage * limit, totalProperties);
@@ -62,21 +49,7 @@ const Listings: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
-
-  const [debounce, setDebounce] = useState(false);
-
-  // Function to handle wishlist click
-  const handleWishlistClick = (item: PropertyCardDetails) => {
-    if (debounce) return;
-    setDebounce(true);
-    setTimeout(() => setDebounce(false), 500);
-
-    if (!loadingMap[item.id]) {
-      isItemInWishlist(item.id)
-        ? removeFromWishlist(item.id)
-        : addToWishlist(item);
-    }
-  };
+  
 
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-12 lg:pt-24 ">
@@ -208,31 +181,9 @@ const Listings: React.FC = () => {
                             placement="top"
                             arrow
                           >
-                            <div
-                              className={`${
-                                isItemInWishlist(item.id) &&
-                                !loadingMap[item.id]
-                                  ? "hover:bg-custom4"
-                                  : loadingMap[item.id]
-                                  ? "bg-primary-text bg-opacity-10"
-                                  : "hover:bg-custom4"
-                              } relative text-lg w-9 h-9 rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
-                              onClick={() => handleWishlistClick(item)}
-                            >
-                              {loadingMap[item.id] ? (
-                                <span className="flex justify-center items-center absolute top-[22px] left-[23px]">
-                                  <FadeLoader
-                                    color="#ffffff"
-                                    height={4}
-                                    margin={-12}
-                                    radius={2}
-                                    width={2}
-                                  />
-                                </span>
-                              ) : (
-                                <WishlistIcon propertyId={item.id} />
-                              )}
-                            </div>
+                            <span>
+                              <WishlistButton property={item} bgColor="#FFFFFF"/>
+                            </span>
                           </Tooltip>
                         )}
                       </div>

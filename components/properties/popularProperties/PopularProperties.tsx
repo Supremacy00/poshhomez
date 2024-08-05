@@ -3,11 +3,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { PropertyCardDetails } from "@/@types";
 import useApiWithSWR from "@/hooks/useApiWithSWR";
-import { useWishlist } from "@/contexts/wishlistContext/WishlistContext";
+import { formattedAmount } from "@/utils/formattedAmount";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import SkeletonLoader from "../../loader/SkeletonLoader";
-import { FadeLoader } from "react-spinners";
 import Tooltip from "@mui/material/Tooltip";
 import {
   MdSensorOccupied,
@@ -19,7 +18,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { TbRulerMeasure } from "react-icons/tb";
 import Link from "next/link";
-import WishlistIcon from "../../profile/profileMenuComponents/wishlist/WishlistIcon";
+import WishlistButton from "@/components/profile/profileMenuComponents/wishlist/WishlistButton";
 
 const PopularProperties: React.FC = () => {
   const { data, isLoading, isError } = useApiWithSWR(
@@ -27,40 +26,9 @@ const PopularProperties: React.FC = () => {
   );
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
-  const {
-    addToWishlist,
-    removeFromWishlist,
-    isItemInWishlist,
-    loadingMap,
-  } = useWishlist();
 
   const properties: PropertyCardDetails[] = data?.data?.data || [];
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
-
-  const formattedAmount = (price: number | string) => {
-    const amountValue = typeof price === "string" ? parseFloat(price) : price;
-    const roundedValue = Math.round(amountValue);
-    const formattedValue =
-      roundedValue % 1 === 0
-        ? roundedValue.toLocaleString() + ".00"
-        : amountValue.toLocaleString();
-    return formattedValue;
-  };
-
-  const [debounce, setDebounce] = useState(false);
-
-  // Function to handle wishlist click
-  const handleWishlistClick = (item: PropertyCardDetails) => {
-    if (debounce) return;
-    setDebounce(true);
-    setTimeout(() => setDebounce(false), 500);
-
-    if (!loadingMap[item.id]) {
-      isItemInWishlist(item.id)
-        ? removeFromWishlist(item.id)
-        : addToWishlist(item);
-    }
-  };
 
   return (
     <section className="mx-auto font-nunito px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:py-24 xl:max-w-[1200px] xxl:px-0">
@@ -115,36 +83,9 @@ const PopularProperties: React.FC = () => {
                   <div className="absolute -bottom-24 right-5 flex items-center gap-1 text-white group-hover:bottom-5 transition-all duration-500 ease-in-out">
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
-                        <div
-                          className={`${
-                            isItemInWishlist(item.id) && !loadingMap[item.id]
-                              ? "hover:bg-white shadow-3xl"
-                              : loadingMap[item.id]
-                              ? "hover:bg-custom2"
-                              : "hover:bg-custom2"
-                          } relative bg-primary-text text-lg bg-opacity-90 w-9 h-9 rounded-lg cursor-pointer  transition-colors duration-500 ease-in-out`}
-                          onClick={() => {
-                            if (!loadingMap[item.id]) {
-                              isItemInWishlist(item.id)
-                                ? removeFromWishlist(item.id)
-                                : addToWishlist(item);
-                            }
-                          }}
-                        >
-                          {loadingMap[item.id] ? (
-                            <span className="flex justify-center items-center absolute top-[22px] left-[23px]">
-                              <FadeLoader
-                                color="#ffffff"
-                                height={4}
-                                margin={-12}
-                                radius={2}
-                                width={2}
-                              />
-                            </span>
-                          ) : (
-                            <WishlistIcon propertyId={item.id} />
-                          )}
-                        </div>
+                        <span>
+                          <WishlistButton property={item} bgColor="#1F1B2DE6"/>
+                        </span>
                       </Tooltip>
                     )}
                     <Tooltip title="View photos" placement="top" arrow>

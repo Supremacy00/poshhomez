@@ -23,8 +23,8 @@ const config = {
       },
 
       colors: {
-        "primary-text": "#171717",
-        secondary: "#646464",
+        "primary-text": "#1F1B2D",
+        secondary: "#666276",
         custom1: "#CCCCCC",
         custom2: "#FD5631",
         custom3: "#181A20D8",
@@ -51,7 +51,7 @@ const config = {
         "3/2": "3 / 2",
         "250/80": "250 / 80",
         "150/80": "150 / 80",
-        "100/80": "105 / 80",
+        "80/80": "80 / 80",
       },
 
       keyframes: {
