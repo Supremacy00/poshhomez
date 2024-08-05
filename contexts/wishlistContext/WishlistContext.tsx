@@ -13,9 +13,10 @@ import { PropertyCardDetails } from "@/@types";
 import { getUserId } from "@/utils/authUtils";
 import { getUserRole } from "@/utils/authUtils";
 import { toast } from "sonner";
-
+import { getToken } from "@/utils/authUtils";
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
+const token = getToken();
 
 const WishlistContext = createContext<WishlistContextType | undefined>(
   undefined
@@ -32,11 +33,6 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     {}
   );
 
-  let token: string | null = null;
-  if (typeof window !== "undefined") {
-    token = localStorage.getItem("token");
-  }
-
   const addToWishlist = async (property: PropertyCardDetails) => {
     const itemId = property.id.toString();
     setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: true }));
@@ -44,36 +40,47 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     const isAlreadyAdded = wishlist.some((item) => item.id === property.id);
     if (isAlreadyAdded) {
       toast.info("Item already added to your wishlist.");
-      setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: false }));
+      setLoadingMap((prevLoadingMap) => ({
+        ...prevLoadingMap,
+        [itemId]: false,
+      }));
       return;
     }
-  
+
     const addFavoritesUrl = `${process.env.NEXT_PUBLIC_ADD_FAVORITES_ENDPOINT}/${userId}/?product_id=${property.id}`;
     if (!token) {
       console.error("No token found");
-      setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: false }));
+      setLoadingMap((prevLoadingMap) => ({
+        ...prevLoadingMap,
+        [itemId]: false,
+      }));
       return;
     }
-  
+
     try {
-      await axios.put(addFavoritesUrl, {}, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-  
+      await axios.put(
+        addFavoritesUrl,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
       setWishlist((currentWishlist) => [...currentWishlist, property]);
       toast.success(`${property.name} has been added to your wishlist!`);
-
     } catch (error) {
       console.error("Failed to add to wishlist", error);
       toast.error("Failed to add item to wishlist.");
     } finally {
-      setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: false }));
+      setLoadingMap((prevLoadingMap) => ({
+        ...prevLoadingMap,
+        [itemId]: false,
+      }));
     }
   };
-  
 
   const removeFromWishlist = async (propertyId: number) => {
     setLoadingMap((prevLoadingMap) => ({
@@ -102,7 +109,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
         }
       );
 
-      if (response.status === 200) {
+      if (response.data.status_code === 200) {
         setWishlist((currentWishlist) =>
           currentWishlist?.filter((item) => item?.id !== propertyId)
         );
@@ -125,19 +132,14 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const isItemInWishlist = (propertyId: number) => {
-    return wishlist?.some((item) => item?.id === propertyId);
-  };
-
   const fetchWishlistDetails = async () => {
     setLoading(true);
-    const token = localStorage.getItem("token");
-  
+
     if (!token || userRole !== "Tenant") {
       setLoading(false);
       return;
     }
-  
+
     try {
       const { data: userData } = await axios.get(
         `${API_URL}/auth/get_current_user`,
@@ -145,19 +147,19 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-  
+
       const propertyDetailsPromises = userData.favorites.map(
         (propertyId: string) =>
           axios.get(`${API_URL}/api/property/${propertyId}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
       );
-  
+
       const propertiesResponses = await Promise.all(propertyDetailsPromises);
       const detailedProperties: PropertyCardDetails[] = propertiesResponses.map(
         (response) => response?.data?.data
       );
-  
+
       setWishlist(detailedProperties);
     } catch (error) {
       console.error("Error fetching wishlist details:", error);
@@ -165,10 +167,8 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (token && userRole === "Tenant") {
       fetchWishlistDetails();
     } else {
@@ -181,7 +181,6 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       wishlist,
       addToWishlist,
       removeFromWishlist,
-      isItemInWishlist,
       loadingMap,
       loading,
     }),

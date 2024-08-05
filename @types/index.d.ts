@@ -48,8 +48,6 @@ interface WishlistContextType {
   wishlist: PropertyCardDetails[];
   addToWishlist: (property: PropertyCardDetails) => void;
   removeFromWishlist: (propertyId: number) => void;
-  isItemInWishlist: (propertyId: number) => boolean;
-  loading: boolean;
   loadingMap: { [itemId: string]: boolean };
 }
 

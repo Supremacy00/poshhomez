@@ -10,7 +10,7 @@ import useSWR from "swr";
 import axios from "axios";
 import { toast } from 'sonner';
 import { useModal } from "../modalContext/ModalContext";
-import { isTokenExpired } from "@/utils/authUtils";
+import { isTokenExpired, getToken } from "@/utils/authUtils";
 import { useRouter } from "next/navigation";
 
 import {
@@ -20,6 +20,7 @@ import {
 } from "@/@types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
+const token = getToken()
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
   undefined
@@ -32,8 +33,6 @@ export const useAuth = () => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
   const isAuthenticated =
     context.user !== null && token !== null && !isTokenExpired(token);
 
@@ -58,8 +57,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   } = useSWR(
     "user",
     () => {
-      const token =
-        typeof window !== "undefined" ? localStorage.getItem("token") : null;
       return token ? fetchUser() : null;
     },
     {
@@ -74,7 +71,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const fetchUser = async () => {
     setIsAuthChecking(true);
-    const token = localStorage.getItem("token");
     if (!token) {
       setIsAuthChecking(false);
       return null;
@@ -141,7 +137,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       );
       
       if (response.data.access_token) {
-        const token = response.data.access_token;
+        const token = response?.data?.access_token;
         localStorage.setItem("token", token);
 
         try {
@@ -181,7 +177,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logOut = async () => {
     try {
-      const token = localStorage.getItem("token");
 
       if (!token) {
         console.error("Token not found");
@@ -214,7 +209,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
     if (token ) {
       fetchUser()
     } else {

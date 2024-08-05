@@ -7,10 +7,10 @@ const PersonalInfo = () => {
   return (
     <section className="font-noto">
       <div>
-        <h1 className="text-[22px] font-semibold text-primary-text">
+        <h1 className="text-[22px] font-semibold text-primary-text lg:text-[28px]">
           Personal Info
         </h1>
-        <div className="mt-4">
+        <div className="mt-5">
           <h3 className="text-base text-secondary font-light font-dm">
             Your personal info is 50% completed
           </h3>

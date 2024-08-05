@@ -75,10 +75,13 @@ const LoginModal: React.FC = () => {
                   <input
                     type="text"
                     placeholder="Email"
-                    {...register("email", { required: "Email is required", pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "Invalid email address",
-                    }, })}
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Invalid email address",
+                      },
+                    })}
                     className={`w-full text-sm py-4 px-4 border-b-[2px] placeholder:text-sm placeholder:text-custom5 ${
                       errors.email
                         ? "border-red-500 animate-shake bg-custom8"
@@ -115,6 +118,7 @@ const LoginModal: React.FC = () => {
                   </p>
                 </div>
                 <button
+                  disabled={loginLoading}
                   type="submit"
                   className={`${
                     loginLoading ? "bg-opacity-70 " : ""

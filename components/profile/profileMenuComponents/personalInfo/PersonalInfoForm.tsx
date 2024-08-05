@@ -144,7 +144,7 @@ const PersonalInfoForm = () => {
               type="submit"
               disabled={!hasChanges || loading}
               className={`${
-                !hasChanges || loading ? "bg-custom6 cursor-not-allowed" : ""
+                !hasChanges || loading ? "bg-custom6" : ""
               } flex justify-center items-center gap-1.5 text-[15px] text-white bg-custom2 py-3 px-5 rounded-md hover:bg-custom6 transition-colors duration-300 ease-in-out`}
             >
               {loading && <ClipLoader color="#ffffff" size={19} />}

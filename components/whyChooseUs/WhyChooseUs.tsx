@@ -11,13 +11,14 @@ const WhyChooseUs = () => {
     <section className="mx-auto font-nunito px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:max-w-[1200px] xxl:px-0 xl:py-24">
       <div className="md:flex items-center gap-7 lg:gap-16 xl:gap-28">
         <div className="relative">
-          <div>
+          <div className="bg-custom4 overflow-hidden aspect-547/634 rounded-lg xs:w-[547px] md:max-w-[336px] md:h-[450px] lg:max-w-[456px] lg:h-[529px] xl:max-w-[546px] xl:h-[633px] xxl:max-w-[600px] xxl:h-[650px]">
             <Image
               src="/assets/images/card2.jpg"
               alt="Hero House"
               width={1000}
               height={1000}
-              className="w-full aspect-547/634 rounded-lg xs:w-[547px] md:max-w-[336px] md:h-[450px] lg:max-w-[456px] lg:h-[529px] xl:max-w-[546px] xl:h-[633px] xxl:max-w-[600px] xxl:h-[650px]"
+              quality={50}
+              className="w-full h-full object-cover"
             />
           </div>
           <div className="group absolute bottom-5 -right-3 transition-all duration-500 ease-in-out lg:-right-8 ">
