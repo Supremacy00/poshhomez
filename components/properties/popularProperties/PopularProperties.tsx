@@ -35,10 +35,10 @@ const PopularProperties: React.FC = () => {
       <div className="lg:flex justify-between items-center">
         <div>
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
-            Discover Popular Properties
+            Discover Popular Apartments
           </h1>
-          <p className="text-[15px] mt-1 lg:mt-0">
-            Aliquam lacinia diam quis lacus euismod
+          <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
+            Voluptates odio corrupti quia quod magnam dignissimos.
           </p>
         </div>
         <h3 className="text-sm text-white inline-block font-dm py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
@@ -84,7 +84,7 @@ const PopularProperties: React.FC = () => {
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
                         <span>
-                          <WishlistButton property={item} bgColor="#1F1B2DE6"/>
+                          <WishlistButton property={item} bgColor="#1F1B2DE6" />
                         </span>
                       </Tooltip>
                     )}
@@ -113,18 +113,18 @@ const PopularProperties: React.FC = () => {
                       </h1>
                     </Link>
                   </div>
-                  <span className="flex gap-1.5 text-[13.5px] ">
-                    <p className="font-dm text-secondary font-light mt-1">
+                  <span className="flex gap-1.5 text-[13.5px] text-secondary font-roboto ">
+                    <p className="font-dm font-light mt-1">
                       {`${item.location?.city} City,`}
                     </p>
-                    <p className="font-dm text-secondary font-light mt-1">
+                    <p className="font-dm uppercase font-light mt-1">
                       {`${item.location?.state},`}
                     </p>
-                    <p className="font-dm text-secondary uppercase font-light mt-1">
+                    <p className="font-dm uppercase font-light mt-1">
                       {item.location?.country}
                     </p>
                   </span>
-                  <div className="flex items-center gap-3 flex-wrap mt-1 text-[13px]">
+                  <div className="flex items-center gap-3 font-normal flex-wrap mt-1 text-[13.5px]">
                     <span className="flex items-center gap-1.5">
                       <IoBedOutline className="text-custom5 text-[15px]" />
                       <p>{`${item.description?.bathroom_count} bed`}</p>

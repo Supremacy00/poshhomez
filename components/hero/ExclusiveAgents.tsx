@@ -6,7 +6,7 @@ const ExclusiveAgents = () => {
   return (
     <section className="hidden xl:block absolute right-[12%] -bottom-[180px] bg-white rounded-xl shadow-sm w-[270px] p-8 animate-smooth-bounce ">
       <h3 className="text-[15px] font-medium text-primary-text text-center">
-        4 Exclusive Agents
+        Our Exclusive Agents
       </h3>
       <div className="mt-3 relative flex items-center mx-auto">
         <div className="w-12 h-12 rounded-full overflow-hidden border-[1.5px] border-white">

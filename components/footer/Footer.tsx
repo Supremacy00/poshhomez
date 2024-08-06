@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary-text font-nunito">
-      <div className="px-4 pb-8 mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px]  xxl:px-0">
+      <div className="px-4 pb-8 mx-auto w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px]  xxl:px-0">
         <div className="text-white mx-auto py-8 md:flex justify-between items-center xl:py-10">
           <div className="flex items-center gap-2 flex-wrap">
             <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">

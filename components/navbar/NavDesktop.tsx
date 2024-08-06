@@ -21,7 +21,7 @@ const NavDesktop = () => {
 
   return (
     <>
-      <nav className="font-nunito bg-white w-full border-b-[1px] border-b-gray-300 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
+      <nav className="bg-white w-full border-b-[1px]  hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
         <div className="px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-12 xl:gap-16">
@@ -30,7 +30,7 @@ const NavDesktop = () => {
                   <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
                     <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
                   </div>
-                  <h3 className="text-[20px] font-sans font-semibold">
+                  <h3 className="text-[20px] font-semibold">
                     pos<span className="text-custom2">H</span>
                     <span className="-ml-2">
                       <span className="text-custom2">H</span>omez
@@ -39,31 +39,31 @@ const NavDesktop = () => {
                 </div>
               </Link>
             </div>
-            <ul className="flex items-center space-x-10 text-sm  xl:space-x-12">
+            <ul className="flex items-center space-x-10 text-sm xl:space-x-12">
               {navData.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <li
                     className={`${
                       pathname === item.link ? "text-custom2" : ""
-                    } py-2 text-[15px] font-medium hover:text-custom2 transition-colors duration-500 ease-in-out`}
+                    } py-2 text-[14.5px] font-medium  hover:text-custom2 transition-colors duration-500 ease-in-out`}
                   >
                     {item.title}
                   </li>
                 </Link>
               ))}
             </ul>
-            <div className="flex items-center gap-3 xl:gap-6">
+            <div className="flex items-center gap-3 font-medium xl:gap-6">
               {!isAuthenticated && (
                 <div className="flex items-center gap-2">
                   <Link href="/auth/login">
                     <span className="flex items-center gap-1.5 cursor-pointer">
                       <IoPersonCircleOutline className="text-[23px]" />
-                      <h3 className="hidden xl:block text-[15px] font-medium hover:underline underline-offset-2 py-2 -mr-2">
+                      <h3 className="hidden xl:block text-[14.5px] hover:underline underline-offset-2 py-2 -mr-2">
                         Login
                       </h3>
                     </span>
                   </Link>
-                  <span className="hidden xl:flex items-center text-[15px] font-medium cursor-pointer">
+                  <span className="hidden xl:flex items-center text-[14.5px]cursor-pointer">
                     <RxSlash className="text-lg" />
                     <Link href="/auth/signup">
                       <h3 className="hover:underline underline-offset-2 py-2">
@@ -78,7 +78,7 @@ const NavDesktop = () => {
                   href="/account/profile"
                   onClick={() => handleContentMenu("Add New Properties")}
                 >
-                  <div className="bg-primary-text text-white px-6 py-4 font-medium font-poppins rounded-xl hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer">
+                  <div className="bg-primary-text text-white px-6 py-4 font-medium rounded-xl hover:bg-custom3 transition-all duration-300 delay-150 ease-in-out cursor-pointer">
                     <span className="flex items-center gap-2">
                       <h3 className="text-[15px]">Add New Property</h3>
                       <RxArrowTopRight className="text-[22px]" />

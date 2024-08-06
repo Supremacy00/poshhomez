@@ -37,8 +37,10 @@ const WhyChooseUs = () => {
         </div>
         <div>
           <div className="mt-8 md:mt-0 ">
-            <h1 className="text-[20px] font-semibold md:text-[30px]">Why Choose Us</h1>
-            <p className="text-[15px] font-dm leading-7 mt-1">
+            <h1 className="text-[20px] font-semibold md:text-[30px]">
+              Why Choose Us
+            </h1>
+            <p className="text-[15px] text-secondary leading-7 mt-1 lg:text-base ">
               As the complexity of buildings to increase, the field of
               architecture.
             </p>
@@ -46,29 +48,44 @@ const WhyChooseUs = () => {
           <div className="mt-5 xl:mt-12">
             <div className="flex items-center gap-5 group">
               <span className=" bg-custom8 px-5 py-5 rounded-full group-hover:bg-custom2 transition-colors duration-500 delay-100 ease-in-out">
-                <SiGoogletagmanager  className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
+                <SiGoogletagmanager className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
-              <div className="text-primary-text mt-2">
-                <h3 className="text-[15px] font-semibold mb-1">Property Management</h3>
-                <h1 className="text-[15px] leading-7">Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.</h1>
+              <div className="mt-2">
+                <h3 className="text-[15px]  text-primary-text font-semibold mb-1">
+                  Property Management
+                </h3>
+                <h1 className="text-[15px] text-secondary leading-7 lg:text-base">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Fugiat quam dolorum.
+                </h1>
               </div>
             </div>
             <div className="flex items-center gap-5 mt-5 group">
               <span className="bg-custom8 px-5 py-5 rounded-full group-hover:bg-custom2 transition-colors duration-500 delay-100 ease-in-out">
                 <AiFillPropertySafety className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
-              <div className="text-primary-text mt-2">
-                <h3 className="text-[15px] font-semibold mb-1">Mortgage Services</h3>
-                <h1 className="text-[15px] leading-7">Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.</h1>
+              <div className="mt-2">
+                <h3 className="text-[15px] text-primary-text font-semibold mb-1">
+                  Mortgage Services
+                </h3>
+                <h1 className="text-[15px] text-secondary leading-7 lg:text-base ">
+                  Nullam sollicitudin blandit eros eu pretium. Nullam maximus
+                  ultricies auctor.
+                </h1>
               </div>
             </div>
             <div className="flex items-center gap-5 mt-5 group">
               <span className="bg-custom8 px-5 py-5 rounded-full group-hover:bg-custom2 transition-colors duration-500 delay-100 ease-in-out">
                 <RiCurrencyFill className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
-              <div className="text-primary-text mt-2">
-                <h3 className="text-[15px] font-semibold mb-1">Currency Services</h3>
-                <h1 className="text-[15px] leading-7">Nullam sollicitudin blandit eros eu pretium. Nullam maximus ultricies auctor.</h1>
+              <div className="mt-2">
+                <h3 className="text-[15px] text-primary-text font-semibold mb-1">
+                  Currency Services
+                </h3>
+                <h1 className="text-[15px] text-secondary leading-7 lg:text-base ">
+                  Fugiat quam dolorum, illo voluptate laboriosam maxime,
+                  voluptates odio corrupti.
+                </h1>
               </div>
             </div>
           </div>
