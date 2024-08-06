@@ -3,6 +3,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 
@@ -27,14 +28,14 @@ const RightNav: React.FC = () => {
         ref={modalRef}
       >
         <div>
-          <div className="flex justify-between items-center gap-5 px-8 py-[27px] border-b-[1px] border-b-gray-300">
+          <div className="flex justify-between items-center gap-5 px-8 py-[24px] border-b-[1px] border-b-gray-300">
             <h1 className="text-[20px] font-semibold">Welcome to PoshHomez</h1>
-            <span
-              className="relative w-10 h-10 bg-custom4 rounded-full cursor-pointer hover:bg-gray-200 transition-colors duration-300 ease-in-out"
+            <button
+              className="relative p-[11px] bg-custom4 rounded-full cursor-pointer hover:bg-gray-200 transition-colors duration-300 ease-in-out"
               onClick={handleIsRightNav}
             >
-              <LiaTimesSolid className="text-[15px] absolute inset-3" />
-            </span>
+              <IoClose className="text-xl" />
+            </button>
           </div>
           <ul className="mt-16 text-[14px] font-semibold ">
             <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">

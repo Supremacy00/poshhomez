@@ -23,8 +23,8 @@ const config = {
       },
 
       colors: {
-        "primary-text": "#1F1B2D",
-        secondary: "#666276",
+        "primary-text": "#242424",
+        secondary: "#646464",
         custom1: "#CCCCCC",
         custom2: "#FD5631",
         custom3: "#181A20D8",
@@ -42,13 +42,14 @@ const config = {
       fontFamily: {
         nunito: ["Nunito Sans", "sans-serif"],
         dm: ["DM Sans", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        noto: ["Noto Sans", "sans-serif"],
       },
       aspectRatio: {
         "2/2": "2 / 2",
-        "4/2": "4 / 2",
-        "4/3": "3 / 2",
-        "4/4": "4 / 4",
         "3/2": "3 / 2",
+        "4/2": "4 / 2",
+        "4/4": "4 / 4",
         "250/80": "250 / 80",
         "150/80": "150 / 80",
         "80/80": "80 / 80",

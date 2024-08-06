@@ -52,9 +52,9 @@ const Listings: React.FC = () => {
   
 
   return (
-    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-12 lg:pt-24 ">
-      <div className="mx-auto px-4 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
-        <div className="pt-12 flex justify-between items-center gap-2 flex-wrap">
+    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-24 lg:pt-24 ">
+      <div className="mx-auto px-4 w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
+        <div className=" flex justify-between items-center gap-2 flex-wrap">
           <div>
             <h1 className="text-[22px] font-semibold mb-3">
               Poshhomez Houses For Rent
@@ -85,7 +85,7 @@ const Listings: React.FC = () => {
         <div className="mt-12 md:mt-16">
           <ListingsSearch />
         </div>
-        <article className="mt-10 grid grid-cols-1 xs:grid-cols-2 gap-8 xs:gap-x-6 lg:grid-cols-3 xl:grid-cols-4 lg:mt-8">
+        <article className="mt-10 grid grid-cols-1 xs:grid-cols-2 gap-8 xs:gap-x-6  lg:grid-cols-3 xl:grid-cols-4 lg:mt-8">
           {((isLoading && properties.length === 0) || isError) &&
             Array.from({ length: 12 }).map((_, index) => (
               <SkeletonLoader key={index} />

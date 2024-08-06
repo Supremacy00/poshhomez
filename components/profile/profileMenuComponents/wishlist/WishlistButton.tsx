@@ -46,8 +46,10 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({ property, bgColor }) =>
     <button
       onClick={handleFavoriteClick}
       disabled={isProcessing || loadingMap[property.id]}
-      className={`${localIsFavorite ? 'bg-white hover:bg-white' : 'bg-custom2 hover:bg-custom2'} text-lg p-[9px] rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
-      style={{backgroundColor: bgColor, }}
+      className={`${
+        localIsFavorite ? "hover:bg-white" : "hover:bg-custom2" 
+      } text-lg p-[9px] rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
+      style={{backgroundColor: bgColor}}
     >
       {localIsFavorite ? (
         <IoMdHeart className="text-red-500" />
