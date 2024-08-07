@@ -9,7 +9,7 @@ import Link from "next/link";
 import AuthenticatedNavProfile from "../profile/profileAuth/AuthenticatedNavProfile";
 
 const NavMobile = () => {
-  const { handleIsLoginModal, handleIsLeftNav, isLeftNav, setIsLeftNav } =
+  const { handleIsLoginModal, handleIsLeftNav } =
     useModal();
   const { isAuthenticated } = useAuth();
 
