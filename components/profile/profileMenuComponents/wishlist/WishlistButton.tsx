@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useWishlist } from "@/contexts/wishlistContext/WishlistContext";
@@ -6,6 +7,7 @@ import { PropertyCardDetails } from "@/@types";
 interface WishlistButtonProps {
   property: PropertyCardDetails;
   bgColor: string;
+ 
 }
 
 const WishlistButton: React.FC<WishlistButtonProps> = ({ property, bgColor }) => {
@@ -15,7 +17,6 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({ property, bgColor }) =>
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
   useEffect(() => {
-    // Check if the property is in the wishlist
     const isFavorite = wishlist.some((item) => item.id === property.id);
     setLocalIsFavorite(isFavorite);
   }, [property.id, wishlist]);
@@ -46,9 +47,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({ property, bgColor }) =>
     <button
       onClick={handleFavoriteClick}
       disabled={isProcessing || loadingMap[property.id]}
-      className={`${
-        localIsFavorite ? "hover:bg-white" : "hover:bg-custom2" 
-      } text-lg p-[9px] rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
+      className={`p-[9px] rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
       style={{backgroundColor: bgColor}}
     >
       {localIsFavorite ? (

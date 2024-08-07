@@ -1,5 +1,6 @@
+'use client'
 import { useState } from "react";
-import useSWR, { SWRConfiguration } from "swr";
+import  useSWR, { SWRConfiguration }  from 'swr';
 import axios from "axios";
 import { ApiResponse } from "@/@types";
 
@@ -32,7 +33,7 @@ const fetcher = async (url: string) => {
       );
     }
 
-    throw (error as any)?.response?.data;
+    throw (error as any)?.response?.data || new Error('Unknown error occurred');
   }
 };
 
@@ -45,7 +46,7 @@ const useApiWithSWR = (
   const [limit, setLimit] = useState(defaultLimit);
 
   const url = endpoint
-    ? `${endpoint}?page=${currentPage}&limit=${defaultLimit}`
+    ? `${endpoint}?page=${currentPage}&limit=${limit}`
     : null;
 
   const { data, error } = useSWR<PaginatedApiResponse, Error>(url, fetcher, {
@@ -54,21 +55,14 @@ const useApiWithSWR = (
     ...config,
   });
 
-  const totalProperties =
-    (data?.data as { [key: string]: any })?.["Number of properties"] || 0;
-  const totalCount = Math.ceil(totalProperties / defaultLimit);
+  const totalProperties = data?.totalCount || 0;
+  const totalCount = Math.ceil(totalProperties / limit);
 
-  const isLoading = data === undefined && !error;
+  const isLoading = !data && !error;
   const isError = !!error;
 
-  const fetchNextPage = async () => {
-    setCurrentPage((prevPage) => prevPage + 1);
-  };
-
-  const fetchPreviousPage = async () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
+  const fetchPage = async (page: number) => {
+    setCurrentPage(page);
   };
 
   return {
@@ -76,8 +70,7 @@ const useApiWithSWR = (
     isLoading,
     isError,
     currentPage,
-    fetchNextPage,
-    fetchPreviousPage,
+    fetchPage,
     limit,
     totalCount,
     totalProperties,

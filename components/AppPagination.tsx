@@ -4,25 +4,19 @@ import Pagination from "@mui/material/Pagination";
 interface AppPaginationProp {
   totalCount: number;
   currentPage: number;
-  fetchNextPage: () => void;
-  fetchPreviousPage: () => void;
+  fetchPage: (page: number) => void;
 }
 
 const AppPagination: React.FC<AppPaginationProp> = ({
   totalCount,
   currentPage,
-  fetchPreviousPage,
-  fetchNextPage,
+  fetchPage,
 }) => {
   const handleChange = (
     _event: React.ChangeEvent<unknown>,
     newPage: number
   ) => {
-    if (newPage > currentPage) {
-      fetchNextPage();
-    } else if (newPage < currentPage) {
-      fetchPreviousPage();
-    }
+    fetchPage(newPage);
   };
 
   return (

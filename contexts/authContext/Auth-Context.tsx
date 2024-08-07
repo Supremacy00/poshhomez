@@ -8,11 +8,10 @@ import React, {
 } from "react";
 import useSWR from "swr";
 import axios from "axios";
-import { toast } from 'sonner';
+import { toast } from "sonner";
 import { useModal } from "../modalContext/ModalContext";
-import { isTokenExpired, getToken } from "@/utils/authUtils";
+import { isTokenExpired, getToken, removeToken } from "@/utils/authUtils";
 import { useRouter } from "next/navigation";
-
 import {
   SignUpCredentials,
   AuthContextProps,
@@ -20,7 +19,6 @@ import {
 } from "@/@types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
-const token = getToken()
 
 export const AuthContext = createContext<AuthContextProps | undefined>(
   undefined
@@ -33,6 +31,7 @@ export const useAuth = () => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
+  const token = getToken();
   const isAuthenticated =
     context.user !== null && token !== null && !isTokenExpired(token);
 
@@ -50,50 +49,37 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [signupLoading, setSignupLoading] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
 
-  const {
-    data: user,
-    error,
-    mutate,
-  } = useSWR(
-    "user",
-    () => {
-      return token ? fetchUser() : null;
-    },
-    {
-      revalidateOnMount: true,
-      shouldRetryOnError: false,
-      revalidateOnFocus: false,
-      refreshInterval: 600000,
-    }
-  );
-
-  const isLoading = !user && !error;
-
   const fetchUser = async () => {
-    setIsAuthChecking(true);
-    if (!token) {
-      setIsAuthChecking(false);
-      return null;
-    }
-
     try {
+      const token = getToken();
+      if (!token) return null;
+
       const response = await axios.get(`${API_URL}/auth/get_current_user`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        timeout: 10000,
       });
 
-      if (!response.status) {
-        throw new Error(`Error fetching user data: ${response.statusText}`);
-      }
       return response.data;
     } catch (error) {
       console.error("Error fetching user data", error);
-      throw error;
+      return null;
     } finally {
       setIsAuthChecking(false);
     }
   };
+
+  const {
+    data: user,
+    error,
+    mutate,
+  } = useSWR("user", fetchUser, {
+    revalidateOnMount: true,
+    shouldRetryOnError: false,
+    revalidateOnFocus: false,
+    refreshInterval: 600000,
+  });
 
   const signUp = async (formData: SignUpCredentials) => {
     setSignupLoading(true);
@@ -105,16 +91,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
 
       if (response.data.status_code === 201) {
-        toast.success("Registration was sucessfull!");
-        router.push('/auth/login')
-      } else if (response.data.status_code === 409) {
-        toast.error(response.data.message || "Account already exist.");
+        toast.success("Registration successful!");
+        router.push("/auth/login");
       } else {
-        toast.error("An error occured. Please try again");
+        toast.error(
+          response.data.message || "An error occurred. Please try again."
+        );
       }
     } catch (error: any) {
       console.error("Signup failed", error.response?.data || error.message);
-      throw error;
+      toast.error("Signup failed. Please try again.");
     } finally {
       setSignupLoading(false);
     }
@@ -135,41 +121,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           },
         }
       );
-      
-      if (response.data.access_token) {
-        const token = response?.data?.access_token;
-        localStorage.setItem("token", token);
 
-        try {
-          const userResponse = await fetchUser();
-          mutate({ ...user, ...userResponse });
-        } catch (userError) {
-          console.error("Error fetching user data after login", userError);
-        }
+      if (response.data.access_token) {
+        localStorage.setItem("token", response.data.access_token);
+
+        const userResponse = await fetchUser();
+        mutate(userResponse);
 
         const intendedRoute = localStorage.getItem("intendedRoute");
-        if (intendedRoute) {
-          router.push(intendedRoute);
-          setIsLoginModal(false);
-          localStorage.removeItem("intendedRoute");
-        } else {
-          router.push("/");
-        }
+        router.push(intendedRoute || "/");
+        setIsLoginModal(false);
         toast.success("Login successful!");
+        localStorage.removeItem("intendedRoute");
       } else {
-        if (response.data.status_code === 404) {
-          toast.error("Invalid login credentials");
-        } else {
-          if (response.data.status_code === 401) {
-            toast.error("Email or password is incorrect");
-          } else {
-            toast.error("An unexpected error occurred. Please try again.");
-          }
-        }
+        toast.error("Login failed. Please try again.");
       }
-    } catch (error: any) {
+    } catch (error) {
       console.error("Login error:", error);
-      toast.error("Network Error. Please try again.");
+      toast.error("Login failed. Please try again.");
     } finally {
       setLoginLoading(false);
     }
@@ -177,26 +146,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logOut = async () => {
     try {
-
-      if (!token) {
-        console.error("Token not found");
-        return;
-      }
+      const token = getToken();
+      if (!token) return;
 
       await axios.post(`${API_URL}/auth/logout`, null, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       });
 
-      localStorage.removeItem("token");
-      mutate(undefined, true);
+      removeToken();
+      mutate(null, true);
       router.push("/");
       toast.info("Signed out successfully!");
     } catch (error) {
-      toast.error("Logout failed. Please try again");
-      throw error;
+      console.error("Logout failed", error);
+      toast.error("Logout failed. Please try again.");
     }
   };
 
@@ -209,19 +174,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   useEffect(() => {
-    if (token ) {
-      fetchUser()
-    } else {
-      setIsAuthChecking(false)
-    }
-  }, []);
+    const initAuth = async () => {
+      const token = getToken();
+      if (token && !isTokenExpired(token)) {
+        await fetchUser();
+      } else {
+        setIsAuthChecking(false);
+      }
+    };
 
+    initAuth();
+  }, []);
 
   return (
     <AuthContext.Provider
       value={{
         user: user || null,
-        isLoading,
+        isLoading: !user && !error,
         loginLoading,
         signupLoading,
         isAuthChecking,

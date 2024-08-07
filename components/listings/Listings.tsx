@@ -31,8 +31,7 @@ const Listings: React.FC = () => {
     limit,
     totalCount,
     currentPage,
-    fetchPreviousPage,
-    fetchNextPage,
+   fetchPage,
     totalProperties,
   } = useApiWithSWR(process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || "", 1, {
     defaultLimit: 12,
@@ -98,7 +97,7 @@ const Listings: React.FC = () => {
               return (
                 <article key={item.id} className="group">
                   <div className="relative overflow-hidden">
-                    <div className="relative bg-gray-400 rounded-t-xl overflow-hidden w-full h-full aspect-4/3 xs:h-[180px] md:h-[230px] lg:h-[200px]">
+                    <div className="relative bg-gray-400 rounded-t-xl overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[230px] lg:h-[200px]">
                       <Image
                         src={imageUrl}
                         alt={item.name}
@@ -136,18 +135,18 @@ const Listings: React.FC = () => {
                         </h1>
                       </Link>
                     </div>
-                    <span className="flex gap-1.5 text-[13.5px] ">
-                      <p className="font-dm text-secondary font-light mt-1">
-                        {`${item.location?.city} City,`}
+                    <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1  ">
+                      <p className="font-dm font-light">
+                        {`${item.location?.city},`}
                       </p>
-                      <p className="font-dm text-secondary font-light mt-1">
+                      <p className="font-dm font-light">
                         {`${item.location?.state},`}
                       </p>
-                      <p className="font-dm text-secondary uppercase font-light mt-1">
+                      <p className="font-dm uppercase font-light">
                         {item.location?.country}
                       </p>
                     </span>
-                    <div className="flex items-center gap-3 flex-wrap mt-3.5 text-[13px]">
+                    <div className="flex items-center gap-3 flex-wrap mt-3.5 text-[13.5px]">
                       <span className="flex items-center gap-1.5">
                         <IoBedOutline className="text-custom5 text-[15px]" />
                         <p>{`${item.description?.bathroom_count} bed`}</p>
@@ -167,12 +166,12 @@ const Listings: React.FC = () => {
                       <div className="flex items-center gap-0.5">
                         <Tooltip title="View photos" placement="top" arrow>
                           <span className="px-[10px] py-[10px] rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
-                            <MdOutlineLibraryAdd />
+                            <MdOutlineLibraryAdd className="text-[18px]"/>
                           </span>
                         </Tooltip>
                         <Tooltip title="Fit to screen" placement="top" arrow>
                           <span className="px-[9px] py-[9px] rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
-                            <MdOutlineFitScreen className="text-lg" />
+                            <MdOutlineFitScreen className="text-[20px]" />
                           </span>
                         </Tooltip>
                         {isAuthenticated && userRole === "Tenant" && (
@@ -196,8 +195,7 @@ const Listings: React.FC = () => {
         <AppPagination
           totalCount={totalCount}
           currentPage={currentPage}
-          fetchPreviousPage={fetchPreviousPage}
-          fetchNextPage={fetchNextPage}
+          fetchPage={fetchPage}
         />
         <div className="text-center text-base mt-4 text-secondary">
         <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>

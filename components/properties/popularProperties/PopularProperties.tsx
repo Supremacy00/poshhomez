@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from "react";
+'use client'
+import React  from "react";
 import Image from "next/image";
 import { PropertyCardDetails } from "@/@types";
 import useApiWithSWR from "@/hooks/useApiWithSWR";
@@ -37,7 +37,7 @@ const PopularProperties: React.FC = () => {
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
             Discover Popular Apartments
           </h1>
-          <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
+          <p className="text-[15px] text-secondary mt-1 lg:text-base">
             Voluptates odio corrupti quia quod magnam dignissimos.
           </p>
         </div>
@@ -58,7 +58,7 @@ const PopularProperties: React.FC = () => {
             return (
               <article key={item.id} className="group">
                 <div className="relative overflow-hidden">
-                  <div className="relative rounded-md overflow-hidden w-full h-full aspect-4/3 xs:h-[180px] md:h-[250px] lg:h-[220px]">
+                  <div className="relative rounded-md overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
                     <Image
                       src={imageUrl}
                       alt={item.name}
@@ -84,7 +84,7 @@ const PopularProperties: React.FC = () => {
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
                         <span>
-                          <WishlistButton property={item} bgColor="#1F1B2DE6" />
+                          <WishlistButton property={item} bgColor="#242424E5"/>
                         </span>
                       </Tooltip>
                     )}
@@ -113,14 +113,14 @@ const PopularProperties: React.FC = () => {
                       </h1>
                     </Link>
                   </div>
-                  <span className="flex gap-1.5 text-[13.5px] text-secondary font-roboto ">
-                    <p className="font-dm font-light mt-1">
-                      {`${item.location?.city} City,`}
+                  <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1 ">
+                    <p className="font-dm font-light ">
+                      {`${item.location?.city},`}
                     </p>
-                    <p className="font-dm uppercase font-light mt-1">
+                    <p className="font-dm uppercase font-light">
                       {`${item.location?.state},`}
                     </p>
-                    <p className="font-dm uppercase font-light mt-1">
+                    <p className="font-dm uppercase font-light">
                       {item.location?.country}
                     </p>
                   </span>
