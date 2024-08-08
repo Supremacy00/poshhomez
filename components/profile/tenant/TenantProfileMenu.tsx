@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { useContentMenu } from "../ProfileContentMenuContext";
@@ -20,12 +20,28 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
   const { handleLogout, user } = useAuth();
   const { handleContentMenu } = useContentMenu();
 
+
   const gender = user?.gender;
   const defaultAvatarUrl =
     gender === "Male"
       ? "/assets/images/fallback-profile.webp"
       : "/assets/images/fallback-female-profile.jpeg";
   const avatarUrl = user?.avatar?.secure_url || defaultAvatarUrl;
+
+  const MemoizedImage = memo(() => (
+    <Image
+      src={avatarUrl}
+      alt={`${user?.name || "User"}'s avatar`}
+      width={200}
+      height={200}
+      className="w-full h-full object-cover"
+      quality={100}
+      priority
+      onError={(e) => {
+        e.currentTarget.src = defaultAvatarUrl;
+      }}
+    />
+  ));
 
   return (
     <section className={`${isOpen ? "py-[25px]" : ""} font-nunito`}>
@@ -34,22 +50,11 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
           isOpen ? "bg-white w-[270px] shadow-2xl rounded-xl" : ""
         } py-5`}
       >
-        <div className="flex items-center gap-2 px-5 ">
-          <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden border-[3px] border-gray-300 aspect-4/3">
-            <Image
-              src={avatarUrl}
-              alt={`${user?.name || "User"}'s avatar`}
-              width={100}
-              height={100}
-              className="w-full h-full object-cover"
-              objectFit="cover"
-              quality={100}
-              onError={(e) => {
-                e.currentTarget.src = defaultAvatarUrl;
-              }}
-            />
+        <div className="flex items-center gap-2.5 px-5 ">
+          <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">
+            <MemoizedImage />
           </div>
-          <div>
+          <div className="w-full">
             <h1 className="text-base text-primary-text font-medium">
               {user?.name}
             </h1>

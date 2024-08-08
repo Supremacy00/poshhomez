@@ -1,15 +1,18 @@
+'use client'
 import React from "react";
 import ApartmentDetailsPage from "./ApartmentDetailsPage";
-import { ApartmentIdProvider } from "@/contexts/apartmentIDContext/ApartmentIdContext";
+import { Provider } from "react-redux";
+import store from "@/redux/store";
 
 const ApartmentDetailsLayout = () => {
+  
 
   return (
-    <ApartmentIdProvider>
+    <Provider store={store}>
     <div className="mt-[63px] lg:mt-[84px]">
       <ApartmentDetailsPage  />
     </div>
-    </ApartmentIdProvider>
+    </Provider>
   )
 };
 

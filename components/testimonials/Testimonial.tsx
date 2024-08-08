@@ -11,21 +11,21 @@ const Testimonial = () => {
             <h1 className="text-[20px] font-semibold xs:text-[30px]">
               People Love Living with PoshHomez
             </h1>
-            <p className="text-[15px] mt-1 lg:text-base">
+            <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
               Aliquam lacinia diam quis lacus euismod
             </p>
             <div className="mt-8 xs:flex items-center gap-10 lg:mt-16">
               <div>
                 <h1 className="text-[42px] font-semibold">0%</h1>
-                <p className="text-[15px] lg:text-base">Completed Property</p>
+                <p className="text-[15px] text-secondary  lg:text-base">Completed Property</p>
               </div>
               <div className="mt-2 xs:mt-0">
                 <h1 className="text-[42px] font-semibold">0%</h1>
-                <p className="text-[15px] lg:text-base">Satisfied Customers</p>
+                <p className="text-[15px] text-secondary  lg:text-base">Satisfied Customers</p>
               </div>
               <div className="mt-2 xs:mt-0">
                 <h1 className="text-[42px] font-semibold">0%</h1>
-                <p className="text-[15px] lg:text-base">Home Ownership</p>
+                <p className="text-[15px] text-secondary lg:text-base">Home Ownership</p>
               </div>
             </div>
           </div>

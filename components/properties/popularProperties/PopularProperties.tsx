@@ -37,7 +37,7 @@ const PopularProperties: React.FC = () => {
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
             Discover Popular Apartments
           </h1>
-          <p className="text-[15px] text-secondary mt-1 lg:text-base">
+          <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
             Voluptates odio corrupti quia quod magnam dignissimos.
           </p>
         </div>
@@ -84,7 +84,7 @@ const PopularProperties: React.FC = () => {
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
                         <span>
-                          <WishlistButton property={item} bgColor="#242424E5"/>
+                          <WishlistButton property={item} style=" bg-primary-text hover:bg-primary-text bg-opacity-90" className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"/>
                         </span>
                       </Tooltip>
                     )}
@@ -107,10 +107,11 @@ const PopularProperties: React.FC = () => {
                     <span className="font-light font-dm ml-1">yr</span>
                   </h3>
                   <div className="mt-2">
-                    <Link href={`/listings/apartment-details/${item.id}`}>
+                    <Link href={`/listings/apartment-details/${item?.id} `}>
                       <h1 className="text-[15px] font-semibold group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
                         {item.name}
                       </h1>
+                      
                     </Link>
                   </div>
                   <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1 ">

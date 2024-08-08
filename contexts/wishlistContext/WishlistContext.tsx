@@ -29,12 +29,12 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
   const userRole = getUserRole();
   const [wishlist, setWishlist] = useState<PropertyCardDetails[]>([]);
   const [loading, setLoading] = useState(false);
-  const [loadingMap, setLoadingMap] = useState<{ [itemId: number]: boolean }>(
+  const [loadingMap, setLoadingMap] = useState<{ [itemId: string]: boolean }>(
     {}
   );
 
   const addToWishlist = async (property: PropertyCardDetails) => {
-    const itemId = property.id.toString();
+    const itemId = property.id;
     setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: true }));
 
     const isAlreadyAdded = wishlist.some((item) => item.id === property.id);
@@ -82,7 +82,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
-  const removeFromWishlist = async (propertyId: number) => {
+  const removeFromWishlist = async (propertyId: string) => {
     setLoadingMap((prevLoadingMap) => ({
       ...prevLoadingMap,
       [propertyId]: true,

@@ -176,7 +176,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   useEffect(() => {
     const initAuth = async () => {
       const token = getToken();
-      if (token && !isTokenExpired(token)) {
+      if (token) {
         await fetchUser();
       } else {
         setIsAuthChecking(false);

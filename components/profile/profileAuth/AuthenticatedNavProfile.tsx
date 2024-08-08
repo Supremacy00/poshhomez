@@ -54,19 +54,21 @@ const AuthenticatedNavProfile = () => {
         onMouseEnter={showProfileMenu}
         onMouseLeave={hideProfileMenu}
       >
-        <div
-          className="w-[45px] h-[45px] rounded-full overflow-hidden border-[3px] border-gray-300 cursor-pointer"
-          onClick={handleClick}
-        >
-          <Image
-            src={avatarUrl}
-            alt={`${user?.name || "User"}'s avatar`}
-            width={100}
-            height={100}
-            className="w-full h-full object-cover"
-            quality={100}
-          />
-        </div>
+        {user && (
+          <div
+            className="w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 cursor-pointer"
+            onClick={handleClick}
+          >
+            <Image
+              src={avatarUrl}
+              alt={`${user?.name || "User"}'s avatar`}
+              width={100}
+              height={100}
+              className="w-full h-full object-cover"
+              quality={100}
+            />
+          </div>
+        )}
         {isProfileMenu && (
           <>
             {userRole === "Tenant" && (

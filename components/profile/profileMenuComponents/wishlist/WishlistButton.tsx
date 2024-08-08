@@ -1,59 +1,54 @@
-'use client'
-import React, { useState, useEffect } from "react";
+"use client";
+import React from "react";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
-import { useWishlist } from "@/contexts/wishlistContext/WishlistContext";
+import useWishlistButton from "@/hooks/useWishlistButton";
 import { PropertyCardDetails } from "@/@types";
 
 interface WishlistButtonProps {
   property: PropertyCardDetails;
-  bgColor: string;
- 
+  size?: number;
+  iconColor?: {
+    base?: string;
+    sm?: string;
+    md?: string;
+    lg?: string;
+    xl?: string;
+  };
+  className?: string;
+  style?: string;
 }
 
-const WishlistButton: React.FC<WishlistButtonProps> = ({ property, bgColor }) => {
-  const { addToWishlist, removeFromWishlist, wishlist, loadingMap } =
-    useWishlist();
-  const [localIsFavorite, setLocalIsFavorite] = useState<boolean>(false);
-  const [isProcessing, setIsProcessing] = useState<boolean>(false);
+const WishlistButton: React.FC<WishlistButtonProps> = ({
+  property,
+  size,
+  iconColor = {},
+  className,
+  style
+}) => {
+  const { localIsFavorite, isProcessing, loading, handleFavoriteClick } =
+    useWishlistButton({ property });
 
-  useEffect(() => {
-    const isFavorite = wishlist.some((item) => item.id === property.id);
-    setLocalIsFavorite(isFavorite);
-  }, [property.id, wishlist]);
-
-  const handleFavoriteClick = async () => {
-    if (isProcessing) return;
-
-    const newFavoriteStatus = !localIsFavorite;
-    setLocalIsFavorite(newFavoriteStatus);
-    setIsProcessing(true);
-
-    try {
-      if (newFavoriteStatus) {
-        await addToWishlist(property);
-      } else {
-        await removeFromWishlist(property.id);
-      }
-    } catch (error) {
-      // Rollback on failure
-      setLocalIsFavorite(!newFavoriteStatus);
-      console.error("Failed to update wishlist:", error);
-    } finally {
-      setIsProcessing(false);
-    }
+  const getIconColorClass = () => {
+    const { base, sm, md, lg, xl } = iconColor;
+    return [
+      base,
+      sm ? `sm:${sm}` : "",
+      md ? `md:${md}` : "",
+      lg ? `lg:${lg}` : "",
+      xl ? `xl:${xl}` : "",
+    ].filter(Boolean).join(" ");
   };
 
   return (
     <button
       onClick={handleFavoriteClick}
-      disabled={isProcessing || loadingMap[property.id]}
-      className={`p-[9px] rounded-lg cursor-pointer transition-colors duration-500 ease-in-out`}
-      style={{backgroundColor: bgColor}}
+      disabled={isProcessing || loading}
+      className={`${className} ${localIsFavorite ? style : ""}`}
     >
       {localIsFavorite ? (
-        <IoMdHeart className="text-red-500" />
+        <IoMdHeart className={`text-red-600`} />
       ) : (
-        <IoMdHeartEmpty />
+        <IoMdHeartEmpty className={getIconColorClass()} />
       )}
     </button>
   );

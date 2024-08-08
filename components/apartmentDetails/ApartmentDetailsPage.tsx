@@ -8,14 +8,23 @@ import { AiFillClockCircle, AiFillHeart } from "react-icons/ai";
 import { MdFitScreen } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { formattedAmount } from "@/utils/formattedAmount";
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { IoPrintOutline } from "react-icons/io5";
 import { RxSlash } from "react-icons/rx";
 import DetailsLayout from "./DetailsLayout";
+import WishlistButton from "../profile/profileMenuComponents/wishlist/WishlistButton";
+import useFetchApartmentId from "@/hooks/useFetchApartmentId";
+import { useAuth } from "@/hooks/useAuth";
+import { getUserRole } from "@/utils/authUtils";
 
 const ApartmentDetailsPage = () => {
+  useFetchApartmentId();
   const { propertyDetails, isLoading, isError } = useFetchApartmentDetails();
+
+  const { isAuthenticated } = useAuth();
+  const userRole = getUserRole();
 
   if (isLoading) {
     return <PageLoader />;
@@ -25,27 +34,12 @@ const ApartmentDetailsPage = () => {
     return <div>Error loading property details.</div>;
   }
 
-  const {
-    name,
-    address,
-    photos,
-    rent_fee,
-    created_at,
-  } = propertyDetails?.data;
+  const { name, address, photos, rent_fee, created_at, id } =
+    propertyDetails?.data;
 
   const timeAgo = (dateString: any) => {
     const date = new Date(dateString);
     return formatDistanceToNow(date, { addSuffix: true });
-  };
-
-  const formattedAmount = (price: number | string) => {
-    const amountValue = typeof price === "string" ? parseFloat(price) : price;
-    const roundedValue = Math.round(amountValue);
-    const formattedValue =
-      roundedValue % 1 === 0
-        ? roundedValue.toLocaleString() + ".00"
-        : amountValue.toLocaleString();
-    return formattedValue;
   };
 
   return (
@@ -73,9 +67,14 @@ const ApartmentDetailsPage = () => {
           </div>
           <div className="mt-8 lg:mt-0 lg:text-end">
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white">
-                <IoMdHeartEmpty />
-              </span>
+              {isAuthenticated && userRole === "Tenant" && (
+                <WishlistButton
+                  property={propertyDetails?.data}
+                  iconColor={{ base: "text-primary-text", xl: "text-white" }}
+                  className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white"
+                />
+              )}
+
               <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white">
                 <RxOpenInNewWindow />
               </span>

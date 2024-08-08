@@ -63,7 +63,7 @@ const NavDesktop = () => {
                       </h3>
                     </span>
                   </Link>
-                  <span className="hidden xl:flex items-center text-[14.5px]cursor-pointer">
+                  <span className="hidden xl:flex items-center text-[14.5px] cursor-pointer">
                     <RxSlash className="text-lg" />
                     <Link href="/auth/signup">
                       <h3 className="hover:underline underline-offset-2 py-2">

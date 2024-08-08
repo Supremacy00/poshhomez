@@ -51,7 +51,7 @@ const Listings: React.FC = () => {
   
 
   return (
-    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-24 lg:pt-24 ">
+    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-24 lg:pt-[120px]">
       <div className="mx-auto px-4 w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div className=" flex justify-between items-center gap-2 flex-wrap">
           <div>
@@ -181,7 +181,7 @@ const Listings: React.FC = () => {
                             arrow
                           >
                             <span>
-                              <WishlistButton property={item} bgColor="#FFFFFF"/>
+                              <WishlistButton property={item} className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"/>
                             </span>
                           </Tooltip>
                         )}
