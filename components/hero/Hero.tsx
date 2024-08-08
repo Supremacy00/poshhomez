@@ -12,11 +12,11 @@ import { GoArrowUpRight } from "react-icons/go";
 const Hero = () => {
   return (
     <>
-      <section className="relative font-nunito bg-custom4 w-full h-[1000px] ss:h-[720px] lg:h-[760px] xxl:h-[780px]">
+      <section className="relative font-nunito bg-custom4 w-full h-[1000px] ss:h-[720px] md:h-[630px] lg:h-[740px] xl:h-[785px] xxl:h-[780px]">
         <div className="px-4 absolute right-0 left-0 z-20  mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
           <section className="pt-[120px] md:pt-28 lg:pt-44 z-30 ">
-            <h1 className="text-[32px] text-primary-text font-semibold xs:max-w-[493px] md:text-[40px]">
-              Explore Your New Home, Rent and Live with Ease.
+            <h1 className="text-[32px] text-primary-text font-semibold xs:max-w-[493px] md:text-[45px] md:max-w-[550px] xl:max-w-[493px]  ">
+              Explore Your New Home, and Live with Ease.
             </h1>
             <Search />
             <div className="flex items-center gap-3 my-7 flex-wrap">
@@ -87,7 +87,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="hidden xxl:block absolute -bottom-[220px] right-[47%] px-5 xxl:px-0">
+            <div className="hidden xxl:block absolute -bottom-[150px] right-[47%] px-5 xxl:px-0">
               <Image
                 src="/assets/images/element-1.png"
                 alt="Hero House"

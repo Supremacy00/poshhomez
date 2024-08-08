@@ -55,10 +55,10 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
             <MemoizedImage />
           </div>
           <div className="w-full">
-            <h1 className="text-base text-primary-text font-medium">
+            <h1 className="text-[15px] text-primary-text font-semibold">
               {user?.name}
             </h1>
-            <p className="text-sm text-secondary">{userRole}</p>
+            <p className="text-sm text-secondary italic">{userRole}</p>
           </div>
         </div>
         <div className="w-fill h-[1px] bg-gray-200 mt-4"></div>

@@ -4,7 +4,7 @@ import { HiPlusSm } from "react-icons/hi";
 
 const ExclusiveAgents = () => {
   return (
-    <section className="hidden xl:block absolute right-[12%] -bottom-[180px] bg-white rounded-xl shadow-sm w-[270px] p-8 animate-smooth-bounce ">
+    <section className="hidden xl:block absolute right-[12%] -bottom-[120px] bg-white rounded-xl shadow-sm w-[270px] p-8 animate-smooth-bounce ">
       <h3 className="text-[15px] font-medium text-primary-text text-center">
         Our Exclusive Agents
       </h3>
