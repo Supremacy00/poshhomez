@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import Hero from "../hero/Hero";
 import Cities from "../properties/popularProperties/Cities";
 import PopularProperties from '../properties/popularProperties/PopularProperties';

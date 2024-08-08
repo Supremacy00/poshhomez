@@ -11,6 +11,7 @@ const ApartmentIdContext = createContext<ApartmentIdContextType | null>(null);
 export const ApartmentIdProvider: React.FC<{children: ReactNode}> = ({ children }) => {
   const [apartmentid, setApartmentid] = useState<string | null | undefined>(null);
   const router = useParams();
+  
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

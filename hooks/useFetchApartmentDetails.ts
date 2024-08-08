@@ -1,11 +1,11 @@
-'use client'
-import { useApartmentId } from '@/contexts/apartmentIDContext/ApartmentIdContext';
-import useApartmentDetails from './useApartmentDetails';
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import useApartmentDetails from "@/hooks/useApartmentDetails";
 
 const useFetchApartmentDetails = () => {
-  const apartmentId = useApartmentId();
-  const propertyDetails = useApartmentDetails(apartmentId);
-  return propertyDetails;
+  const apartmentId = useSelector((state: RootState) => state.apartment.apartmentId);
+  const { propertyDetails, isLoading, isError } = useApartmentDetails(apartmentId);
+  return { propertyDetails, isLoading, isError };
 };
 
 export default useFetchApartmentDetails;

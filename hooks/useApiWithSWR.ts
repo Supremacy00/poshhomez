@@ -1,6 +1,5 @@
-'use client'
 import { useState } from "react";
-import  useSWR, { SWRConfiguration }  from 'swr';
+import useSWR, { SWRConfiguration } from "swr";
 import axios from "axios";
 import { ApiResponse } from "@/@types";
 
@@ -33,7 +32,7 @@ const fetcher = async (url: string) => {
       );
     }
 
-    throw (error as any)?.response?.data || new Error('Unknown error occurred');
+    throw (error as any)?.response?.data;
   }
 };
 
@@ -43,7 +42,7 @@ const useApiWithSWR = (
   { defaultLimit = 8, ...config }: ApiWithSWRConfig = {}
 ) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
-  const [limit, setLimit] = useState(defaultLimit);
+  const limit = defaultLimit;
 
   const url = endpoint
     ? `${endpoint}?page=${currentPage}&limit=${limit}`
@@ -55,10 +54,11 @@ const useApiWithSWR = (
     ...config,
   });
 
-  const totalProperties = data?.totalCount || 0;
+  const totalProperties =
+    (data?.data as { [key: string]: any })?.["Number of properties"] || 0;
   const totalCount = Math.ceil(totalProperties / limit);
 
-  const isLoading = !data && !error;
+  const isLoading = data === undefined && !error;
   const isError = !!error;
 
   const fetchPage = async (page: number) => {
@@ -76,5 +76,6 @@ const useApiWithSWR = (
     totalProperties,
   };
 };
+
 
 export default useApiWithSWR;

@@ -29,25 +29,36 @@ export interface Location {
   city: string;
   country: string;
   state: string;
+  postal_code: string;
 }
 
 export interface PropertyCardDetails {
-  photos: string[];
-  photo: string;
+  photos: {
+    public_id: string;
+    secure_url: string;
+  }[];
+  amenities: {
+    name: string;
+    description: string;
+  }[];
+  photo?: string;
   rent_fee: number;
   is_occupied: boolean;
   name: string;
   address?: string;
   description?: Description;
   location?: Location;
-  sqft: number;
-  id: number;
+  sqft?: number;
+  id: string;
+  year_built?: number;
+  created_at: string;
+  about: string;
 }
 
 interface WishlistContextType {
   wishlist: PropertyCardDetails[];
   addToWishlist: (property: PropertyCardDetails) => void;
-  removeFromWishlist: (propertyId: number) => void;
+  removeFromWishlist: (propertyId: string) => void;
   loadingMap: { [itemId: string]: boolean };
 }
 
@@ -251,7 +262,14 @@ export interface ApartmentDetailsPageProps {
 export interface PropertyDetails {
   id: string;
   name: string;
-  data: PropertyData;
+  rent_fee: number;
+  photos: {
+    public_id: string;
+    secure_url: string;
+  }[];
+  is_occupied: boolean;
+  created_at: string;
+  data: PropertyCardDetails;
 }
 
 export interface ApiError {

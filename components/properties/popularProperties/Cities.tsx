@@ -8,7 +8,7 @@ const Cities = () => {
         <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
           Apartments by Cities
         </h1>
-        <p className="text-base text-secondary mt-1">
+        <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
           Aliquam lacinia diam quis lacus euismod
         </p>
         <div className="w-full aspect-3/2 xs:h-[350px] mt-8 overflow-hidden rounded-xl lg:mt-16 lg:h-[550px] xxl:h-[650px]">
