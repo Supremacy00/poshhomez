@@ -5,7 +5,7 @@ import { useModal } from "@/contexts/modalContext/ModalContext";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import Link from "next/link";
-import { TfiClose } from "react-icons/tfi";
+import { IoClose } from "react-icons/io5";
 import { HiHomeModern } from "react-icons/hi2";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { RxArrowTopRight, RxSlash } from "react-icons/rx";
@@ -31,11 +31,11 @@ const LeftNavMobile = () => {
       <nav
         className={`${
           isLeftNav ? "transform -translate-x-0" : "transform -translate-x-full"
-        } font-nunito fixed top-0 left-0 h-[100dvh] w-[350px] max-w-full bg-primary-text text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
+        } font-nunito fixed top-0 left-0 h-[100dvh] w-[390px] max-w-full bg-white text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
         ref={modalRef}
       >
         <section>
-          <div className="bg-white w-full flex justify-between flex-wrap items-center py-2.5 px-5">
+          <div className="bg-white w-full flex justify-between flex-wrap items-center border-b-[1px] py-2.5 px-5">
             <Link href="/" onClick={handleIsLeftNav}>
               <div className="flex items-center gap-2">
                 <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
@@ -50,36 +50,38 @@ const LeftNavMobile = () => {
               </div>
             </Link>
             <div
-              className="flex items-center gap-2 text-[13px] text-[#E44343] cursor-pointer"
+              className="flex items-center gap-1 text-[13px] text-[#E44343] cursor-pointer"
               onClick={handleIsLeftNav}
             >
-              <p>Close</p>
-              <TfiClose />
+              <p className="text-sm">Close</p>
+              <IoClose className="text-xl" />
             </div>
           </div>
-          <div className="flex justify-between items-center flex-wrap gap-3 xl:gap-6 text-white text-[15px] mt-6 px-5 ">
+          <div className="px-5 pt-5 font-sans">
             {!isAuthenticated && (
-              <div className="flex items-center gap-2">
-                <Link href="/auth/login" onClick={handleIsLeftNav}>
-                  <span className="flex items-center gap-1.5 cursor-pointer">
-                    <IoPersonCircleOutline className="text-[23px]" />
-                    <h3 className="font-medium hover:underline underline-offset-2 py-2 -mr-2">
-                      Login
-                    </h3>
-                  </span>
+              <div className="text-[15px] flex justify-between items-center gap-2.5">
+                <Link
+                  href="/auth/login"
+                  onClick={handleIsLeftNav}
+                  className="w-full"
+                >
+                  <button className="w-full py-3 rounded-full border-[1px] border-primary-text hover:bg-primary-text hover:text-white transition-colors duration-300 ease-in-out">
+                    Login
+                  </button>
                 </Link>
-                <span className="flex items-center font-medium cursor-pointer">
-                  <RxSlash className="text-lg" />
-                  <Link href="/auth/signup" onClick={handleIsLeftNav}>
-                    <h3 className="hover:underline underline-offset-2 py-2">
-                      Register
-                    </h3>
-                  </Link>
-                </span>
+                <Link
+                  href="/auth/signup"
+                  onClick={handleIsLeftNav}
+                  className="w-full"
+                >
+                  <button className="text-white w-full py-3.5 bg-primary-text rounded-full hover:bg-custom3 transition-colors duration-300 ease-in-out">
+                    Register
+                  </button>
+                </Link>
               </div>
             )}
             {isAuthenticated && userRole === "LandLord" && (
-              <div className=" bg-white text-primary-text p-3 font-medium font-poppins rounded-lg hover:bg-custom2 hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
+              <div className=" text-white text-[15px] bg-primary-text hover:bg-custom3 py-3.5 px-9 inline-block font-medium font-poppins rounded-full hover:text-white transition-all duration-300 ease-in-out cursor-pointer">
                 <span className="flex items-center gap-2">
                   <h3>Add Property</h3>
                   <RxArrowTopRight className="text-[18px]" />
@@ -87,17 +89,20 @@ const LeftNavMobile = () => {
               </div>
             )}
           </div>
-          <article className="text-[15px] mt-16 space-y-20  text-white font-medium">
+          <article className="font-sans mt-8 space-y-20 text-white">
             {navData.map((item, index) => (
               <Link href={item.link} key={index}>
                 <div
-                  className="flex items-center group my-1"
+                  className="text-base text-primary-text flex items-center group my-1"
                   onClick={handleIsLeftNav}
                 >
-                  <div className={`${pathname === item.link ? "bg-custom2 bg-opacity-10 text-custom2" : ""} w-full py-4 px-5 flex-grow group-hover:bg-custom2 group-hover:text-custom2 group-hover:bg-opacity-10 group-hover:py-4 group-hover:px-5 transition-colors duration-300 ease-in-out`}>
+                  <div
+                    className={`${
+                      pathname === item.link ? "bg-custom4" : ""
+                    } w-full py-4 px-3 mx-3 rounded-lg flex-grow group-hover:bg-custom4 group-hover:py-4 group-hover:px-3 transition-colors duration-300 ease-in-out`}
+                  >
                     {item.title}
                   </div>
-                  <div className={`${pathname === item.link ? "bg-custom2" : ""} w-[5px] py-[27px] group-hover:bg-custom2 transition-colors duration-300 ease-in-out`} />
                 </div>
               </Link>
             ))}
@@ -109,16 +114,16 @@ const LeftNavMobile = () => {
                   return (
                     <button
                       key={item.id}
-                      className="relative bg-secondary w-[30px] h-[30px] rounded-full hover:bg-white transition-all duration-200 ease-in-out delay-200 group"
+                      className="bg-custom13 p-[7px] rounded-full hover:bg-primary-text transition-all duration-200 ease-in-out delay-200 group"
                     >
-                      <div className="text-[18px] absolute inset-1.5 cursor-pointer group-hover:text-primary-text transition-all duration-200 ease-in-out delay-200">
+                      <div className="text-[24px] cursor-pointer group-hover:text-white transition-all duration-200 ease-in-out delay-200">
                         {item.icon}
                       </div>
                     </button>
                   );
                 })}
               </div>
-              <p className="text-[15px] mt-4 text-custom1 font-normal">
+              <p className="text-[15px] mt-4 text-secondary font-normal">
                 &copy; {rights}
               </p>
             </div>

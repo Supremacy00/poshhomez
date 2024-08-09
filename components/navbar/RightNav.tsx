@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { LiaTimesSolid } from "react-icons/lia";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoInstagram } from "react-icons/io";
@@ -8,12 +7,10 @@ import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 
 const RightNav: React.FC = () => {
-
   const { isRightNav, setIsRightNav, handleIsRightNav } = useModal();
   const modalRef = useRef(null);
 
   useCloseOnOutsideClick(isRightNav, () => setIsRightNav(false), modalRef);
-
 
   return (
     <article
@@ -37,31 +34,31 @@ const RightNav: React.FC = () => {
               <IoClose className="text-xl" />
             </button>
           </div>
-          <ul className="mt-16 text-[14px] font-semibold ">
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+          <ul className="mt-16 text-sm font-semibold mx-5 ">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Apartments
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Bungalow
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Houses
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Loft
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Office
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               TownHome
             </li>
-            <li className="w-full py-4 px-8 hover:bg-custom2 hover:text-custom2 hover:bg-opacity-10 hover:border-l-2 hover:border-l-custom2 hover:py-4 hover:px-[30px] transition-colors duration-200 ease-in-out cursor-pointer">
+            <li className="w-full py-4 px-4 text-primary-text hover:bg-custom4 rounded-lg cursor-pointer">
               Villa
             </li>
           </ul>
           <div className="absolute bottom-0 left-0 right-0" ref={modalRef}>
-            <div className="flex justify-between items-center font-dm  py-10 px-8 border-t-[1px] border-b-[1px] border-gray-300">
+            <div className="flex justify-between items-center font-dm py-10 px-8 border-t-[1px] border-b-[1px] border-gray-300">
               <div>
                 <h3 className="text-[14px] font-light font-dm mb-5">
                   Total Free Customer Care
@@ -82,10 +79,10 @@ const RightNav: React.FC = () => {
             <div className="m-8 flex items-center gap-5">
               <h3 className="text-[15px] font-semibold">Follow us</h3>
               <div className="flex items-center gap-3">
-                <TiSocialFacebook className="text-[20px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out"/>
-                <FaXTwitter className="text-[14px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out"/>
-                <IoLogoInstagram className="text-[16px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out"/>
-                <TiSocialLinkedin className="text-[22px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out"/>
+                <TiSocialFacebook className="text-[20px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out" />
+                <FaXTwitter className="text-[14px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out" />
+                <IoLogoInstagram className="text-[16px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out" />
+                <TiSocialLinkedin className="text-[22px] hover:text-custom2 cursor-pointer transition-colors duration-200 delay-100 ease-in-out" />
               </div>
             </div>
           </div>

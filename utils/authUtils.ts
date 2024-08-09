@@ -5,7 +5,6 @@ interface CustomJwtPayload extends JwtPayload {
   role?: string;
 }
 
-
 export const getToken = (): string | null => {
   if (typeof window !== "undefined") {
     return localStorage.getItem("token");
@@ -17,39 +16,35 @@ export const removeToken = () => {
   localStorage.removeItem("token");
 };
 
-export const getUserId = (): string | undefined => {
+export const getUserId = (): string | null => {
   const token = getToken();
-  if (!token) return undefined;
+  if (!token) return null;
 
   try {
     const decoded = jwtDecode<CustomJwtPayload>(token);
-    return decoded.id;
+    return decoded.id || null;
   } catch (error) {
     console.error("Error decoding token:", error);
-    return undefined;
+    return null;
   }
 };
 
-export const getUserRole = (): string | undefined => {
+export const getUserRole = (): string | null => {
   const token = getToken();
-  if (!token) return undefined;
+  if (!token) return null;
 
   try {
     const decoded = jwtDecode<CustomJwtPayload>(token);
-    return decoded.role;
+    return decoded.role || null;
   } catch (error) {
     console.error("Error decoding token:", error);
-    return undefined;
+    return null;
   }
 };
 
 export const isTokenExpired = (token: string): boolean => {
-  if (token === null) {
-    console.error("Token is null or undefined.");
-    return true;
-  }
   try {
-    const decodedToken = jwtDecode(token) as JwtPayload;
+    const decodedToken = jwtDecode<JwtPayload>(token);
     if (decodedToken.exp === undefined) {
       console.error("Token does not have an expiry time.");
       return true;
@@ -62,22 +57,18 @@ export const isTokenExpired = (token: string): boolean => {
   }
 };
 
-export const isAuthenticated = (token: string) => {
-  if (!token) {
-    return null;
-  }
-  try {
-    const decodedToken = jwtDecode(token);
-    const expirationTime = (decodedToken as any).exp * 1000;
+export const isAuthenticated = (): boolean | null => {
+  const token = getToken();
+  if (!token) return null;
 
-    if (Date.now() >= expirationTime) {
+  try {
+    if (isTokenExpired(token)) {
       removeToken();
       return null;
     }
-
     return true;
   } catch (error) {
-    console.error(`Error verifying jwt token: ${error}`);
+    console.error("Error verifying jwt token:", error);
     removeToken();
     return null;
   }
