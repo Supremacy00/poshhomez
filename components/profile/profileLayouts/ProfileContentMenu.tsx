@@ -60,7 +60,7 @@ const ProfileContentMenu = () => {
         ) : (
           <>
             <div className="flex gap-4 flex-wrap">
-              <div className="w-[50px] h-[50px] rounded-full overflow-hidden cursor-pointer">
+              <div className="w-[50px] h-[50px] bg-custom4 rounded-full overflow-hidden cursor-pointer">
                 <ModalImage
                   small={avatarUrl}
                   large={avatarUrl}

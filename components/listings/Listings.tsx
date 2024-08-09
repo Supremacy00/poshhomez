@@ -97,7 +97,7 @@ const Listings: React.FC = () => {
               return (
                 <article key={item.id} className="group">
                   <div className="relative overflow-hidden">
-                    <div className="relative bg-gray-400 rounded-t-xl overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[230px] lg:h-[200px]">
+                    <div className="relative bg-custom13 rounded-t-xl overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[230px] lg:h-[200px]">
                       <Image
                         src={imageUrl}
                         alt={item.name}
@@ -135,7 +135,7 @@ const Listings: React.FC = () => {
                         </h1>
                       </Link>
                     </div>
-                    <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1  ">
+                    <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1.5  ">
                       <p className="font-dm font-light">
                         {`${item.location?.city},`}
                       </p>
@@ -165,12 +165,12 @@ const Listings: React.FC = () => {
                       <h3 className="text-[13px] text-custom2">For Rent</h3>
                       <div className="flex items-center gap-0.5">
                         <Tooltip title="View photos" placement="top" arrow>
-                          <span className="px-[10px] py-[10px] rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
+                          <span className="p-[10px] text-custom5 rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
                             <MdOutlineLibraryAdd className="text-[18px]"/>
                           </span>
                         </Tooltip>
                         <Tooltip title="Fit to screen" placement="top" arrow>
-                          <span className="px-[9px] py-[9px] rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
+                          <span className="p-[9px] text-custom5 rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
                             <MdOutlineFitScreen className="text-[20px]" />
                           </span>
                         </Tooltip>
@@ -181,7 +181,7 @@ const Listings: React.FC = () => {
                             arrow
                           >
                             <span>
-                              <WishlistButton property={item} className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"/>
+                              <WishlistButton property={item} iconColor={{base : "text-custom5"}} className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"/>
                             </span>
                           </Tooltip>
                         )}
@@ -197,7 +197,7 @@ const Listings: React.FC = () => {
           currentPage={currentPage}
           fetchPage={fetchPage}
         />
-        <div className="text-center text-base mt-4 text-secondary">
+        <div className="text-center text-base mt-4 text-secondary tracking-wider">
         <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>

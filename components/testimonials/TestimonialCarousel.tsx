@@ -61,7 +61,7 @@ const TestimonialCarousel = () => {
                     <div className="w-full h-[1px] bg-gray-200 mt-6" />
                   </div>
                   <div className="flex items-center gap-4 flex-wrap mt-5">
-                    <div className="w-[60px] h-[60px] overflow-hidden rounded-full">
+                    <div className="max-w-[60px] h-[60px] bg-custom4 overflow-hidden rounded-full aspect-3/2">
                       <Image
                         src={item.image}
                         alt={item.name}

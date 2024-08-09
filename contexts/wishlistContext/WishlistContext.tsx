@@ -70,7 +70,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       );
 
       setWishlist((currentWishlist) => [...currentWishlist, property]);
-      toast.success(`${property.name} has been added to your wishlist!`);
+      toast.success("Apartment added to your wishlist successfully!");
     } catch (error) {
       console.error("Failed to add to wishlist", error);
       toast.error("Failed to add item to wishlist.");
@@ -113,7 +113,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
         setWishlist((currentWishlist) =>
           currentWishlist?.filter((item) => item?.id !== propertyId)
         );
-        toast.info("Item has been removed from your wishlist.");
+        toast.info("Apartment removed from your wishlist successfully!");
       } else {
         console.error(
           "Failed to remove from wishlist - Unexpected response status:",
