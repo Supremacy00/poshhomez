@@ -16,7 +16,6 @@ import { toast } from "sonner";
 import { getToken } from "@/utils/authUtils";
 
 const API_URL = process.env.NEXT_PUBLIC_API_ENDPOINT || "";
-const token = getToken();
 
 const WishlistContext = createContext<WishlistContextType | undefined>(
   undefined
@@ -48,6 +47,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     }
 
     const addFavoritesUrl = `${process.env.NEXT_PUBLIC_ADD_FAVORITES_ENDPOINT}/${userId}/?product_id=${property.id}`;
+    const token = getToken();
     if (!token) {
       console.error("No token found");
       setLoadingMap((prevLoadingMap) => ({
@@ -88,6 +88,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       [propertyId]: true,
     }));
     const removeFavoritesUrl = `${process.env.NEXT_PUBLIC_REMOVE_FAVORITES_ENDPOINT}/${userId}/?product_id=${propertyId}`;
+    const token = getToken();
     if (!token) {
       console.error("No token found");
       setLoadingMap((prevLoadingMap) => ({
@@ -134,6 +135,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
 
   const fetchWishlistDetails = async () => {
     setLoading(true);
+    const token = getToken();
 
     if (!token || userRole !== "Tenant") {
       setLoading(false);
@@ -169,12 +171,13 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   useEffect(() => {
+    const token = getToken();
     if (token && userRole === "Tenant") {
       fetchWishlistDetails();
     } else {
       setWishlist([]);
     }
-  }, [token, userRole]);
+  }, [userRole]);
 
   const value = useMemo(
     () => ({

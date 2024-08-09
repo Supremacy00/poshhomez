@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, ComponentType, ReactElement } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
@@ -13,8 +13,7 @@ function withAuth<T extends {}>(
     const router = useRouter();
 
     useEffect(() => {
-      const token = localStorage.getItem('token')
-      const isLoggedIn = isAuthenticated(token as string)
+      const isLoggedIn = isAuthenticated();
       if (!isLoggedIn) {
         router.push("/auth/login");
       }
@@ -28,7 +27,7 @@ function withAuth<T extends {}>(
       );
     }
 
-    return <WrappedComponent {...props} /> 
+    return <WrappedComponent {...props} />;
   };
 
   RequiresAuth.displayName = `withAuth(${
