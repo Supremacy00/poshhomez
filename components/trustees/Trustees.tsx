@@ -9,14 +9,14 @@ const Trustees = () => {
       <div className="text-primary-text text-base font-semibold text-center">
         <h3>Trusted by the world's best</h3>
       </div>
-      <div className="flex justify-center items-center mt-6">
+      <div className="w-[60px] h-[60px] mx-auto flex justify-center items-center mt-6">
         <div>
           <Image
             src="/assets/images/trustee1.png"
             alt="Hero House"
-            width={60}
-            height={60}
-            className="w-auto h-auto"
+            width={500}
+            height={500}
+            className="w-full h-full"
           />
         </div>
       </div>

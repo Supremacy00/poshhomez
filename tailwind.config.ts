@@ -37,7 +37,7 @@ const config = {
         custom10: "#E3E3E3",
         custom11: "#E8E8E8",
         custom12: "#0A2357",
-        custom13: "#AEAEAE"
+        custom13: "#AEAEAE",
       },
       fontFamily: {
         nunito: ["Nunito Sans", "sans-serif"],

@@ -37,7 +37,7 @@ const PopularProperties: React.FC = () => {
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
             Discover Popular Apartments
           </h1>
-          <p className="text-[15px] text-secondary mt-1 lg:mt-0 lg:text-base">
+          <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
             Voluptates odio corrupti quia quod magnam dignissimos.
           </p>
         </div>
@@ -84,17 +84,17 @@ const PopularProperties: React.FC = () => {
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
                         <span>
-                          <WishlistButton property={item} style=" bg-primary-text hover:bg-primary-text bg-opacity-90" className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"/>
+                          <WishlistButton property={item} iconColor={{base : "text-white"}} style="bg-primary-text hover:bg-primary-text bg-opacity-90" className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"/>
                         </span>
                       </Tooltip>
                     )}
                     <Tooltip title="View photos" placement="top" arrow>
-                      <span className="bg-primary-text bg-opacity-90 px-[10px] py-[10px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out">
+                      <span className="bg-primary-text text-white bg-opacity-90 p-[10px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out">
                         <MdOutlineLibraryAdd />
                       </span>
                     </Tooltip>
                     <Tooltip title="Fit to screen" placement="top" arrow>
-                      <span className="bg-primary-text bg-opacity-90 px-[9px] py-[9px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out">
+                      <span className="bg-primary-text text-white bg-opacity-90 p-[9px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out">
                         <MdOutlineFitScreen className="text-lg" />
                       </span>
                     </Tooltip>
@@ -114,18 +114,18 @@ const PopularProperties: React.FC = () => {
                       
                     </Link>
                   </div>
-                  <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1 ">
-                    <p className="font-dm font-light ">
+                  <span className="flex gap-1.5 font-roboto font-light text-[13.5px] text-secondary mt-1 ">
+                    <p>
                       {`${item.location?.city},`}
                     </p>
-                    <p className="font-dm uppercase font-light">
+                    <p className="uppercase ">
                       {`${item.location?.state},`}
                     </p>
-                    <p className="font-dm uppercase font-light">
+                    <p className="uppercase">
                       {item.location?.country}
                     </p>
                   </span>
-                  <div className="flex items-center gap-3 font-normal flex-wrap mt-1 text-[13.5px]">
+                  <div className="flex items-center gap-3 font-normal flex-wrap mt-[5px] text-[13.5px]">
                     <span className="flex items-center gap-1.5">
                       <IoBedOutline className="text-custom5 text-[15px]" />
                       <p>{`${item.description?.bathroom_count} bed`}</p>

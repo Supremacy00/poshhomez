@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { PiBuildingsLight } from "react-icons/pi";
 import { FaHouseLock } from "react-icons/fa6";
 import { SiGoogletagmanager } from "react-icons/si";
 import { AiFillPropertySafety } from "react-icons/ai";
@@ -10,13 +9,13 @@ const WhyChooseUs = () => {
   return (
     <section className="mx-auto font-nunito px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:max-w-[1200px] xxl:px-0 xl:py-24">
       <div className="md:flex items-center gap-7 lg:gap-16 xl:gap-28">
-        <div className="relative">
-          <div className="bg-custom4 overflow-hidden aspect-547/634 rounded-lg xs:w-[547px] md:max-w-[336px] md:h-[450px] lg:max-w-[456px] lg:h-[529px] xl:max-w-[546px] xl:h-[633px] xxl:max-w-[600px] xxl:h-[650px]">
+        <div className="relative w-full h-full">
+          <div className="bg-custom4 overflow-hidden aspect-547/634 rounded-lg ss:h-[350px] xs:w-[547px] md:max-w-[336px] md:h-[450px] lg:max-w-[456px] lg:h-[529px] xl:max-w-[546px] xl:h-[633px] xxl:max-w-[600px] xxl:h-[650px]">
             <Image
               src="/assets/images/card2.jpg"
               alt="Hero House"
-              width={1000}
-              height={1000}
+              width={500}
+              height={500}
               quality={50}
               className="w-full h-full object-cover"
             />
@@ -35,12 +34,12 @@ const WhyChooseUs = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="w-full">
           <div className="mt-8 md:mt-0 ">
-            <h1 className="text-[20px] font-semibold md:text-[30px]">
+            <h1 className="text-primary-text text-[20px] font-semibold md:text-[30px]">
               Why Choose Us
             </h1>
-            <p className="text-[15px] text-secondary leading-7 mt-1 lg:text-base ">
+            <p className="text-[15px] text-primary-text leading-7 mt-1 lg:text-base ">
               As the complexity of buildings to increase, the field of
               architecture.
             </p>

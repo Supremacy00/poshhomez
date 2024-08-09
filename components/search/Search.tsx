@@ -11,7 +11,7 @@ const Search: React.FC = () => {
     useModal();
 
   return (
-    <section className="font-nunito mt-14 xl:max-w-[750px]">
+    <section className="font-nunito text-primary-text mt-14 xl:max-w-[750px]">
       <div className="w-28 text-center rounded-t-xl bg-white text-sm mt-8">
         <h3 className="border-b-[1px] border-b-custom5 mx-6 py-3.5">Rent</h3>
       </div>
@@ -41,7 +41,7 @@ const Search: React.FC = () => {
               <VscSettings className="rotate-90 lg:text-[17px]" />
               <h3 className="text-sm font-medium">Advanced</h3>
             </div>
-            <button className="p-4 bg-custom2 rounded-xl text-[20px] text-white">
+            <button className="p-4 bg-custom2 hover:bg-custom6 rounded-xl text-[20px] text-white transition-colors duration-300 ease-in-out">
               <CiSearch />
             </button>
           </div>
