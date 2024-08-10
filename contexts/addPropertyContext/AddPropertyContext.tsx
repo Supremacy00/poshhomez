@@ -1,6 +1,8 @@
+'use client'
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import axios, { CancelTokenSource } from "axios";
 import { AddPropertyDetails, AddPropertyAmenities } from "@/@types";
+import { getToken } from "@/utils/authUtils";
 import { toast } from "sonner";
 
 interface LoadingState {
@@ -79,8 +81,6 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const apiUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
-  const getToken = () =>
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
   const handleAxiosRequest = async (
     requestFunc: (cancelToken: CancelTokenSource) => Promise<any>,
@@ -108,10 +108,11 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const submitPropertyDetails = async (details: AddPropertyDetails) => {
+    const token = getToken()
     return handleAxiosRequest(
       (cancelToken) =>
         axios.post(`${apiUrl}/api/property/list`, details, {
-          headers: { Authorization: `Bearer ${getToken()}` },
+          headers: { Authorization: `Bearer ${token}` },
           cancelToken: cancelToken.token,
         }),
       "details"
@@ -150,7 +151,7 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
 
     const formData = new FormData();
     photos.forEach((photo) => formData.append("photos", photo));
-
+    const token = getToken()
     return handleAxiosRequest(
       (cancelToken) =>
         axios.put(
@@ -159,7 +160,7 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
           {
             headers: {
               "Content-Type": "multipart/form-data",
-              Authorization: `Bearer ${getToken()}`,
+              Authorization: `Bearer ${token}`,
             },
             cancelToken: cancelToken.token,
           }
@@ -179,7 +180,7 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
 
   const addAmenities = async (payload: AddPropertyAmenities[], propertyId: string) => {
     if (!propertyId) return;
-    console.log("Amenity", payload)
+    const token = getToken()
 
     return handleAxiosRequest(
       (cancelToken) =>
@@ -189,7 +190,7 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${getToken()}`,
+              Authorization: `Bearer ${token}`,
             },
             cancelToken: cancelToken.token,
           }
@@ -197,7 +198,6 @@ export const PropertyProvider: React.FC<{ children: ReactNode }> = ({
       "amenities"
     )
       .then((response) => {
-        console.log(response)
         if (response.data.status_code === 200) {
           toast.success("Amenities Added Succesfully");
           setCurrentStep(1)

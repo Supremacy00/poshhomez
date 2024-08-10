@@ -60,7 +60,7 @@ const PopularProperties: React.FC = () => {
             return (
               <article key={item.id} className="group">
                 <div className="relative overflow-hidden">
-                  <div className="relative rounded-md overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
+                  <div className="relative rounded-md overflow-hidden w-full h-full bg-custom4 aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
                     <Image
                       src={imageUrl}
                       alt={item.name}

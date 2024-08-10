@@ -21,16 +21,16 @@ const NavDesktop = () => {
   const { handleContentMenu } = useContentMenu();
 
   return (
-      <nav className="font-nunito bg-white w-full border-b-[1px] hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
+      <nav className="bg-custom-white w-full border-b-[1px] border-b-custom4  hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
         <div className="px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-12 xl:gap-16">
               <Link href="/">
-                <div className="flex items-center gap-2">
+                <div className="font-noto font-semibold flex items-center gap-2">
                   <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
                     <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
                   </div>
-                  <h3 className="text-[20px] font-semibold">
+                  <h3 className="text-[20px]">
                     pos<span className="text-custom2">H</span>
                     <span className="-ml-2">
                       <span className="text-custom2">H</span>omez
@@ -45,7 +45,7 @@ const NavDesktop = () => {
                   <li
                     className={`${
                       pathname === item.link ? "text-custom2" : ""
-                    } py-2 text-[14.5px] font-medium  hover:text-custom2 transition-colors duration-500 ease-in-out`}
+                    } py-2 text-[14.5px] hover:text-custom2 transition-colors duration-500 ease-in-out`}
                   >
                     {item.title}
                   </li>

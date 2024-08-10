@@ -22,6 +22,7 @@ import { getUserRole } from "@/utils/authUtils";
 import AppPagination from "../AppPagination";
 import ListingsSearch from "./ListingsSearch";
 import { VscSettings } from "react-icons/vsc";
+import useApartmentDetails from "@/hooks/useApartmentDetails";
 
 const Listings: React.FC = () => {
   const {
@@ -31,13 +32,14 @@ const Listings: React.FC = () => {
     limit,
     totalCount,
     currentPage,
-   fetchPage,
+    fetchPage,
     totalProperties,
   } = useApiWithSWR(process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || "", 1, {
     defaultLimit: 12,
   });
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
+  const { handleDetailsClick } = useApartmentDetails();
 
   const properties: PropertyCardDetails[] = data?.data?.data || [];
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
@@ -48,7 +50,6 @@ const Listings: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
-  
 
   return (
     <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-24 lg:pt-[120px]">
@@ -129,11 +130,12 @@ const Listings: React.FC = () => {
                   </div>
                   <div className="text-primary-text p-5 bg-white rounded-b-xl shadow-2xl">
                     <div>
-                      <Link href={`/listings/apartment-details/${item.id}`}>
-                        <h1 className="text-[15px] font-semibold group-hover:underline group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
-                          {item.name}
-                        </h1>
-                      </Link>
+                      <h1
+                        className="text-[15px] font-semibold group-hover:underline group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out"
+                        onClick={() => handleDetailsClick(item?.id)}
+                      >
+                        {item.name}
+                      </h1>
                     </div>
                     <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1.5  ">
                       <p className="font-dm font-light">
@@ -166,7 +168,7 @@ const Listings: React.FC = () => {
                       <div className="flex items-center gap-0.5">
                         <Tooltip title="View photos" placement="top" arrow>
                           <span className="p-[10px] text-custom5 rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
-                            <MdOutlineLibraryAdd className="text-[18px]"/>
+                            <MdOutlineLibraryAdd className="text-[18px]" />
                           </span>
                         </Tooltip>
                         <Tooltip title="Fit to screen" placement="top" arrow>
@@ -181,7 +183,11 @@ const Listings: React.FC = () => {
                             arrow
                           >
                             <span>
-                              <WishlistButton property={item} iconColor={{base : "text-custom5"}} className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"/>
+                              <WishlistButton
+                                property={item}
+                                iconColor={{ base: "text-custom5" }}
+                                className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"
+                              />
                             </span>
                           </Tooltip>
                         )}
@@ -198,7 +204,7 @@ const Listings: React.FC = () => {
           fetchPage={fetchPage}
         />
         <div className="text-center text-base mt-4 text-secondary tracking-wider">
-        <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
+          <h3>{`${rangeStart} - ${rangeEnd} of ${totalProperties}+ Apartments Available`}</h3>
         </div>
       </div>
     </section>
