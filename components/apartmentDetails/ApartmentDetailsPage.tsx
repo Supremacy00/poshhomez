@@ -1,13 +1,11 @@
 "use client";
-import React from "react";
-import useFetchApartmentDetails from "@/hooks/useFetchApartmentDetails";
+import React, { useState } from "react";
 import PageLoader from "../loader/PageLoader";
 import ApartmentPhotoCarousel from "./ApartmentPhotoCarousel";
 import { formatDistanceToNow } from "date-fns";
 import { AiFillClockCircle, AiFillHeart } from "react-icons/ai";
 import { MdFitScreen } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
-import { IoMdHeartEmpty } from "react-icons/io";
 import { formattedAmount } from "@/utils/formattedAmount";
 import { RxOpenInNewWindow } from "react-icons/rx";
 import { IoShareSocialOutline } from "react-icons/io5";
@@ -15,14 +13,13 @@ import { IoPrintOutline } from "react-icons/io5";
 import { RxSlash } from "react-icons/rx";
 import DetailsLayout from "./DetailsLayout";
 import WishlistButton from "../profile/profileMenuComponents/wishlist/WishlistButton";
-import useFetchApartmentId from "@/hooks/useFetchApartmentId";
 import { useAuth } from "@/hooks/useAuth";
 import { getUserRole } from "@/utils/authUtils";
+import useApartmentDetails from "@/hooks/useApartmentDetails";
 
 const ApartmentDetailsPage = () => {
-  useFetchApartmentId();
-  const { propertyDetails, isLoading, isError } = useFetchApartmentDetails();
-
+  const { propertyDetails, isLoading, isError } = useApartmentDetails();
+  const [showShareButton, setShowShareButton] = useState(false);
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
 
@@ -78,7 +75,7 @@ const ApartmentDetailsPage = () => {
               <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white">
                 <RxOpenInNewWindow />
               </span>
-              <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white">
+              <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white" onClick={() => setShowShareButton(!showShareButton)}>
                 <IoShareSocialOutline />
               </span>
               <span className="p-2 text-[18px] border-[1px] border-custom11 rounded-md inline-block xl:border-white">

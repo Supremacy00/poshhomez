@@ -9,10 +9,13 @@ const Cities = () => {
           Apartments by Cities
         </h1>
         <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
-          Aliquam lacinia diam quis lacus euismod
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
         <div className="w-full aspect-3/2 xs:h-[350px] mt-7 overflow-hidden rounded-xl lg:mt-12 lg:h-[550px] xxl:h-[650px]">
-          <Map address="Samaru Campus, Community Market, Zaria 810211, Kaduna" zoom={15} />
+          <Map
+            address="Samaru Campus, Community Market, Zaria 810211, Kaduna"
+            zoom={15}
+          />
         </div>
       </div>
     </section>

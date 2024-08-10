@@ -34,12 +34,12 @@ const WhyChooseUs = () => {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full text-primary-text">
           <div className="mt-8 md:mt-0 ">
-            <h1 className="text-primary-text text-[20px] font-semibold md:text-[30px]">
+            <h1 className="text-[20px] font-semibold md:text-[30px]">
               Why Choose Us
             </h1>
-            <p className="text-[15px] text-primary-text leading-7 mt-1 lg:text-base ">
+            <p className="text-[15px] leading-6 mt-1 lg:text-base ">
               As the complexity of buildings to increase, the field of
               architecture.
             </p>
@@ -50,10 +50,10 @@ const WhyChooseUs = () => {
                 <SiGoogletagmanager className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
               <div className="mt-2">
-                <h3 className="text-[15px]  text-primary-text font-semibold mb-1">
+                <h3 className="text-[15px] font-semibold mb-1">
                   Property Management
                 </h3>
-                <h1 className="text-[15px] text-secondary leading-7 lg:text-base">
+                <h1 className="text-[15px] leading-6">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Fugiat quam dolorum.
                 </h1>
@@ -64,10 +64,10 @@ const WhyChooseUs = () => {
                 <AiFillPropertySafety className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
               <div className="mt-2">
-                <h3 className="text-[15px] text-primary-text font-semibold mb-1">
+                <h3 className="text-[15px] font-semibold mb-1">
                   Mortgage Services
                 </h3>
-                <h1 className="text-[15px] text-secondary leading-7 lg:text-base ">
+                <h1 className="text-[15px] leading-6 ">
                   Nullam sollicitudin blandit eros eu pretium. Nullam maximus
                   ultricies auctor.
                 </h1>
@@ -78,10 +78,10 @@ const WhyChooseUs = () => {
                 <RiCurrencyFill className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
               <div className="mt-2">
-                <h3 className="text-[15px] text-primary-text font-semibold mb-1">
+                <h3 className="text-[15px] font-semibold mb-1">
                   Currency Services
                 </h3>
-                <h1 className="text-[15px] text-secondary leading-7 lg:text-base ">
+                <h1 className="text-[15px] leading-6">
                   Fugiat quam dolorum, illo voluptate laboriosam maxime,
                   voluptates odio corrupti.
                 </h1>

@@ -1,5 +1,5 @@
-'use client'
-import React  from "react";
+"use client";
+import React from "react";
 import Image from "next/image";
 import { PropertyCardDetails } from "@/@types";
 import useApiWithSWR from "@/hooks/useApiWithSWR";
@@ -19,11 +19,13 @@ import { LiaBathSolid } from "react-icons/lia";
 import { TbRulerMeasure } from "react-icons/tb";
 import Link from "next/link";
 import WishlistButton from "@/components/profile/profileMenuComponents/wishlist/WishlistButton";
+import useApartmentDetails from "@/hooks/useApartmentDetails";
 
 const PopularProperties: React.FC = () => {
   const { data, isLoading, isError } = useApiWithSWR(
     process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || ""
   );
+  const { handleDetailsClick } = useApartmentDetails();
   const { isAuthenticated } = useAuth();
   const userRole = getUserRole();
 
@@ -38,7 +40,7 @@ const PopularProperties: React.FC = () => {
             Discover Popular Apartments
           </h1>
           <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
-            Voluptates odio corrupti quia quod magnam dignissimos.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
         <h3 className="text-sm text-white inline-block font-dm py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
@@ -84,7 +86,12 @@ const PopularProperties: React.FC = () => {
                     {isAuthenticated && userRole === "Tenant" && (
                       <Tooltip title="Add to favorite" placement="top" arrow>
                         <span>
-                          <WishlistButton property={item} iconColor={{base : "text-white"}} style="bg-primary-text hover:bg-primary-text bg-opacity-90" className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"/>
+                          <WishlistButton
+                            property={item}
+                            iconColor={{ base: "text-white" }}
+                            style="bg-primary-text hover:bg-primary-text bg-opacity-90"
+                            className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"
+                          />
                         </span>
                       </Tooltip>
                     )}
@@ -107,23 +114,17 @@ const PopularProperties: React.FC = () => {
                     <span className="font-light font-dm ml-1">yr</span>
                   </h3>
                   <div className="mt-2">
-                    <Link href={`/listings/apartment-details/${item?.id} `}>
-                      <h1 className="text-[15px] font-semibold group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
-                        {item.name}
-                      </h1>
-                      
-                    </Link>
+                    <h1
+                      className="text-[15px] font-semibold group-hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out"
+                      onClick={() => handleDetailsClick(item?.id)}
+                    >
+                      {item.name}
+                    </h1>
                   </div>
                   <span className="flex gap-1.5 font-roboto font-light text-[13.5px] text-secondary mt-1 ">
-                    <p>
-                      {`${item.location?.city},`}
-                    </p>
-                    <p className="uppercase ">
-                      {`${item.location?.state},`}
-                    </p>
-                    <p className="uppercase">
-                      {item.location?.country}
-                    </p>
+                    <p>{`${item.location?.city},`}</p>
+                    <p className="uppercase ">{`${item.location?.state},`}</p>
+                    <p className="uppercase">{item.location?.country}</p>
                   </span>
                   <div className="flex items-center gap-3 font-normal flex-wrap mt-[5px] text-[13.5px]">
                     <span className="flex items-center gap-1.5">

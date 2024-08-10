@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
+import useApartmentDetails from '@/hooks/useApartmentDetails';
 
 const formatCurrency = (rent_fee: number) => {
     const formatter = new Intl.NumberFormat('en-NG', {
@@ -13,7 +13,7 @@ const formatCurrency = (rent_fee: number) => {
   };
   
 const ApartmentDescription = () => {
-    const { propertyDetails } = useFetchApartmentDetails();
+    const { propertyDetails } = useApartmentDetails();
   const { about, rent_fee, description, year_built, is_occupied} = propertyDetails?.data ?? {};
 
   const formattedRentFee = rent_fee !== undefined ? formatCurrency(rent_fee) : "N/A";

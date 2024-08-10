@@ -52,7 +52,7 @@ const TestimonialCarousel = () => {
                       <h1 className="text-base font-semibold">{item.title}</h1>
                       <BiSolidQuoteAltLeft className="text-[40px] text-custom2 text-opacity-10" />
                     </span>
-                    <p className="text-[15px] text-secondary leading-7 mt-4">{item.comment}</p>
+                    <p className="text-sm text-secondary leading-7 mt-4">{item.comment}</p>
                     <div className="flex items-center gap-1.5 text-amber-500 text-[12px] mt-4">
                       {item.ratings.map((rating, index) => (
                         <article key={`star-${index}`}>{rating}</article>
