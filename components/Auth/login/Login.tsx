@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <section className="text-primary-text font-nunito bg-white">
+    <section className="text-primary-text font-sans bg-white">
       <div className="lg:flex justify-start items-center xl:gap-24">
         <div className="hidden lg:block h-screen  aspect-4/3 max-w-[460px] xl:max-w-[400px]">
           <Image
@@ -46,7 +46,7 @@ const Login = () => {
         <div className="w-full h-[100dvh] flex items-center justify-start ">
           <div className="mx-auto w-[450px] px-5 lg:w-[520px] lg:px-14 xl:mx-0">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-5">
                 <Link href="/">
                   <div className="bg-custom2 p-3 rounded-[40%]">
                     <HiHomeModern className="text-[25px] text-white" />
@@ -54,10 +54,10 @@ const Login = () => {
                 </Link>
               </div>
               <div className="text-center mb-10">
-                <h1 className="text-[25px] font-semibold font-poppins">
+                <h1 className="text-[25px] font-roboto font-semibold">
                   Welcome back!
                 </h1>
-                <p className="text-[15px] font-medium mt-1.5">
+                <p className="text-[15px] font-medium mt-1">
                   Please enter your details
                 </p>
               </div>
@@ -120,7 +120,7 @@ const Login = () => {
                   type="submit"
                   className={`${
                     loginLoading ? "bg-opacity-70" : ""
-                  } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-sm rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out cursor-pointer`}
+                  } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-sm rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
                 >
                   {loginLoading ? (
                     <span className="absolute top-[43%] left-1/2">

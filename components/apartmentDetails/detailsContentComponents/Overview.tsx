@@ -1,11 +1,11 @@
 import React from 'react'
-import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
+import useApartmentDetails from '@/hooks/useApartmentDetails';
 import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 
 const Overview = () => {
-  const { propertyDetails } = useFetchApartmentDetails();
+  const { propertyDetails } = useApartmentDetails();
   const { description, year_built, } = propertyDetails?.data ?? {};
   
   return (

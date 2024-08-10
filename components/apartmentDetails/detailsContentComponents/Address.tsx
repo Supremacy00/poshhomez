@@ -1,10 +1,10 @@
 import React from 'react'
-import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
+import useApartmentDetails from '@/hooks/useApartmentDetails';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Map from '../Map';
 
 const Address = () => {
-    const { propertyDetails } = useFetchApartmentDetails();
+    const { propertyDetails } = useApartmentDetails();
   const { address, location} = propertyDetails?.data ?? {};
   
 

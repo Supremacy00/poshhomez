@@ -38,7 +38,7 @@ const LoginModal: React.FC = () => {
     <article
       className={`${
         isLoginModal ? "block" : "hidden"
-      } font-nunito mx-auto fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text`}
+      } font-sans mx-auto fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text`}
     >
       <div className="flex justify-center items-center">
         <div className="w-full fixed top-12 px-4 md:w-[520px]">
@@ -54,10 +54,10 @@ const LoginModal: React.FC = () => {
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="text-center mb-10">
-                <h1 className="text-[25px] font-semibold font-poppins">
+                <h1 className="text-[25px] font-roboto font-semibold">
                   Welcome back!
                 </h1>
-                <p className="text-[15px] mt-1.5">Please enter your details</p>
+                <p className="text-[15px] mt-1">Please enter your details</p>
               </div>
               <div>
                 {errorMessages.length > 0 && (
@@ -122,7 +122,7 @@ const LoginModal: React.FC = () => {
                   type="submit"
                   className={`${
                     loginLoading ? "bg-opacity-70 " : ""
-                  } relative w-full mt-8 flex justify-center items-center py-7 bg-primary-text text-[14px] rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out cursor-pointer`}
+                  } relative w-full mt-8 flex justify-center items-center py-7 bg-primary-text text-[14px] rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
                 >
                   {loginLoading ? (
                     <span className="absolute top-[43%] left-1/2">

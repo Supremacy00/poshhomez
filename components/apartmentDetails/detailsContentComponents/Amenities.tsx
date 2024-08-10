@@ -1,8 +1,8 @@
 import React from 'react'
-import useFetchApartmentDetails from '@/hooks/useFetchApartmentDetails';
+import useApartmentDetails from '@/hooks/useApartmentDetails';
 
 const Amenities = () => {
-    const { propertyDetails } = useFetchApartmentDetails();
+    const { propertyDetails } = useApartmentDetails();
     const { amenities } = propertyDetails?.data ?? {};
   return (
     <section className="text-primary-text bg-white rounded-xl shadow-2xl p-6 mt-8 xl:p-8">

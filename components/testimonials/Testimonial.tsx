@@ -1,7 +1,6 @@
 import React from "react";
 import TestimonialCarousel from "./TestimonialCarousel";
 
-
 const Testimonial = () => {
   return (
     <section className="font-nunito bg-custom4 text-primary-text py-16 lg:py-32">
@@ -12,7 +11,7 @@ const Testimonial = () => {
               People Love Living with PoshHomez
             </h1>
             <p className="text-[15px] mt-1 lg:mt-0 lg:text-base">
-              Aliquam lacinia diam quis lacus euismod
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
             <div className="mt-8 xs:flex items-center gap-10 lg:mt-16">
               <div>
