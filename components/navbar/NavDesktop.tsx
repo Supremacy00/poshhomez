@@ -39,7 +39,7 @@ const NavDesktop = () => {
                 </div>
               </Link>
             </div>
-            <ul className="flex items-center space-x-10 text-sm xl:space-x-12">
+            <ul className="flex items-center font-medium space-x-10 text-sm xl:space-x-12">
               {navData.map((item, index) => (
                 <Link href={item.link} key={index}>
                   <li

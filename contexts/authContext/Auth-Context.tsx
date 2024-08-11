@@ -83,7 +83,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     shouldRetryOnError: false,
     revalidateOnFocus: false,
     refreshInterval: 600000,
-    loadingTimeout: 10000
   });
 
   const signUp = async (formData: SignUpCredentials) => {

@@ -137,14 +137,14 @@ const Listings: React.FC = () => {
                         {item.name}
                       </h1>
                     </div>
-                    <span className="flex gap-1.5 font-roboto text-[13.5px] text-secondary mt-1.5  ">
-                      <p className="font-dm font-light">
+                    <span className="flex gap-1.5 font-dm font-light text-[13.5px] text-secondary mt-1.5  ">
+                      <p>
                         {`${item.location?.city},`}
                       </p>
-                      <p className="font-dm font-light">
+                      <p className="uppercase">
                         {`${item.location?.state},`}
                       </p>
-                      <p className="font-dm uppercase font-light">
+                      <p className="uppercase">
                         {item.location?.country}
                       </p>
                     </span>

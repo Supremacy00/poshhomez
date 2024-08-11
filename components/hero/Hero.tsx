@@ -1,9 +1,10 @@
+'use client'
 import React from "react";
 import { GiFlowerStar, GiSpookyHouse } from "react-icons/gi";
 import Image from "next/image";
 import ExclusiveAgents from "./ExclusiveAgents";
 import Search from "../search/Search";
-import AdvanceSearch from "../search/AdvanceSearch";
+import CountUp from 'react-countup';
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import HeroPhoto from "./HeroPhoto";
 import Link from "next/link";
@@ -24,7 +25,7 @@ const Hero = () => {
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
                   <h1 className="text-[25px] font-semibold md:text-[30px]">
-                    50K+
+                  <CountUp start={0} end={500} suffix="K+"/>
                   </h1>
                   <p className="text-sm font-medium">Renters</p>
                 </div>
@@ -33,7 +34,7 @@ const Hero = () => {
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
                   <h1 className="text-[25px] font-semibold md:text-[30px]">
-                    10K+
+                  <CountUp start={0} end={200} suffix="K+" />
                   </h1>
                   <p className="text-sm font-medium">Properties</p>
                 </div>
