@@ -25,6 +25,7 @@ const config = {
       colors: {
         "primary-text": "#242424",
         secondary: "#646464",
+        "custom-white": "#FFFFFFF2",
         custom1: "#CCCCCC",
         custom2: "#FD5631",
         custom3: "#181A20D8",

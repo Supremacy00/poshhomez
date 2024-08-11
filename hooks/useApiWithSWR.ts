@@ -50,7 +50,9 @@ const useApiWithSWR = (
 
   const { data, error } = useSWR<PaginatedApiResponse, Error>(url, fetcher, {
     revalidateOnMount: true,
+    shouldRetryOnError: false,
     revalidateOnFocus: false,
+    refreshInterval: 600000,
     ...config,
   });
 

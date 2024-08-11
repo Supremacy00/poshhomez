@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import NavMobile from "./NavMobile";
 import NavDesktop from "./NavDesktop";

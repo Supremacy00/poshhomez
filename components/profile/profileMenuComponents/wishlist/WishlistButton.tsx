@@ -46,7 +46,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
       className={`${className} ${localIsFavorite ? style : ""}`}
     >
       {localIsFavorite ? (
-        <IoMdHeart className={`text-red-600`} />
+        <IoMdHeart className={`text-red-600 transition-transform scale-125 duration-300 ease-in-out`} />
       ) : (
         <IoMdHeartEmpty className={getIconColorClass()} />
       )}

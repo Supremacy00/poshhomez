@@ -5,6 +5,7 @@ import React, {
   ReactNode,
   useState,
   useEffect,
+  useRef,
 } from "react";
 import useSWR from "swr";
 import axios from "axios";
@@ -48,6 +49,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loginLoading, setLoginLoading] = useState(false);
   const [signupLoading, setSignupLoading] = useState(false);
   const [isAuthChecking, setIsAuthChecking] = useState(true);
+  const toastIdRef = useRef<string | number | null>(null);
 
   const fetchUser = async () => {
     try {
@@ -58,12 +60,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        timeout: 10000,
       });
 
       return response.data;
     } catch (error) {
       console.error("Error fetching user data", error);
+      if (toastIdRef.current === null) {
+        toastIdRef.current = toast.error("Network error: Unable to fetch user data.");
+      }
       return null;
     } finally {
       setIsAuthChecking(false);

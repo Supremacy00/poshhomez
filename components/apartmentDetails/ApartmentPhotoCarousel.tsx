@@ -63,7 +63,7 @@ const ApartmentPhotoCarousel: React.FC<ApartmentPhotoCarouselProps> = ({
         <PrevButton onClick={previousSlide} />
         <NextButton onClick={nextSlide} />
       </div>
-      <div className="w-full h-full absolute top-0 bg-gradient-to-t from-[#070707]/50" />
+      <div className="w-full h-full absolute top-0 bg-gradient-to-t from-[#070707]/80" />
     </section>
   );
 };

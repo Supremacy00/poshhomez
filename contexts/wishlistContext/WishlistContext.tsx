@@ -177,7 +177,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     } else {
       setWishlist([]);
     }
-  }, [userRole]);
+  }, []);
 
   const value = useMemo(
     () => ({

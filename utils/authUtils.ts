@@ -1,3 +1,4 @@
+'use client'
 import { jwtDecode, JwtPayload } from "jwt-decode";
 
 interface CustomJwtPayload extends JwtPayload {

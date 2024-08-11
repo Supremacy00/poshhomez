@@ -3,13 +3,18 @@ import { RiDragMoveFill } from "react-icons/ri";
 
 const TourSchedule = () => {
   return (
-      <div className="text-primary-text bg-white rounded-xl shadow-2xl p-6 xl:p-8">
+      <div className="text-primary-text bg-white rounded-xl shadow-2xl lg:sticky top-[90px] p-6 xl:p-8">
         <div>
           <h2 className="text-[20px] font-semibold mb-2">Schedule a tour</h2>
           <p className="text-[15px]">Choose your preferred day</p>
-          <button className="text-[13px] font-semibold px-10 py-3 mt-5 border-[1px] border-primary-text rounded-xl bg-custom4 cursor-text">
+          <div className="flex justify-between items-center gap-1 flex-wrap">
+          <button className="text-[13px] font-semibold py-3 px-6 mt-5  border-[1px] border-primary-text rounded-xl bg-custom4 cursor-text ss:px-8 xs:px-10">
             In Person
           </button>
+          <button className="text-[13px] text-white font-semibold py-3.5 px-6 mt-5 bg-primary-text hover:bg-custom3 transition-colors duration-300 ease-in-out rounded-xl ss:px-8 xs:px-10">
+            Rent Now
+          </button>
+          </div>
         </div>
         <div className="mt-5 font">
           <div className="w-full">

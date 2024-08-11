@@ -60,7 +60,7 @@ const PopularProperties: React.FC = () => {
             return (
               <article key={item.id} className="group">
                 <div className="relative overflow-hidden">
-                  <div className="relative rounded-md overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
+                  <div className="relative rounded-md overflow-hidden w-full h-full bg-custom4 aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
                     <Image
                       src={imageUrl}
                       alt={item.name}
@@ -121,7 +121,7 @@ const PopularProperties: React.FC = () => {
                       {item.name}
                     </h1>
                   </div>
-                  <span className="flex gap-1.5 font-roboto font-light text-[13.5px] text-secondary mt-1 ">
+                  <span className="flex gap-1.5 font-dm font-light text-[13.5px] text-secondary mt-1 tracking-wider ">
                     <p>{`${item.location?.city},`}</p>
                     <p className="uppercase ">{`${item.location?.state},`}</p>
                     <p className="uppercase">{item.location?.country}</p>
