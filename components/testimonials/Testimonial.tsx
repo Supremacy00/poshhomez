@@ -3,7 +3,7 @@ import TestimonialCarousel from "./TestimonialCarousel";
 
 const Testimonial = () => {
   return (
-    <section className="font-nunito bg-custom4 text-primary-text py-16 lg:py-32">
+    <section className="bg-custom4 text-primary-text py-16 lg:py-32">
       <div className="mx-auto px-4 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div className="w-full lg:flex items-center gap-5">
           <div className="text-primary-text lg:w-[50%] xl:w-[65%]">

@@ -31,17 +31,17 @@ const LeftNavMobile = () => {
       <nav
         className={`${
           isLeftNav ? "transform -translate-x-0" : "transform -translate-x-full"
-        } font-nunito fixed top-0 left-0 h-[100dvh] w-[390px] max-w-full bg-white text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
+        } fixed top-0 left-0 h-[100dvh] w-[390px] max-w-full bg-white text-primary-text z-50 overflow-y-hidden transition-all duration-500 ease-in-out`}
         ref={modalRef}
       >
         <section>
-          <div className="bg-white w-full flex justify-between flex-wrap items-center border-b-[1px] py-2.5 px-5">
+          <div className="bg-white w-full flex justify-between items-center gap-2 flex-wrap border-b-[1px] py-2.5 px-5">
             <Link href="/" onClick={handleIsLeftNav}>
               <div className="flex items-center gap-2">
                 <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
                   <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
                 </div>
-                <h3 className="text-[20px] font-sans font-semibold">
+                <h3 className="text-[20px] font-semibold">
                   pos<span className="text-custom2">H</span>
                   <span className="-ml-2">
                     <span className="text-custom2">H</span>omez
@@ -57,7 +57,7 @@ const LeftNavMobile = () => {
               <IoClose className="text-xl" />
             </div>
           </div>
-          <div className="px-5 pt-5 font-sans">
+          <div className="px-5 pt-5">
             {!isAuthenticated && (
               <div className="text-[15px] flex justify-between items-center gap-2.5">
                 <Link

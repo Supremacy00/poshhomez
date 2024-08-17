@@ -31,9 +31,9 @@ const Login = () => {
   };
 
   return (
-    <section className="text-primary-text font-sans bg-white">
+    <section className="text-primary-text bg-white">
       <div className="lg:flex justify-start items-center xl:gap-24">
-        <div className="hidden lg:block h-screen  aspect-4/3 max-w-[460px] xl:max-w-[400px]">
+        <div className="hidden lg:block h-screen  aspect-3/2 max-w-[460px] xl:max-w-[400px]">
           <Image
             src="/assets/images/login-image.jpg"
             alt="Login Image"
@@ -54,10 +54,10 @@ const Login = () => {
                 </Link>
               </div>
               <div className="text-center mb-10">
-                <h1 className="text-[25px] font-roboto font-semibold">
+                <h1 className="text-[25px] font-medium">
                   Welcome back!
                 </h1>
-                <p className="text-[15px] font-medium mt-1">
+                <p className="text-[15px] font-normal mt-1">
                   Please enter your details
                 </p>
               </div>
@@ -120,7 +120,7 @@ const Login = () => {
                   type="submit"
                   className={`${
                     loginLoading ? "bg-opacity-70" : ""
-                  } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-sm rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
+                  } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-sm rounded-full overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
                 >
                   {loginLoading ? (
                     <span className="absolute top-[43%] left-1/2">
@@ -133,15 +133,15 @@ const Login = () => {
                       />
                     </span>
                   ) : (
-                    <span className="absolute text-[14px] font-medium">
+                    <span className="absolute text-[14px]">
                       Log In
                     </span>
                   )}
                 </button>
-                <div className="text-sm flex items-center justify-center gap-1.5 mt-5">
-                  <h3>{`Don't have an account?`}</h3>
+                <div className="text-sm flex items-center justify-center flex-wrap gap-1.5 mt-5">
+                  <h3>Don't have an account?</h3>
                   <Link href="/auth/signup">
-                    <button className="text-[14px] font-medium underline underline-offset-2">
+                    <button className="font-medium underline underline-offset-2">
                       Sign up
                     </button>
                   </Link>

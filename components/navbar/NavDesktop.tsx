@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useEffect } from "react";
 import { navData } from "../data";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -12,6 +12,7 @@ import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import AuthenticatedNavProfile from "../profile/profileAuth/AuthenticatedNavProfile";
 import { useContentMenu } from "../profile/ProfileContentMenuContext";
+import { motion, useScroll, useSpring } from "framer-motion"
 
 const NavDesktop = () => {
   const pathname = usePathname();
@@ -20,13 +21,26 @@ const NavDesktop = () => {
   const userRole = getUserRole();
   const { handleContentMenu } = useContentMenu();
 
+  const { scrollYProgress } = useScroll()
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
   return (
-      <nav className="bg-custom-white w-full border-b-[1px] border-b-custom4  hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
+    <><motion.div
+    className="w-full py-[2px] lg:py-[3px] bg-custom2 fixed top-0 left-0 z-50"
+    style={{ scaleX }}
+  />
+  
+      <nav className="bg-custom-white w-full border-b-[1px] border-b-custom4 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
         <div className="px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-12 xl:gap-16">
               <Link href="/">
-                <div className="font-noto font-semibold flex items-center gap-2">
+                <div className="font-semibold flex items-center gap-2">
                   <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
                     <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
                   </div>
@@ -99,6 +113,7 @@ const NavDesktop = () => {
           <RightNav />
         </div>
       </nav>
+      </>
   );
 };
 

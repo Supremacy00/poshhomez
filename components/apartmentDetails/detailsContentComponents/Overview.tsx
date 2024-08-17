@@ -16,27 +16,27 @@ const Overview = () => {
               <span className="border-[1px] border-custom11 p-3.5 text-[22px] rounded-xl inline-block">
                 <IoBedOutline />
               </span>
-              <div>
-                <h5 className="text-[15px] font-semibold">Bedroom</h5>
-                <p className="text-sm">{description?.bedroom_count}</p>
+              <div className="text-[14.5px]">
+                <h5 className="font-semibold">Bedroom</h5>
+                <p>{description?.bedroom_count}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="border-[1px] border-custom11 p-3.5 text-[22px] rounded-xl inline-block">
                 <LiaBathSolid />
               </span>
-              <div>
-                <h5 className="text-[15px] font-semibold">Bath</h5>
-                <p className="text-sm">{description?.bathroom_count}</p>
+              <div className="text-[14.5px]">
+                <h5 className="font-semibold">Bath</h5>
+                <p>{description?.bathroom_count}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="border-[1px] border-custom11 p-3.5 text-[22px] rounded-xl inline-block">
                 <MdOutlineCalendarMonth />
               </span>
-              <div>
-                <h5 className="text-[15px] font-semibold">Year Built</h5>
-                <p className="text-sm">{year_built}</p>
+              <div className="text-[14.5px]">
+                <h5 className="font-semibold">Year Built</h5>
+                <p>{year_built}</p>
               </div>
             </div>
           </div>

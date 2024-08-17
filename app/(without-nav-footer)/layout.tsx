@@ -1,11 +1,19 @@
 import { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/authContext/Auth-Context";
 import { ModalProvider } from "@/contexts/modalContext/ModalContext";
 import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -26,11 +34,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${poppins.className} ${inter.className}`}>
         <ModalProvider>
           <AuthProvider>
             {children}
-            <Toaster className="px-5" position="top-right" richColors duration={3500} />
+            <Toaster
+              className="px-5"
+              position="top-right"
+              richColors
+              duration={3500}
+            />
           </AuthProvider>
         </ModalProvider>
       </body>

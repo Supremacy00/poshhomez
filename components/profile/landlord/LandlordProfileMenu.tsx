@@ -44,25 +44,29 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
   ));
 
   return (
-    <section className={`${isOpen ? "py-[25px]" : ""} font-nunito`}>
+    <section className={`${isOpen ? "py-[25px]" : ""}`}>
       <section
         className={`${
           isOpen ? "bg-white w-[270px] shadow-2xl rounded-xl" : ""
         } py-5`}
       >
         <div className="flex items-center gap-2 px-5 ">
-          <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">
-            <MemoizedImage />
+          <div>
+            <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">
+              <MemoizedImage />
+            </div>
           </div>
-          <div className="w-full">
-            <h1 className="text-[15px] text-primary-text font-semibold">
+          <div>
+            <h1 className="text-[15px] text-primary-text font-semibold truncate max-w-[180px] whitespace-nowrap overflow-hidden">
               {user?.name}
             </h1>
-            <p className="text-[15px] text-secondary italic">{formatedUserRole}</p>
+            <p className="text-[13.5px] text-secondary italic font-light">
+              {formatedUserRole}
+            </p>
           </div>
         </div>
         <div className="w-fill h-[1px] bg-gray-200 mt-4"></div>
-        <div className="mt-1.5 px-1 font-medium">
+        <div className="mt-1.5 px-1 font-normal">
           <Link
             href="/account/profile"
             onClick={() => {
@@ -71,7 +75,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
           >
             <div className="group flex items-center gap-2 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out cursor-pointer">
               <BsPerson className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">Personal Info</h1>
+              <h1 className="text-[14.5px]">Personal Info</h1>
             </div>
           </Link>
           <Link
@@ -82,7 +86,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <VscLock className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">Password & Security</h1>
+              <h1 className="text-[14.5px]">Password & Security</h1>
             </div>
           </Link>
           <Link
@@ -93,7 +97,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <GoHome className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">My Properties</h1>
+              <h1 className="text-[14.5px]">My Properties</h1>
             </div>
           </Link>
           <Link
@@ -104,7 +108,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <HiOutlineStar className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">Reviews</h1>
+              <h1 className="text-[14.5px]">Reviews</h1>
             </div>
           </Link>
           <Link
@@ -115,7 +119,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
           >
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <GoBell className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px]">Notifications</h1>
+              <h1 className="text-[14.5px]">Notifications</h1>
             </div>
           </Link>
           <div className="w-fill h-[1px] bg-gray-200 my-1.5"></div>
@@ -128,7 +132,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
             >
               <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
                 <IoHelpCircleOutline className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-                <h1 className="text-[15px]">Help</h1>
+                <h1 className="text-[14.5px]">Help</h1>
               </div>
             </Link>
             <div
@@ -136,7 +140,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
               onClick={handleLogout}
             >
               <IoLogOutOutline className="text-[20px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[15px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out">
+              <h1 className="text-[14.5px] text-custom2 group-hover:text-white transition-colors duration-300 ease-in-out">
                 Sign Out
               </h1>
             </div>

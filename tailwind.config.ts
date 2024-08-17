@@ -91,6 +91,19 @@ const config = {
     require("tailwindcss-animate"),
     require("tailwindcss-aspect-ratio"),
     require("@tailwindcss/forms"),
+    require("tailwind-scrollbar"),
+    function ({ addUtilities }: { addUtilities: any }) {
+      const newUtilities = {
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+        ".no-scrollbar": {
+          "-ms-overflow-style": "none",
+          "scrollbar-width": "none",
+        },
+      };
+      addUtilities(newUtilities);
+    },
   ],
 } satisfies Config;
 

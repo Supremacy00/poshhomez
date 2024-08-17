@@ -52,12 +52,12 @@ const PasswordAndSecurity: React.FC = () => {
     }
   };
   return (
-    <section className="text-primary-text font-noto pb-5">
+    <section className="text-primary-text pb-5">
       <div>
         <h1 className="text-[22px] font-semibold text-primary-text mb-5 lg:text-[28px]">
           Password & Security
         </h1>
-        <p className="text-base text-secondary font-light mb-5">
+        <p className="text-[15px] text-secondary font-light mb-5">
           Manage your password settings and secure your account.
         </p>
       </div>
@@ -76,7 +76,7 @@ const PasswordAndSecurity: React.FC = () => {
         <h3 className="text-[18px] font-semibold">Password</h3>
         <div className="mt-5 xs:flex items-center gap-5 ">
           <div className="w-full">
-            <label htmlFor="Password" className="text-base">
+            <label htmlFor="Password" className="text-[15px]">
               Current Password
             </label>
             <div className="relative">
@@ -86,7 +86,7 @@ const PasswordAndSecurity: React.FC = () => {
                 {...register("currentPassword", {
                   required: "Current password is required",
                 })}
-                className="w-full mt-1.5 py-2.5 pr-[45px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
+                className="w-full mt-1.5 py-2.5 pr-[45px] text-[15px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
               <button
                 type="button"
@@ -109,7 +109,7 @@ const PasswordAndSecurity: React.FC = () => {
         </div>
         <div className="mt-7 xs:flex items-center gap-5 xs:mt-4">
           <div className="w-full">
-            <label htmlFor="Password" className="text-base">
+            <label htmlFor="Password" className="text-[15px]">
               New Password
             </label>
             <div className="relative">
@@ -119,7 +119,7 @@ const PasswordAndSecurity: React.FC = () => {
                 {...register("newPassword", {
                   required: "New password is required",
                 })}
-                className="w-full mt-1.5 py-2.5 pr-[45px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
+                className="w-full mt-1.5 py-2.5 pr-[45px] text-[15px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
               <button
                 type="button"
@@ -135,7 +135,7 @@ const PasswordAndSecurity: React.FC = () => {
             </div>
           </div>
           <div className="mt-5 w-full xs:mt-0">
-            <label htmlFor="Password" className="text-base">
+            <label htmlFor="Password" className="text-[15px]">
               Confirm Password
             </label>
             <div className="relative">
@@ -145,7 +145,7 @@ const PasswordAndSecurity: React.FC = () => {
                 {...register("confirmPassword", {
                   required: "Confirm password is required",
                 })}
-                className="w-full mt-1.5 py-2.5 pr-[45px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
+                className="w-full mt-1.5 py-2.5 pr-[45px] text-[15px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg outline-none"
               />
               <button
                 type="button"
@@ -165,7 +165,7 @@ const PasswordAndSecurity: React.FC = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`${loading ? "text-white bg-custom2" : " hover:text-white" } text-base text-custom2 font-semibold px-7 py-2.5 flex justify-center items-center gap-1.5 border-[1px] border-custom2 hover:bg-custom2 rounded-lg transition-colors duration-300 ease-in-out`}
+            className={`${loading ? "text-white bg-custom2" : " hover:text-white" } text-[15px] text-custom2 font-semibold px-7 py-2.5 flex justify-center items-center gap-1.5 border-[1px] border-custom2 hover:bg-custom2 rounded-lg transition-colors duration-300 ease-in-out`}
           >
             {loading && <ClipLoader color="#ffffff" size={19} />}
             Update Password
@@ -174,7 +174,7 @@ const PasswordAndSecurity: React.FC = () => {
       </form>
       <div className="w-full h-[1px] bg-custom11 mt-10"></div>
       <div className="mt-7">
-        <h1 className="text-[20px] font-semibold">{`Where you're signed in on`}</h1>
+        <h1 className="text-[20px] font-semibold">Where you're signed in on</h1>
       </div>
     </section>
   );

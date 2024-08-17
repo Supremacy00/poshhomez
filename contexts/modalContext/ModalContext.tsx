@@ -13,6 +13,7 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
   const [isRightNav, setIsRightNav] = useState(false);
   const [isLoginModal, setIsLoginModal] = useState(false);
   const [isAdvanceSearch, setIsAdvanceSearch] = useState(false);
+  const [isModal, setIsModal] = useState(false);
 
   const handleIsLeftNav = useCallback(() => {
     setIsLeftNav(!isLeftNav);
@@ -26,6 +27,11 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     setIsLoginModal(!isLoginModal);
   }, [isLoginModal]);
 
+  const handleIsModal = useCallback(() => {
+    setIsModal(!isModal);
+    console.log("is modal clicked")
+  }, [isModal]);
+
   const handleIsAdvanceSearch = useCallback(() => {
     setIsAdvanceSearch(!isAdvanceSearch);
   }, [isAdvanceSearch]);
@@ -38,11 +44,14 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
       setIsRightNav,
       isLoginModal,
       setIsLoginModal,
+      isModal,
+      setIsModal,
       isAdvanceSearch,
       setIsAdvanceSearch,
       handleIsLeftNav,
       handleIsRightNav,
       handleIsLoginModal,
+      handleIsModal,
       handleIsAdvanceSearch,
     };
   }, [
@@ -57,6 +66,7 @@ export const ModalProvider: React.FC<ModalProviderProps> = ({ children }) => {
     handleIsLeftNav,
     handleIsRightNav,
     handleIsLoginModal,
+    handleIsModal,
     handleIsAdvanceSearch,
   ]);
 

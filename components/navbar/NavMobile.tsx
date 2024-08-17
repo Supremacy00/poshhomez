@@ -25,7 +25,7 @@ const NavMobile = () => {
             <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
               <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
             </div>
-            <h3 className="text-[20px] font-sans font-semibold">
+            <h3 className="text-[20px] font-semibold">
               pos<span className="text-custom2">H</span>
               <span className="-ml-2">
                 <span className="text-custom2">H</span>omez

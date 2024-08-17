@@ -12,11 +12,14 @@ interface ModalContextProps {
   setIsRightNav: React.Dispatch<React.SetStateAction<boolean>>;
   isLoginModal: boolean;
   setIsLoginModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isModal: boolean;
+  setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
   isAdvanceSearch: boolean;
   setIsAdvanceSearch: React.Dispatch<React.SetStateAction<boolean>>;
   handleIsLeftNav: () => void;
   handleIsRightNav: () => void;
   handleIsLoginModal: () => void;
+  handleIsModal: () => void;
   handleIsAdvanceSearch: () => void;
 }
 

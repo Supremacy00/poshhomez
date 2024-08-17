@@ -11,23 +11,23 @@ const Search: React.FC = () => {
     useModal();
 
   return (
-    <section className="font-nunito text-primary-text mt-14 xl:max-w-[750px]">
+    <section className="text-primary-text mt-14 xl:max-w-[750px]">
       <div className="w-28 text-center rounded-t-xl bg-white text-sm mt-8">
-        <h3 className="border-b-[1px] border-b-custom5 mx-6 py-3.5">Rent</h3>
+        <h3 className="border-b-[1px] border-b-custom5 mx-6 py-3.5 text-[13px] font-medium">Rent</h3>
       </div>
       <div className="w-full bg-white p-5 rounded-tr-xl rounded-b-xl shadow-sm">
         <div className="md:flex justify-between items-center gap-6">
-          <div className="relative font-dm w-full">
+          <div className="relative w-full">
             <CiHome className="absolute bottom-[37%] left-[17px] z-10 text-base" />
             <input
               type="text"
               name="rent"
               id="rent"
               placeholder="Enter Keyword"
-              className="relative w-full py-[16px] px-12 bg-custom4 rounded-xl text-sm placeholder-primary-text outline-none ring-transparent focus:ring-transparent border-0"
+              className="relative w-full py-[16px] px-12 bg-custom4 rounded-xl text-[13px]  placeholder-primary-text outline-none ring-transparent focus:ring-transparent border-0"
             />
           </div>
-          <div className="w-full py-[17px] bg-custom4 rounded-xl text-[15px] text-primary-text font-dm mt-4 md:w-[60%] md:mt-0 lg:w-[100%]">
+          <div className="w-full py-[17px] bg-custom4 rounded-xl text-[13px] text-primary-text mt-4 md:w-[60%] md:mt-0 lg:w-[100%]">
             <span className="flex justify-between items-center px-5 ">
               <p>type</p>
               <IoMdArrowDropdown className="text-lg -mr-1.5" />
@@ -39,7 +39,7 @@ const Search: React.FC = () => {
               onClick={handleIsAdvanceSearch}
             >
               <VscSettings className="rotate-90 lg:text-[17px]" />
-              <h3 className="text-sm font-medium">Advanced</h3>
+              <h3 className="text-[13px] font-medium">Advanced</h3>
             </div>
             <button className="p-4 bg-custom2 hover:bg-custom6 rounded-xl text-[20px] text-white transition-colors duration-300 ease-in-out">
               <CiSearch />

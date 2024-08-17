@@ -1,22 +1,48 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { initializePayment } from "@/service/paystackService";
+import { useParams } from "next/navigation";
 import { RiDragMoveFill } from "react-icons/ri";
+import { toast } from "sonner";
 
 const TourSchedule = () => {
+  const { apartmentid } = useParams<{ apartmentid: string }>();
+  const [isPayment, setIsPayment] = useState<boolean>(false);
+
+  const handlePayment = async () => {
+    setIsPayment(true);
+    if (!apartmentid) {
+      toast.error("Property ID not found");
+      setIsPayment(false);
+      return;
+    }
+    const paymentData = await initializePayment(apartmentid);
+    if (paymentData) {
+      window.location.href = paymentData.payment_url;
+    } else {
+      setIsPayment(false);
+    }
+  };
+
   return (
+    <>
       <div className="text-primary-text bg-white rounded-xl shadow-2xl lg:sticky top-[90px] p-6 xl:p-8">
         <div>
           <h2 className="text-[20px] font-semibold mb-2">Schedule a tour</h2>
           <p className="text-[15px]">Choose your preferred day</p>
           <div className="flex justify-between items-center gap-1 flex-wrap">
-          <button className="text-[13px] font-semibold py-3 px-6 mt-5  border-[1px] border-primary-text rounded-xl bg-custom4 cursor-text ss:px-8 xs:px-10">
-            In Person
-          </button>
-          <button className="text-[13px] text-white font-semibold py-3.5 px-6 mt-5 bg-primary-text hover:bg-custom3 transition-colors duration-300 ease-in-out rounded-xl ss:px-8 xs:px-10">
-            Rent Now
-          </button>
+            <button className="text-[13px] font-semibold py-3 px-6 mt-5  border-[1px] border-primary-text rounded-xl bg-custom4 cursor-text ss:px-8 xs:px-10">
+              In Person
+            </button>
+            <button
+              className="text-[13px] text-white font-semibold py-3.5 px-6 mt-5 bg-primary-text hover:bg-custom3 transition-colors duration-300 ease-in-out rounded-xl ss:px-8 xs:px-10"
+              onClick={handlePayment}
+            >
+              {isPayment ? "Renting..." : "Rent Now"}
+            </button>
           </div>
         </div>
-        <div className="mt-5 font">
+        <div className="mt-5">
           <div className="w-full">
             <input
               type="text"
@@ -68,18 +94,17 @@ const TourSchedule = () => {
               id=""
               className="w-4 h-4 border border-custom10 rounded bg-gray-100 focus:ring-transparent text-primary-text checked:bg-primary-text"
             />
-            <p className="text-[15px]">
-              By submitting I agree to Terms of Use.
-            </p>
+            <p className="text-sm">By submitting I agree to Terms of Use.</p>
           </div>
           <div className="w-full mt-8">
             <button className=" w-full py-4 bg-custom2 bg-cus rounded-xl text-white font-medium flex justify-center items-center gap-3 ">
               <span className="text-[15px]">Submit a Tour Request</span>
-              <RiDragMoveFill className="text-[22px]"/>
+              <RiDragMoveFill className="text-[22px]" />
             </button>
           </div>
         </div>
       </div>
+    </>
   );
 };
 

@@ -8,7 +8,7 @@ const PageLoader: React.FC = () => {
 
   return (
     <div className="fixed top-0 right-0 left-0 z-50 bg-white w-full h-[100dvh] flex justify-center items-center">
-      {hasMounted && <PuffLoader size={70} speedMultiplier={1.35} color="#EB6753"/> }
+      {hasMounted && <PuffLoader size={60} speedMultiplier={1.35} color="#EB6753"/> }
      
     </div>
   );

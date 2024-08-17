@@ -63,10 +63,10 @@ const CustomerReviews = () => {
                 </div>
                 <div className="w-full">
                   <span className="flex justify-between items-center">
-                    <h4 className="text-[15px] font-semibold">{reviews.name}</h4>
+                    <h4 className="text-[15px] font-medium">{reviews.name}</h4>
                     <span className={`${reviews.color ? "text-custom6" : "text-gray-200"} text-[27px]`}>{reviews.icon}</span>
                   </span>
-                  <p className="text-[13px] text-secondary mt-0.5 font-light tracking-wide leading-5 text-ellipsis italic lg:text-[12.5px] lg:mr-7">{reviews.comment}</p>
+                  <p className="text-[13px] text-secondary mt-0.5 font-light tracking-wide leading-5 text-ellipsis italic line-clamp-3 lg:text-[12.5px] lg:mr-7">{reviews.comment}</p>
                 </div>
                 <div className={`${reviews.color ? "bg-custom6" : "bg-gray-200"} absolute top-0 left-0  h-full rounded-full w-2`}></div>
               </div>

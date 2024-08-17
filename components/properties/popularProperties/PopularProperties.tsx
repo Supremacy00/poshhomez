@@ -17,6 +17,7 @@ import { BsPlusLg } from "react-icons/bs";
 import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { TbRulerMeasure } from "react-icons/tb";
+import { FiCameraOff } from "react-icons/fi";
 import Link from "next/link";
 import WishlistButton from "@/components/profile/profileMenuComponents/wishlist/WishlistButton";
 import useApartmentDetails from "@/hooks/useApartmentDetails";
@@ -33,17 +34,17 @@ const PopularProperties: React.FC = () => {
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
 
   return (
-    <section className="mx-auto font-nunito px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:py-24 xl:max-w-[1200px] xxl:px-0">
+    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:py-24 xl:max-w-[1200px] xxl:px-0">
       <div className="lg:flex justify-between items-center">
         <div>
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
-            Discover Popular Apartments
+            Popular Apartments
           </h1>
-          <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
+          <p className="text-sm text-primary-text mt-1 lg:mt-0 lg:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>
-        <h3 className="text-sm text-white inline-block font-dm py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
+        <h3 className="text-sm text-white inline-block py-2.5 px-5 rounded-lg mt-8 bg-primary-text lg:mt-0">
           For Rent
         </h3>
       </div>
@@ -56,19 +57,25 @@ const PopularProperties: React.FC = () => {
           !isError &&
           properties.map((item) => {
             const photoObject = item.photos?.[1] as { secure_url?: string };
-            const imageUrl = photoObject?.secure_url || defaultFallbackUrl;
+            const imageUrl = photoObject?.secure_url || "";
             return (
               <article key={item.id} className="group">
                 <div className="relative overflow-hidden">
                   <div className="relative rounded-md overflow-hidden w-full h-full bg-custom4 aspect-3/2 xs:h-[180px] md:h-[250px] lg:h-[220px]">
-                    <Image
-                      src={imageUrl}
-                      alt={item.name}
-                      width={1000}
-                      height={1000}
-                      priority
-                      className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
-                    />
+                    {imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={item.name}
+                        width={1000}
+                        height={1000}
+                        priority
+                        className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex justify-center items-center bg-gray-300">
+                        <FiCameraOff className="text-gray-400 text-5xl" />
+                      </div>
+                    )}
                   </div>
                   <div
                     className={`${
@@ -78,7 +85,7 @@ const PopularProperties: React.FC = () => {
                     } text-white bg-custom2 flex items-center gap-1.5 px-3.5 py-1.5 rounded-md`}
                   >
                     <MdSensorOccupied className="text-[12px]" />
-                    <h3 className="text-[12px] uppercase font-dm font-medium">
+                    <h3 className="text-[12px] uppercase font-medium">
                       {item.is_occupied ? "Occupied" : ""}
                     </h3>
                   </div>
@@ -90,7 +97,7 @@ const PopularProperties: React.FC = () => {
                             property={item}
                             iconColor={{ base: "text-white" }}
                             style="bg-primary-text hover:bg-primary-text bg-opacity-90"
-                            className="bg-primary-text text-[19px] bg-opacity-90 p-[8.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"
+                            className="bg-primary-text text-[17px] bg-opacity-90 p-[9.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"
                           />
                         </span>
                       </Tooltip>
@@ -107,11 +114,11 @@ const PopularProperties: React.FC = () => {
                     </Tooltip>
                   </div>
                 </div>
-                <div className="font-poppins text-primary-text mt-5">
+                <div className="text-primary-text mt-5">
                   <h3 className="text-[15px] font-semibold">
-                    <span className="text-14">{`\u20A6 `}</span>
+                    <span>{`\u20A6 `}</span>
                     {`${formattedAmount(item.rent_fee)} /`}
-                    <span className="font-light font-dm ml-1">yr</span>
+                    <span className="font-light ml-1">yr</span>
                   </h3>
                   <div className="mt-2">
                     <h1
@@ -121,12 +128,12 @@ const PopularProperties: React.FC = () => {
                       {item.name}
                     </h1>
                   </div>
-                  <span className="flex gap-1.5 font-dm font-light text-[13.5px] text-secondary mt-1 tracking-wider ">
+                  <span className="flex gap-1.5 font-dm font-light text-[13.5px] text-secondary mt-1">
                     <p>{`${item.location?.city},`}</p>
                     <p className="uppercase ">{`${item.location?.state},`}</p>
                     <p className="uppercase">{item.location?.country}</p>
                   </span>
-                  <div className="flex items-center gap-3 font-normal flex-wrap mt-[5px] text-[13.5px]">
+                  <div className="flex items-center gap-3 font-light flex-wrap mt-1.5 text-[13px]">
                     <span className="flex items-center gap-1.5">
                       <IoBedOutline className="text-custom5 text-[15px]" />
                       <p>{`${item.description?.bathroom_count} bed`}</p>
