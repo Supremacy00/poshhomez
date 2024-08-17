@@ -135,7 +135,7 @@ const UserFileUploader = () => {
   return (
     <div
       {...getRootProps()}
-      className="relative text-secondary border-[1px] font-noto font-light border-custom11 bg-slate-50 border-dashed overflow-hidden text-center flex justify-center items-center rounded-xl h-[159px] cursor-pointer xs:w-[180px]"
+      className="relative text-secondary border-[1px] text-[15px] font-light border-custom11 bg-slate-50 border-dashed overflow-hidden text-center flex justify-center items-center rounded-xl h-[159px] cursor-pointer xs:w-[180px]"
     >
       <input {...getInputProps()} />
       {uploadProgress > 0 && uploadProgress <= 100 && (

@@ -38,7 +38,7 @@ const LoginModal: React.FC = () => {
     <article
       className={`${
         isLoginModal ? "block" : "hidden"
-      } font-sans mx-auto fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text`}
+      } mx-auto fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text`}
     >
       <div className="flex justify-center items-center">
         <div className="w-full fixed top-12 px-4 md:w-[520px]">
@@ -54,10 +54,10 @@ const LoginModal: React.FC = () => {
           >
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="text-center mb-10">
-                <h1 className="text-[25px] font-roboto font-semibold">
+                <h1 className="text-[25px] font-medium">
                   Welcome back!
                 </h1>
-                <p className="text-[15px] mt-1">Please enter your details</p>
+                <p className="text-[15px] mt-1 font-normal">Please enter your details</p>
               </div>
               <div>
                 {errorMessages.length > 0 && (
@@ -103,7 +103,7 @@ const LoginModal: React.FC = () => {
                     } border-t-0 border-r-0 border-l-0 rounded-xl focus:ring-transparent hover:border-custom9 focus:border-b-[2px] focus:border-b-custom9 focus:border-t-0 focus:border-r-0 focus:border-l-0 transition-colors duration-300 ease-in-out`}
                   />
                 </div>
-                <div className="flex justify-between items-center gap-2 flex-wrap  text-sm">
+                <div className="flex justify-between items-center gap-2 flex-wrap text-sm">
                   <div className="flex items-center gap-2">
                     <input
                       type="checkbox"
@@ -122,7 +122,7 @@ const LoginModal: React.FC = () => {
                   type="submit"
                   className={`${
                     loginLoading ? "bg-opacity-70 " : ""
-                  } relative w-full mt-8 flex justify-center items-center py-7 bg-primary-text text-[14px] rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
+                  } relative w-full mt-8 flex justify-center items-center py-7 bg-primary-text text-[14px] rounded-full overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
                 >
                   {loginLoading ? (
                     <span className="absolute top-[43%] left-1/2">
@@ -138,8 +138,8 @@ const LoginModal: React.FC = () => {
                     <span className="absolute">Log In</span>
                   )}
                 </button>
-                <div className="text-sm flex items-center justify-center gap-1.5 mt-5">
-                  <h3>{`Don't have an account?`}</h3>
+                <div className="text-sm flex items-center justify-center flex-wrap gap-1.5 mt-5">
+                  <h3>Don't have an account?</h3>
                   <Link href="/auth/signup">
                     <button className="font-medium underline underline-offset-2">
                       Sign Up

@@ -16,7 +16,7 @@ const RightNav: React.FC = () => {
     <article
       className={`${
         isRightNav ? "visible" : "invisible"
-      } font-nunito mx-auto w-full fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text transition-opacity duration-75 ease-in-out`}
+      } mx-auto w-full fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text transition-opacity duration-75 ease-in-out`}
     >
       <nav
         className={`${

@@ -23,6 +23,7 @@ import AppPagination from "../AppPagination";
 import ListingsSearch from "./ListingsSearch";
 import { VscSettings } from "react-icons/vsc";
 import useApartmentDetails from "@/hooks/useApartmentDetails";
+import { FiCameraOff } from "react-icons/fi";
 
 const Listings: React.FC = () => {
   const {
@@ -42,7 +43,6 @@ const Listings: React.FC = () => {
   const { handleDetailsClick } = useApartmentDetails();
 
   const properties: PropertyCardDetails[] = data?.data?.data || [];
-  const defaultFallbackUrl = "/assets/images/hero1.jpg";
 
   const rangeStart = (currentPage - 1) * limit + 1;
   const rangeEnd = Math.min(currentPage * limit, totalProperties);
@@ -52,11 +52,11 @@ const Listings: React.FC = () => {
   }, [currentPage]);
 
   return (
-    <section className="font-nunito bg-custom4 text-primary-text pb-24 pt-24 lg:pt-[120px]">
+    <section className="bg-custom4 text-primary-text pb-24 pt-24 lg:pt-[120px]">
       <div className="mx-auto px-4 w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div className=" flex justify-between items-center gap-2 flex-wrap">
           <div>
-            <h1 className="text-[22px] font-semibold mb-3">
+            <h1 className="text-[22px] font-semibold mb-3 sm:text-[30px]">
               Poshhomez Houses For Rent
             </h1>
             <div className="flex items-center gap-1.5 text-secondary font-light text-sm lg:text-[15px]">
@@ -94,19 +94,25 @@ const Listings: React.FC = () => {
             !isError &&
             properties.map((item) => {
               const photoObject = item.photos?.[1] as { secure_url?: string };
-              const imageUrl = photoObject?.secure_url || defaultFallbackUrl;
+              const imageUrl = photoObject?.secure_url || "";
               return (
                 <article key={item.id} className="group">
                   <div className="relative overflow-hidden">
                     <div className="relative bg-custom13 rounded-t-xl overflow-hidden w-full h-full aspect-3/2 xs:h-[180px] md:h-[230px] lg:h-[200px]">
-                      <Image
-                        src={imageUrl}
-                        alt={item.name}
-                        width={1000}
-                        height={1000}
-                        priority
-                        className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
-                      />
+                      {imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={item.name}
+                          width={1000}
+                          height={1000}
+                          priority
+                          className="relative w-full h-full group-hover:scale-110 group-hover:-rotate-1 transition-all duration-500 ease-in-out"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex justify-center items-center bg-gray-300">
+                          <FiCameraOff className=" text-gray-400 text-5xl" />
+                        </div>
+                      )}
                     </div>
                     <div
                       className={`${
@@ -124,7 +130,7 @@ const Listings: React.FC = () => {
                       <h3 className="text-[15px] font-semibold bg-white py-1.5 px-2.5 rounded-md">
                         <span className="text-sm">{`\u20A6 `}</span>
                         {`${formattedAmount(item.rent_fee)} /`}
-                        <span className="font-light font-dm ml-1">yr</span>
+                        <span className="font-light ml-1">yr</span>
                       </h3>
                     </div>
                   </div>
@@ -138,17 +144,11 @@ const Listings: React.FC = () => {
                       </h1>
                     </div>
                     <span className="flex gap-1.5 font-dm font-light text-[13.5px] text-secondary mt-1.5  ">
-                      <p>
-                        {`${item.location?.city},`}
-                      </p>
-                      <p className="uppercase">
-                        {`${item.location?.state},`}
-                      </p>
-                      <p className="uppercase">
-                        {item.location?.country}
-                      </p>
+                      <p>{`${item.location?.city},`}</p>
+                      <p className="uppercase">{`${item.location?.state},`}</p>
+                      <p className="uppercase">{item.location?.country}</p>
                     </span>
-                    <div className="flex items-center gap-3 flex-wrap mt-3.5 text-[13.5px]">
+                    <div className="flex items-center gap-3 font-light flex-wrap mt-3.5 text-[13px]">
                       <span className="flex items-center gap-1.5">
                         <IoBedOutline className="text-custom5 text-[15px]" />
                         <p>{`${item.description?.bathroom_count} bed`}</p>
@@ -164,7 +164,7 @@ const Listings: React.FC = () => {
                     </div>
                     <div className="w-full h-[1px] bg-custom11 mt-4"></div>
                     <div className="flex justify-between items-center mt-3.5">
-                      <h3 className="text-[13px] text-custom2">For Rent</h3>
+                      <h3 className="text-[12.5px] text-custom2">For Rent</h3>
                       <div className="flex items-center gap-0.5">
                         <Tooltip title="View photos" placement="top" arrow>
                           <span className="p-[10px] text-custom5 rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out">
@@ -186,7 +186,7 @@ const Listings: React.FC = () => {
                               <WishlistButton
                                 property={item}
                                 iconColor={{ base: "text-custom5" }}
-                                className="text-[19px] p-[9px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"
+                                className="text-[17px] p-[10.5px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"
                               />
                             </span>
                           </Tooltip>

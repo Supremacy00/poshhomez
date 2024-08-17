@@ -16,7 +16,7 @@ const LandlordContentMenu: React.FC <ContentHandleMenuProps> = ({handleMenu}) =>
 
 
   return (
-    <div className="mt-2 space-y-0.5 font-roboto">
+    <div className="mt-2 space-y-0.5">
       <div
         className={`${
           contentMenu === "Personal Info" ? "bg-primary-text text-white " : ""

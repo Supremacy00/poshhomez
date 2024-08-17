@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import React, { useState } from "react";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import useWishlistButton from "@/hooks/useWishlistButton";
 import { PropertyCardDetails } from "@/@types";
 
@@ -23,7 +23,7 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
   size,
   iconColor = {},
   className,
-  style
+  style,
 }) => {
   const { localIsFavorite, isProcessing, loading, handleFavoriteClick } =
     useWishlistButton({ property });
@@ -36,19 +36,35 @@ const WishlistButton: React.FC<WishlistButtonProps> = ({
       md ? `md:${md}` : "",
       lg ? `lg:${lg}` : "",
       xl ? `xl:${xl}` : "",
-    ].filter(Boolean).join(" ");
+    ]
+      .filter(Boolean)
+      .join(" ");
+  };
+
+  const [isBouncing, setIsBouncing] = useState(false);
+
+  const handleClick = async () => {
+    if (!localIsFavorite) {
+      setIsBouncing(true);
+      setTimeout(() => setIsBouncing(false), 50);
+    }
+    await handleFavoriteClick();
   };
 
   return (
     <button
-      onClick={handleFavoriteClick}
+      onClick={handleClick}
       disabled={isProcessing || loading}
       className={`${className} ${localIsFavorite ? style : ""}`}
     >
       {localIsFavorite ? (
-        <IoMdHeart className={`text-red-600 transition-transform scale-125 duration-300 ease-in-out`} />
+        <GoHeartFill
+          className={`text-red-600 transition-transform duration-300 ease-in-out ${
+            isBouncing ? "transform scale-150" : ""
+          }`}
+        />
       ) : (
-        <IoMdHeartEmpty className={getIconColorClass()} />
+        <GoHeart className={getIconColorClass()} />
       )}
     </button>
   );

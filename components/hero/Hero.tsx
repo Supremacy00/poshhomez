@@ -4,7 +4,6 @@ import { GiFlowerStar, GiSpookyHouse } from "react-icons/gi";
 import Image from "next/image";
 import ExclusiveAgents from "./ExclusiveAgents";
 import Search from "../search/Search";
-import CountUp from 'react-countup';
 import PrivateRoute from "../privateRoute/PrivateRoute";
 import HeroPhoto from "./HeroPhoto";
 import Link from "next/link";
@@ -13,7 +12,7 @@ import { GoArrowUpRight } from "react-icons/go";
 const Hero = () => {
   return (
     <>
-      <section className="relative font-nunito bg-custom4 w-full h-[1000px] ss:h-[720px] md:h-[630px] lg:h-[740px] xl:h-[785px] xxl:h-[780px]">
+      <section className="relative bg-custom4 w-full h-[1000px] ss:h-[720px] md:h-[630px] lg:h-[740px] xl:h-[785px] xxl:h-[780px]">
         <div className="text-primary-text px-4 absolute right-0 left-0 z-20  mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
           <section className="pt-[120px] md:pt-28 lg:pt-44 z-30 ">
             <h1 className="text-[32px] font-semibold xs:max-w-[493px] md:text-[45px] md:max-w-[550px] xl:max-w-[493px]  ">
@@ -25,18 +24,18 @@ const Hero = () => {
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
                   <h1 className="text-[25px] font-semibold md:text-[30px]">
-                  <CountUp start={0} end={500} suffix="K+"/>
+                  500K+
                   </h1>
-                  <p className="text-sm font-medium">Renters</p>
+                  <p className="text-[13px] font-normal">Renters</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 px-3">
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
                   <h1 className="text-[25px] font-semibold md:text-[30px]">
-                  <CountUp start={0} end={200} suffix="K+" />
+                  200K+
                   </h1>
-                  <p className="text-sm font-medium">Properties</p>
+                  <p className="text-[13px] font-normal">Properties</p>
                 </div>
               </div>
             </div>
@@ -58,7 +57,7 @@ const Hero = () => {
                       <GiFlowerStar />
                     </div>
                     <div className="flex items-center gap-2 rounded-full bg-[#e3e2e2] bg-opacity-95 py-3 px-3 ">
-                      <p className="text-primary-text text-[14.5px] font-normal">
+                      <p className="text-primary-text text-[13px] font-normal">
                         Show Top-Rated Apartments
                       </p>
                       <Link

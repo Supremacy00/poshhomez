@@ -66,7 +66,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       console.error("Error fetching user data", error);
       if (toastIdRef.current === null) {
-        toastIdRef.current = toast.error("Network error: Unable to fetch user data.");
+        toastIdRef.current = toast.error("Network Error! Please try again.");
       }
       return null;
     } finally {

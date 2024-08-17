@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
@@ -12,7 +12,19 @@ import { WishlistProvider } from "@/contexts/wishlistContext/WishlistContext";
 import { LoadingProvider } from "@/contexts/loadingContext/LoadingContext";
 import AdvanceSearch from "@/components/search/AdvanceSearch";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  style: ["normal"],
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -33,7 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${poppins.className} ${inter.className}`}>
         <ModalProvider>
           <AuthProvider>
             <ContentMenuProvider>

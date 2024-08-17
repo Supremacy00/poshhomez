@@ -59,23 +59,25 @@ const ProfileContentMenu = () => {
           <ProfileSkeleton />
         ) : (
           <>
-            <div className="flex gap-4 flex-wrap">
-              <div className="w-[50px] h-[50px] bg-custom4 rounded-full overflow-hidden cursor-pointer">
-                <ModalImage
-                  small={avatarUrl}
-                  large={avatarUrl}
-                  alt={`Profile Picture - ${
-                    user?.name || "User Profile Picture"
-                  }`}
-                  hideDownload={true}
-                  hideZoom={true}
-                />
-              </div>
+            <div className="flex gap-4">
               <div>
-                <h1 className="text-base font-semibold text-primary-text md:text-[18px]">
+                <div className="w-[50px] h-[50px] bg-custom4 rounded-full overflow-hidden cursor-pointer">
+                  <ModalImage
+                    small={avatarUrl}
+                    large={avatarUrl}
+                    alt={`Profile Picture - ${
+                      user?.name || "User Profile Picture"
+                    }`}
+                    hideDownload={true}
+                    hideZoom={true}
+                  />
+                </div>
+              </div>
+              <div className="w-full">
+                <h1 className="text-[15px] font-semibold text-primary-text line-clamp-1 md:text-[17px]">
                   {user?.name}
                 </h1>
-                <span className="flex items-center gap-0.5 text-yellow-500 mt-1.5">
+                <span className="flex items-center gap-0.5 text-yellow-500 mt-1.5 text-sm">
                   <FaStar />
                   <FaStar />
                   <FaStar />
@@ -83,14 +85,16 @@ const ProfileContentMenu = () => {
                   <FaStar />
                 </span>
                 <div className="mt-5">
-                  <span className="text-base text-secondary font-light flex items-center gap-2 mb-1">
+                  <div className="text-[14.5px] text-secondary font-light flex items-center gap-2 mb-1">
                     <BsPhoneVibrate />
                     <p>{user?.phone_number}</p>
-                  </span>
-                  <span className="text-base text-secondary font-light flex items-center gap-2">
+                  </div>
+                  <div className="text-[14.5px] text-secondary font-light flex items-center gap-2 line-clamp-1">
+                    <div>
                     <HiOutlineMail />
-                    <p>{user?.email}</p>
-                  </span>
+                    </div>
+                    <p className="line-clamp-1">{user?.email}</p>
+                  </div>
                 </div>
               </div>
             </div>

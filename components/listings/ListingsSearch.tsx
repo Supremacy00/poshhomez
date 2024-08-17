@@ -15,22 +15,22 @@ const ListingsSearch = () => {
       <ul className="hidden text-sm lg:flex lg:justify-center items-center gap-3 xl:flex xl:justify-start">
         <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer">
           <h3>For Rent</h3>
-          <MdKeyboardArrowDown className="text-[22px]" />
+          <MdKeyboardArrowDown className="text-[22px] text-secondary" />
         </li>
         <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer">
           <span className="text-sm flex items-center">
             <h3 className="">Beds</h3>
-            <RxSlash className="text-base" />
+            <RxSlash className="text-base text-secondary" />
             <h3>Baths</h3>
           </span>
-          <MdKeyboardArrowDown className="text-[22px]" />
+          <MdKeyboardArrowDown className="text-[22px] text-secondary" />
         </li>
         <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer">
           <h3>Price</h3>
-          <MdKeyboardArrowDown className="text-[22px]" />
+          <MdKeyboardArrowDown className="text-[22px] text-secondary" />
         </li>
         <li className="bg-white py-2.5 px-5 rounded-full shadow-2xl flex items-center gap-2 cursor-pointer" onClick={handleIsAdvanceSearch}>
-          <VscSettings className="text-[17px]" />
+          <VscSettings className="text-[17px] text-secondary" />
           <h3>More Filter</h3>
         </li>
       </ul>
@@ -38,7 +38,7 @@ const ListingsSearch = () => {
         <h3 className="text-sm text-secondary font-light">Sort By</h3>
         <span className="flex items-center">
           <h3 className="text-base">Newest</h3>
-          <IoMdArrowDropdown className="text-lg" />
+          <IoMdArrowDropdown className="text-lg text-secondary"/>
         </span>
       </div>
     </section>

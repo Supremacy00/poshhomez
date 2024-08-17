@@ -32,8 +32,8 @@ const Wishlist = () => {
         <h1 className="text-[22px] font-semibold text-primary-text lg:text-[28px]">
           Wishlist
         </h1>
-        <div className="flex items-center gap-1 text-custom2 cursor-pointer">
-          <CgClose />
+        <div className="flex items-center gap-1 text-sm text-custom2 cursor-pointer">
+          <CgClose className="text-lg"/>
           <h4>Clear all</h4>
         </div>
       </div>

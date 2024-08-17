@@ -69,9 +69,9 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <section className="text-primary-text font-sans bg-white">
+    <section className="text-primary-text bg-white">
       <div className="lg:flex justify-start items-center xl:gap-24">
-        <div className="hidden lg:block h-screen aspect-4/3 max-w-[460px] xl:max-w-[400px]">
+        <div className="hidden lg:block h-screen aspect-3/2 max-w-[460px] xl:max-w-[400px]">
           <Image
             src="/assets/images/signup-image.jpg"
             alt="sign up Image"
@@ -92,10 +92,10 @@ const SignUp: React.FC = () => {
                 </Link>
               </div>
               <div className="text-center mb-10">
-                <h1 className="text-[25px] font-roboto font-semibold">
+                <h1 className="text-[25px] font-medium">
                   Create your account!
                 </h1>
-                <p className="text-[15px] mt-1">Please enter your details</p>
+                <p className="text-[15px] mt-1 font-normal">Please enter your details</p>
               </div>
               <div>
                 {errorMessages.length > 0 && (
@@ -270,7 +270,7 @@ const SignUp: React.FC = () => {
                     type="submit"
                     className={`${
                       signupLoading ? "bg-opacity-70" : ""
-                    } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-[14px] rounded-full font-medium overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
+                    } relative w-full mt-12 flex justify-center items-center py-7 bg-primary-text text-sm rounded-full overflow-hidden text-white hover:bg-opacity-70 transition-all duration-500 ease-in-out`}
                   >
                     {signupLoading ? (
                       <span className="absolute top-[43%] left-1/2">
@@ -283,16 +283,16 @@ const SignUp: React.FC = () => {
                         />
                       </span>
                     ) : (
-                      <span className="absolute text-[14px] font-medium">
+                      <span className="absolute text-sm">
                         Sign Up
                       </span>
                     )}
                   </button>
                 </div>
-                <div className="flex items-center justify-center flex-wrap gap-1.5 mt-5">
-                  <h3 className="text-[14px]">Already have an account?</h3>
+                <div className="text-sm flex items-center justify-center flex-wrap gap-1.5 mt-5">
+                  <h3>Already have an account?</h3>
                   <Link href="/auth/login">
-                    <button className="text-[14px] font-medium underline underline-offset-2">
+                    <button className="font-medium underline underline-offset-2">
                       Log in
                     </button>
                   </Link>

@@ -3,12 +3,12 @@ import Map from "@/components/apartmentDetails/Map";
 
 const Cities = () => {
   return (
-    <section className="font-nunito mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:max-w-[1200px] xxl:px-0">
+    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:max-w-[1200px] xxl:px-0">
       <div>
         <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
           Apartments by Cities
         </h1>
-        <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
+        <p className="text-sm text-primary-text mt-1 lg:mt-0 lg:text-base">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
         <div className="w-full aspect-3/2 xs:h-[350px] mt-7 overflow-hidden rounded-xl lg:mt-12 lg:h-[550px] xxl:h-[650px]">

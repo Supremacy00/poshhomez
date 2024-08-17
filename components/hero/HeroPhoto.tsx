@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const HeroPhoto = () => {
   return (
-    <section className="font-nunito px-4 mt-16 mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:hidden">
+    <section className="px-4 mt-16 mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:hidden">
       <div className="relative w-full aspect-2/2 overflow-hidden rounded-2xl xs:h-[350px] md:aspect-3/2 lg:h-[400px]">
         <Image
           src="/assets/images/hero1.jpg"
