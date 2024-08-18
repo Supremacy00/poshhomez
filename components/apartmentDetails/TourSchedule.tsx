@@ -4,6 +4,7 @@ import { initializePayment } from "@/service/paystackService";
 import { useParams } from "next/navigation";
 import { RiDragMoveFill } from "react-icons/ri";
 import { toast } from "sonner";
+import PrivateRoute from "../privateRoute/PrivateRoute";
 
 const TourSchedule = () => {
   const { apartmentid } = useParams<{ apartmentid: string }>();
@@ -17,7 +18,7 @@ const TourSchedule = () => {
       return;
     }
     const paymentData = await initializePayment(apartmentid);
-    if (paymentData) {
+    if (paymentData && paymentData.payment_url) {
       window.location.href = paymentData.payment_url;
     } else {
       setIsPayment(false);
@@ -34,12 +35,19 @@ const TourSchedule = () => {
             <button className="text-[13px] font-semibold py-3 px-6 mt-5  border-[1px] border-primary-text rounded-xl bg-custom4 cursor-text ss:px-8 xs:px-10">
               In Person
             </button>
-            <button
-              className="text-[13px] text-white font-semibold py-3.5 px-6 mt-5 bg-primary-text hover:bg-custom3 transition-colors duration-300 ease-in-out rounded-xl ss:px-8 xs:px-10"
-              onClick={handlePayment}
-            >
-              {isPayment ? "Renting..." : "Rent Now"}
-            </button>
+            <PrivateRoute href={`/listings/apartment-details/${apartmentid}`}>
+              <button
+                disabled={isPayment}
+                className={`${
+                  isPayment
+                    ? "bg-opacity-70"
+                    : "bg-opacity-100 hover:bg-custom3"
+                } text-[13px] text-white font-semibold py-3.5 px-6 mt-5 bg-primary-text transition-colors duration-300 ease-in-out rounded-xl ss:px-8 xs:px-10`}
+                onClick={handlePayment}
+              >
+                {isPayment ? "Renting..." : "Rent Now"}
+              </button>
+            </PrivateRoute>
           </div>
         </div>
         <div className="mt-5">

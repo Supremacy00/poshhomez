@@ -132,11 +132,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         const userResponse = await fetchUser();
         mutate(userResponse);
 
-        const intendedRoute = localStorage.getItem("intendedRoute");
-        router.push(intendedRoute || "/");
+        router.push("/");
         setIsLoginModal(false);
         toast.success("Login successful!");
-        localStorage.removeItem("intendedRoute");
       } else {
         toast.error("Login failed. Please try again.");
       }

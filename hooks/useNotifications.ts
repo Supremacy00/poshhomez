@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import useSWR from 'swr';
 import axios from 'axios';
 import { Notification } from '@/@types';
+import { getToken } from '@/utils/authUtils';
 
 
 const fetcher = async (url: string, token: string): Promise<Notification[]> => {
@@ -15,7 +16,7 @@ const fetcher = async (url: string, token: string): Promise<Notification[]> => {
 
 export function useNotifications() {
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
-  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const token = getToken()
 
   const { data, error, mutate } = useSWR<Notification[]>(
     token ? [`${apiBaseUrl}/api/notification/all`, token] : null, 

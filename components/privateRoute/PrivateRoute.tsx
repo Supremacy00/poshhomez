@@ -1,10 +1,8 @@
-'use client'
-import React from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/contexts/authContext/Auth-Context';
-import { useModal } from '@/contexts/modalContext/ModalContext'; 
-import { useEffect } from 'react';
+"use client";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/authContext/Auth-Context";
+import { useModal } from "@/contexts/modalContext/ModalContext";
 
 interface PrivateRouteProps {
   href: string;
@@ -16,28 +14,26 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ href, children }) => {
   const { isLoginModal, setIsLoginModal } = useModal();
   const router = useRouter();
 
-  const handleClick = (e: any) => {
-    e.preventDefault();
+  const handleClick = (e: React.MouseEvent) => {
     if (!isAuthenticated) {
-      localStorage.setItem('intendedRoute', href);
+      e.preventDefault();
+      localStorage.setItem("intendedRoute", href);
       setIsLoginModal(true);
-    } else {
-      router.push(href);
     }
   };
 
   useEffect(() => {
-    if (isAuthenticated && isLoginModal) {
+    const intendedRoute = localStorage.getItem("intendedRoute");
+    if (isAuthenticated) {
+      if (intendedRoute) {
+        router.push(intendedRoute);
+        localStorage.removeItem("intendedRoute");
+      }
       setIsLoginModal(false);
     }
+  }, [isAuthenticated, router, setIsLoginModal]);
 
-  }, [isAuthenticated, router, isLoginModal, setIsLoginModal]);
-  
-  return (
-    <Link href={href} onClick={handleClick}>
-      {children}
-    </Link>
-  );
+  return <div onClick={handleClick}>{children}</div>;
 };
 
 export default PrivateRoute;
