@@ -13,6 +13,7 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
+import { motion } from "framer-motion";
 
 interface CustomShareSocialProps {
   title: string;
@@ -110,7 +111,13 @@ const CustomShareSocial: React.FC<CustomShareSocialProps> = ({ title }) => {
 
   return (
     <div className="font-nunito fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 text-primary-text">
-      <div className="fixed xs:inset-0 flex justify-center items-center xs:px-5 bottom-5 right-5 left-5">
+      <motion.div  initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.1,
+            ease: [0, 0.71, 0.2, 1.01],
+          }} className="fixed xs:inset-0 flex justify-center items-center xs:px-5 bottom-5 right-5 left-5">
         <div
           className="relative w-[550px] bg-white rounded-xl px-5 py-10 text-center overflow-hidden no-scrollbar"
           ref={modalRef}
@@ -119,7 +126,10 @@ const CustomShareSocial: React.FC<CustomShareSocialProps> = ({ title }) => {
           <div className="w-full flex justify-center items-center mb-8">
             <div className="flex overflow-x-auto space-x-4">
               {shareLinks.map((link, index) => (
-                <div key={index} className="flex flex-col items-center space-y-2">
+                <div
+                  key={index}
+                  className="flex flex-col items-center space-y-2"
+                >
                   <div className="p-3 rounded-full bg-gray-200 hover:bg-gray-300 text-primary-text hover:text-gray-900 transition-colors duration-300 ease-in-out cursor-pointer">
                     <Link
                       href={link.url}
@@ -163,7 +173,7 @@ const CustomShareSocial: React.FC<CustomShareSocialProps> = ({ title }) => {
             <AiOutlineClose />
           </span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

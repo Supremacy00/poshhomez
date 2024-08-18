@@ -22,12 +22,6 @@ const useUploadHook = ({ uploadEndpoint, onProgress }: UseUploadHookProps) => {
             Authorization: `Bearer ${token}`,
           },
           onUploadProgress: (progressEvent) => {
-            console.log(
-              "Loaded:",
-              progressEvent.loaded,
-              "Total:",
-              progressEvent.total
-            );
             if (typeof progressEvent.total === "number") {
               const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total

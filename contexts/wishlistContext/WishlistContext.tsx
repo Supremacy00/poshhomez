@@ -34,6 +34,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
 
   const addToWishlist = async (property: PropertyCardDetails) => {
     const itemId = property.id;
+    if (loadingMap[itemId]) return;
     setLoadingMap((prevLoadingMap) => ({ ...prevLoadingMap, [itemId]: true }));
 
     const isAlreadyAdded = wishlist.some((item) => item.id === property.id);
@@ -83,6 +84,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
   };
 
   const removeFromWishlist = async (propertyId: string) => {
+    if (loadingMap[propertyId]) return;
     setLoadingMap((prevLoadingMap) => ({
       ...prevLoadingMap,
       [propertyId]: true,
@@ -138,6 +140,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
     const token = getToken();
 
     if (!token || userRole !== "Tenant") {
+      setWishlist([]);
       setLoading(false);
       return;
     }
@@ -149,12 +152,13 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      const propertyDetailsPromises = userData.favorites.map(
-        (propertyId: string) =>
-          axios.get(`${API_URL}/api/property/${propertyId}`, {
-            headers: { Authorization: `Bearer ${token}` },
-          })
+      const favorites = Array.isArray(userData?.favorites)
+        ? userData?.favorites
+        : [];
+      const propertyDetailsPromises = favorites.map((propertyId: string) =>
+        axios.get(`${API_URL}/api/property/${propertyId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
       );
 
       const propertiesResponses = await Promise.all(propertyDetailsPromises);
@@ -165,6 +169,7 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       setWishlist(detailedProperties);
     } catch (error) {
       console.error("Error fetching wishlist details:", error);
+      toast.error("Failed to fetch wishlist details.");
     } finally {
       setLoading(false);
     }
@@ -176,8 +181,9 @@ export const WishlistProvider: React.FC<{ children: ReactNode }> = ({
       fetchWishlistDetails();
     } else {
       setWishlist([]);
+      setLoading(false);
     }
-  }, []);
+  }, [userRole]);
 
   const value = useMemo(
     () => ({
