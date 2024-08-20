@@ -15,7 +15,7 @@ const NavMobile = () => {
   return (
     <nav className="bg-custom-white px-4 py-2.5 fixed right-0 left-0 top-0 lg:hidden z-40 shadow-sm">
       <div className="flex justify-between items-center flex-wrap text-primary-text">
-        <div className="space-y-2">
+        <div className="space-y-2" onClick={handleIsLeftNav}>
           <div className="w-7 h-[1.5px] bg-primary-text" />
           <div className="w-5 h-[1.5px] bg-primary-text" />
         </div>
