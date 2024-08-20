@@ -112,11 +112,11 @@ const Footer = () => {
                   key={item.id}
                   className={`${
                     item.icon
-                      ? "relative bg-secondary w-[30px] h-[30px] rounded-full hover:bg-white transition-all duration-200 ease-in-out delay-200 group xxl:w-10 xxl:h-10"
+                      ? "bg-secondary p-2 rounded-full hover:bg-white transition-all duration-200 ease-in-out delay-200 group xxl:p-2.5"
                       : "hidden"
                   }`}
                 >
-                  <div className="text-[18px] absolute inset-1.5 cursor-pointer group-hover:text-primary-text transition-all duration-200 ease-in-out delay-200 xxl:text-[20px] xxl:inset-2.5">
+                  <div className="text-[22px] cursor-pointer group-hover:text-primary-text transition-all duration-200 ease-in-out delay-200 xxl:text-[20px] xxl:inset-2.5">
                     {item.icon}
                   </div>
                 </button>

@@ -48,16 +48,16 @@ const Wishlist = () => {
             return (
               <div
                 key={item?.id}
-                className="relative z-10 bg-white shadow-2xl rounded-xl overflow-hidden xs:flex items-center gap-2"
+                className="relative z-10 bg-white rounded-xl overflow-hidden xs:flex items-center gap-2"
               >
                 <div className="relative w-full xs:w-[40%]">
-                  <div className="w-full aspect-150/80 xs:aspect-80/80 sm:h-[200px] ">
+                  <div className="w-full p-3.5 aspect-150/80 xs:aspect-80/80 sm:h-[200px] ">
                     <Image
                       src={imageUrl}
                       alt={item?.name || "Wishlist Property"}
                       width={1000}
                       height={1000}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover rounded-xl"
                     />
                   </div>
                   <div
@@ -81,14 +81,14 @@ const Wishlist = () => {
                     <p className="text-[11px] mb-[1.5px] text-custom2 font-normal">
                       FOR RENT
                     </p>
-                    <FaTrashAlt className=" text-[20px] text-custom2" onClick={() => removeFromWishlist(item.id)}/>
+                    <FaTrashAlt className="text-[17px] text-custom2" onClick={() => removeFromWishlist(item.id)}/>
                   </div>
                   <div>
                     <Link
                       key={item?.id}
                       href={`/listings/apartment-details/${item?.id}`}
                     >
-                      <h1 className="text-[15px] font-semibold hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
+                      <h1 className="text-[15px] font-medium hover:text-custom2 inline-block cursor-pointer transition-colors duration-300 ease-in-out">
                         {item?.name}
                       </h1>
                     </Link>
@@ -106,7 +106,7 @@ const Wishlist = () => {
                   </span>
                   <div className="flex items-center gap-1.5 mt-2">
                     <HiOutlineCash className="text-[23px] text-secondary" />
-                    <h3 className="text-[15px] font-semibold text-primary-text">
+                    <h3 className="text-[15px] font-medium text-primary-text">
                       {item?.rent_fee !== undefined
                         ? formatCurrency(item.rent_fee)
                         : formatCurrency(0.0)}
@@ -117,19 +117,19 @@ const Wishlist = () => {
                     <div className="flex items-center gap-3 flex-wrap mt-1 text-[13px] font-light lg:gap-4">
                       <span className="flex items-center gap-1.5">
                         <IoBedOutline className="text-[21px] text-secondary" />
-                        <p className="text-primary-text text-sm">{`${
+                        <p className="text-primary-text">{`${
                           item?.description?.bathroom_count || 0
                         } bed`}</p>
                       </span>
                       <span className="flex items-center gap-1.5">
                         <LiaBathSolid className="text-[21px] text-secondary" />
-                        <p className="text-primary-text text-sm">{`${
+                        <p className="text-primary-text">{`${
                           item?.description?.bedroom_count || 0
                         } bath`}</p>
                       </span>
                       <span className="flex items-center gap-1.5">
                         <TbRulerMeasure className="text-[19px] text-secondary" />
-                        <p className="text-primary-text text-sm">{`1000 sqft`}</p>
+                        <p className="text-primary-text">{`1000 sqft`}</p>
                       </span>
                     </div>
                   </div>

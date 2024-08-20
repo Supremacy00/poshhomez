@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import useUploadHook from "@/hooks/useUploadHook";
+import { mutate } from "swr";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserId } from "@/utils/authUtils";
 import { getUserRole } from "@/utils/authUtils";
@@ -35,7 +36,7 @@ const UserFileUploader = () => {
     if (uploadProgress === 100) {
       timeout = setTimeout(() => {
         resetUploadState();
-      }, 5000);
+      }, 3000);
     }
     return () => {
       if (timeout) clearTimeout(timeout);
@@ -99,18 +100,17 @@ const UserFileUploader = () => {
       console.error("No file selected.");
       return;
     }
-
     setUploadProgress(0);
-
     try {
       const compressedImageBlob = await resizeAndCompressImage(file);
       const compressedFile = new File([compressedImageBlob], file.name, {
         type: file.type,
       });
       const response = await uploadFile(compressedFile);
-      if (response.statuse_code === 200) {
-        toast.success("Image uploaded successfully!");
+      if (response.status_code === 200) {
+        toast.success("Photo has been successfully uploaded");
       }
+      await mutate("user");
     } catch (error) {
       console.error("Error uploading file:", error);
       toast.error("Error uploading file.");

@@ -2,8 +2,8 @@
 import React from "react";
 import PageLoader from "../loader/PageLoader";
 import ApartmentPhotoCarousel from "./ApartmentPhotoCarousel";
-import { formatDistanceToNow } from "date-fns";
-import { AiFillClockCircle, AiFillHeart } from "react-icons/ai";
+import { formatDistanceToNowStrict } from "date-fns";
+import { AiFillClockCircle } from "react-icons/ai";
 import { MdFitScreen } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
 import { formattedAmount } from "@/utils/formattedAmount";
@@ -41,10 +41,16 @@ const ApartmentDetailsPage = () => {
   const { name, address, photos, rent_fee, created_at, id } =
     propertyDetails?.data;
 
-  const timeAgo = (dateString: any) => {
-    const date = new Date(dateString);
-    return formatDistanceToNow(date, { addSuffix: true });
-  };
+    const timeAgo = (dateString: string) => {
+      const date = new Date(dateString);
+      return formatDistanceToNowStrict(date, { addSuffix: true });
+    };
+
+
+  const handlePrint = () => {
+    window.print();
+  }
+
 
   return (
     <section className="relative">
@@ -88,7 +94,7 @@ const ApartmentDetailsPage = () => {
               >
                 <IoShareSocialOutline />
               </span>
-              <span className="p-2 text-[18px] border-[1px] border-custom11 hover:border-primary-text rounded-md inline-block cursor-pointer xl:border-white xl:hover:border-custom2 transition-colors duration-300 ease-in-out">
+              <span onClick={handlePrint} className="p-2 text-[18px] border-[1px] border-custom11 hover:border-primary-text rounded-md inline-block cursor-pointer xl:border-white xl:hover:border-custom2 transition-colors duration-300 ease-in-out">
                 <IoPrintOutline />
               </span>
             </div>

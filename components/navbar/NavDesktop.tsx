@@ -35,7 +35,7 @@ const NavDesktop = () => {
     style={{ scaleX }}
   />
   
-      <nav className="bg-custom-white w-full border-b-[1px] border-b-custom4 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
+      <nav className="bg-white w-full border-b-[1px] border-b-custom4 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
         <div className="px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-12 xl:gap-16">
@@ -102,11 +102,11 @@ const NavDesktop = () => {
               )}
               {isAuthenticated && <AuthenticatedNavProfile />}
               <div
-                className="cursor-pointer flex flex-col"
+                className="cursor-pointer space-y-2"
                 onClick={handleIsRightNav}
               >
-                <span className="w-7 h-[1.5px] bg-primary-text rounded-full mb-2" />
-                <span  className="w-5 h-[1.5px] bg-primary-text rounded-full ml-2" />
+                <div className="w-7 h-[1.5px] bg-primary-text rounded-full" />
+                <div className="w-5 h-[1.5px] bg-primary-text rounded-full ml-2" />
               </div>
             </div>
           </div>

@@ -5,29 +5,33 @@ import { useParams } from "next/navigation";
 import { RiDragMoveFill } from "react-icons/ri";
 import { toast } from "sonner";
 import PrivateRoute from "../privateRoute/PrivateRoute";
+import { useAuth } from "@/contexts/authContext/Auth-Context";
 
 const TourSchedule = () => {
   const { apartmentid } = useParams<{ apartmentid: string }>();
   const [isPayment, setIsPayment] = useState<boolean>(false);
+  const { isAuthenticated } = useAuth();
 
   const handlePayment = async () => {
-    setIsPayment(true);
-    if (!apartmentid) {
-      toast.error("Property ID not found");
-      setIsPayment(false);
-      return;
-    }
-    const paymentData = await initializePayment(apartmentid);
-    if (paymentData && paymentData.payment_url) {
-      window.location.href = paymentData.payment_url;
-    } else {
-      setIsPayment(false);
+    if (isAuthenticated) {
+      setIsPayment(true);
+      if (!apartmentid) {
+        toast.error("Property ID not found");
+        setIsPayment(false);
+        return;
+      }
+      const paymentData = await initializePayment(apartmentid);
+      if (paymentData && paymentData.payment_url) {
+        window.location.href = paymentData.payment_url;
+      } else {
+        setIsPayment(false);
+      }
     }
   };
 
   return (
     <>
-      <div className="text-primary-text bg-white rounded-xl shadow-2xl lg:sticky top-[90px] p-6 xl:p-8">
+      <div className="text-primary-text bg-white rounded-xl lg:sticky top-[95px] p-6 xl:p-8">
         <div>
           <h2 className="text-[20px] font-semibold mb-2">Schedule a tour</h2>
           <p className="text-[15px]">Choose your preferred day</p>

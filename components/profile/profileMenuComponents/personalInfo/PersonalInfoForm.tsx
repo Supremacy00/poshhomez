@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaRegEdit } from "react-icons/fa";
 import useUserProfile from "@/hooks/useUserProfile";
 import { ClipLoader } from "react-spinners";
@@ -35,7 +35,11 @@ const PersonalInfoForm = () => {
       updatedData.phone_number = editPhoneNumber;
     }
 
-    updateUserData(updatedData);
+    updateUserData(updatedData).then(() => {
+      toggleFieldEditMode("fullName", false);
+      toggleFieldEditMode("email", false);
+      toggleFieldEditMode("phoneNumber", false);
+    });
   };
 
   return (

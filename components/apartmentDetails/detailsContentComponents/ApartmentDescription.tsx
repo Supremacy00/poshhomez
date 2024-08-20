@@ -19,7 +19,7 @@ const ApartmentDescription = () => {
   const formattedRentFee = rent_fee !== undefined ? formatCurrency(rent_fee) : "N/A";
 
   return (
-      <section className="text-primary-text bg-white rounded-xl shadow-2xl p-6 mt-8 xl:p-8">
+      <section className="text-primary-text bg-white rounded-xl  p-6 mt-8 xl:p-8">
         <div>
         <h3 className="text-[17px] font-semibold mb-5">Apartment Description</h3>
         <p className="text-[15px] leading-[27px]">{about}</p>

@@ -11,7 +11,7 @@ const Search: React.FC = () => {
     useModal();
 
   return (
-    <section className="text-primary-text mt-14 xl:max-w-[750px]">
+    <section className="text-primary-text mt-10 md:mt-14 xl:max-w-[750px]">
       <div className="w-28 text-center rounded-t-xl bg-white text-sm mt-8">
         <h3 className="border-b-[1px] border-b-custom5 mx-6 py-3.5 text-[13px] font-medium">Rent</h3>
       </div>

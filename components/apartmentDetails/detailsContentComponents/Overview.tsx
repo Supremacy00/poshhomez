@@ -9,7 +9,7 @@ const Overview = () => {
   const { description, year_built, } = propertyDetails?.data ?? {};
   
   return (
-        <div className="text-primary-text bg-white rounded-xl shadow-2xl p-6 xl:p-8">
+        <div className="text-primary-text bg-white rounded-xl  p-6 xl:p-8">
           <h3 className="text-[17px] font-semibold mb-7">Overview</h3>
           <div className="space-y-6 ss:space-y-0 ss:grid grid-cols-2 gap-6 sm:grid-cols-3">
             <div className="flex items-center gap-3">
