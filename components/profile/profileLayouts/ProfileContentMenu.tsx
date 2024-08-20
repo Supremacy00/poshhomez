@@ -34,7 +34,7 @@ const ProfileContentMenu = () => {
 
   return (
     <section className="px-4 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
-      <div className="flex items-center gap-1.5 text-secondary font-light text-[14px] lg:text-[15px]">
+      <div className="flex items-center gap-1.5 text-secondary font-light text-sm">
         <Link href="/">
           <h3 className="hover:text-primary-text transition-colors duration-300 ease-in-out">
             Home
@@ -54,22 +54,24 @@ const ProfileContentMenu = () => {
         </span>
         <h3 className="text-custom2">{contentMenu}</h3>
       </div>
-      <div className="w-full mt-7 bg-white rounded-xl shadow-2xl p-5 overflow-hidden md:pt-7">
+      <div className="w-full mt-7 bg-white rounded-xl p-5 overflow-hidden md:pt-7">
         {isLoading ? (
           <ProfileSkeleton />
         ) : (
           <>
             <div className="flex gap-4">
               <div>
-                <div className="w-[50px] h-[50px] bg-custom4 rounded-full overflow-hidden cursor-pointer">
+                <div className="bg-custom4 w-[50px] h-[50px] rounded-full ">
                   <ModalImage
                     small={avatarUrl}
+                    medium={avatarUrl}
                     large={avatarUrl}
                     alt={`Profile Picture - ${
                       user?.name || "User Profile Picture"
                     }`}
-                    hideDownload={true}
-                    hideZoom={true}
+                    hideDownload={false}
+                    hideZoom={false}
+                    className="w-[50px] h-[50px] rounded-full object-cover"
                   />
                 </div>
               </div>
@@ -91,7 +93,7 @@ const ProfileContentMenu = () => {
                   </div>
                   <div className="text-[14.5px] text-secondary font-light flex items-center gap-2 line-clamp-1">
                     <div>
-                    <HiOutlineMail />
+                      <HiOutlineMail />
                     </div>
                     <p className="line-clamp-1">{user?.email}</p>
                   </div>

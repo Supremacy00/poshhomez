@@ -77,6 +77,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const {
     data: user,
     error,
+    isLoading,
     mutate,
   } = useSWR("user", fetchUser, {
     revalidateOnMount: true,
@@ -192,7 +193,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     <AuthContext.Provider
       value={{
         user: user || null,
-        isLoading: !user && !error,
+        isLoading,
         loginLoading,
         signupLoading,
         isAuthChecking,

@@ -13,7 +13,7 @@ const About = () => {
           <h1 className="text-[22px] font-semibold mb-3 sm:text-[30px]">
             About
           </h1>
-          <div className="flex items-center gap-1.5 text-secondary font-light text-sm lg:text-[15px]">
+          <div className="flex items-center gap-1.5 text-secondary font-light text-sm">
             <Link href="/">
               <h3 className="hover:text-primary-text transition-colors duration-300 ease-in-out">
                 Home
@@ -22,7 +22,7 @@ const About = () => {
             <span className="text-[19px]">
               <RiArrowRightSLine />
             </span>
-            <h3 className="text-sm text-custom2">About</h3>
+            <h3 className="text-custom2">About</h3>
           </div>
         </div>
         <div className="lg:flex gap-5 mt-8">

@@ -97,7 +97,7 @@ const PopularProperties: React.FC = () => {
                             property={item}
                             iconColor={{ base: "text-white" }}
                             style="bg-primary-text hover:bg-primary-text bg-opacity-90"
-                            className="bg-primary-text text-[17px] bg-opacity-90 p-[9.5px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"
+                            className="bg-primary-text text-[18px] bg-opacity-90 p-[9px] rounded-lg cursor-pointer hover:bg-custom2 transition-colors duration-500 ease-in-out"
                           />
                         </span>
                       </Tooltip>

@@ -59,7 +59,7 @@ const Listings: React.FC = () => {
             <h1 className="text-[22px] font-semibold mb-3 sm:text-[30px]">
               Poshhomez Houses For Rent
             </h1>
-            <div className="flex items-center gap-1.5 text-secondary font-light text-sm lg:text-[15px]">
+            <div className="flex items-center gap-1.5 text-secondary font-light text-sm">
               <Link href="/">
                 <h3 className="hover:text-primary-text transition-colors duration-300 ease-in-out">
                   Home
@@ -68,11 +68,11 @@ const Listings: React.FC = () => {
               <span className="text-[19px]">
                 <RiArrowRightSLine />
               </span>
-              <h3 className="text-sm">Listings</h3>
+              <h3>Listings</h3>
               <span className="text-[19px]">
                 <RiArrowRightSLine />
               </span>
-              <h3 className="text-sm text-custom2">For Rent</h3>
+              <h3 className="text-custom2">For Rent</h3>
             </div>
           </div>
           <div className="mt-5 lg:hidden">
@@ -186,7 +186,7 @@ const Listings: React.FC = () => {
                               <WishlistButton
                                 property={item}
                                 iconColor={{ base: "text-custom5" }}
-                                className="text-[17px] p-[10.5px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"
+                                className="text-[17.5px] p-[10.5px] bg-white rounded-lg cursor-pointer hover:bg-custom4 transition-colors duration-500 ease-in-out"
                               />
                             </span>
                           </Tooltip>

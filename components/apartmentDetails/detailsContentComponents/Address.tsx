@@ -9,7 +9,7 @@ const Address = () => {
   
 
   return (
-    <section className="text-primary-text bg-white rounded-xl shadow-2xl p-6 mt-8 xl:p-8">
+    <section className="text-primary-text bg-white rounded-xl  p-6 mt-8 xl:p-8">
         <div>
         <h3 className="text-[17px] font-semibold mb-5">Address</h3>
         </div>

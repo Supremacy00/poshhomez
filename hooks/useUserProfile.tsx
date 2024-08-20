@@ -32,9 +32,10 @@ const useUserProfile = () => {
   const userId = getUserId();
   const token = getToken();
 
-  const endpoint = user && userRole === "Tenant"
-    ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/tenant/${userId}`
-    : `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/landlord/${userId}`;
+  const endpoint =
+    user && userRole === "Tenant"
+      ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/tenant/${userId}`
+      : `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/landlord/${userId}`;
 
   const [fullName, setFullName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -64,7 +65,6 @@ const useUserProfile = () => {
     }
   }, [user]);
 
-  
   const handleChange = (
     setter: React.Dispatch<React.SetStateAction<string>>,
     value: string
@@ -73,10 +73,10 @@ const useUserProfile = () => {
     setHasChanges(true);
   };
 
-  const toggleFieldEditMode = (field: keyof EditModes) => {
+  const toggleFieldEditMode = (field: keyof EditModes, value?: boolean) => {
     setEditModes((prevModes) => ({
       ...prevModes,
-      [field]: !prevModes[field],
+      [field]: value !== undefined ? value : !prevModes[field],
     }));
   };
 
@@ -84,17 +84,15 @@ const useUserProfile = () => {
     setLoading(true);
     setError(null);
     try {
-      
-      
       const response = await axios.put(endpoint, updatedData, {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
       if (response.data.status_code === 200) {
-        toast.success("Profile updated successfully")
+        toast.success("Profile updated successfully");
       }
 
       const updatedUser = response.data;
@@ -131,7 +129,7 @@ const useUserProfile = () => {
     loading,
     error,
     handleChange,
-    hasChanges
+    hasChanges,
   };
 };
 
