@@ -61,7 +61,7 @@ const TourSchedule = () => {
               name="time"
               id="time"
               placeholder="Time"
-              className="w-full py-3.5 px-4 placeholder:text-sm placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
+              className="w-full py-3.5 px-4 placeholder:text-[13.5px] placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
             />
           </div>
           <div className="w-full mt-5">
@@ -70,7 +70,7 @@ const TourSchedule = () => {
               name="name"
               id="name"
               placeholder="Name"
-              className="w-full py-3.5 px-4 placeholder:text-sm placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
+              className="w-full py-3.5 px-4 placeholder:text-[13.5px] placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
             />
           </div>
           <div className="w-full mt-5">
@@ -79,7 +79,7 @@ const TourSchedule = () => {
               name="phone"
               id="phone"
               placeholder="Phone"
-              className="w-full py-3.5 px-4 placeholder:text-sm placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
+              className="w-full py-3.5 px-4 placeholder:text-[13.5px] placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
             />
           </div>
           <div className="w-full mt-5">
@@ -88,7 +88,7 @@ const TourSchedule = () => {
               name="email"
               id="email"
               placeholder="Email"
-              className="w-full py-3.5 px-4 placeholder:text-sm placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
+              className="w-full py-3.5 px-4 placeholder:text-[13.5px] placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
             />
           </div>
           <div className="w-full mt-5">
@@ -96,7 +96,7 @@ const TourSchedule = () => {
               name="message"
               id="message"
               placeholder="Enter your message"
-              className="w-full h-[150px] px-4 pt-6 placeholder:text-sm placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
+              className="w-full h-[150px] px-4 pt-6 placeholder:text-[13.5px] placeholder:text-secondary border-[1px] border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] rounded-lg"
             ></textarea>
           </div>
           <div className="flex items-center gap-2.5 mt-3.5">
