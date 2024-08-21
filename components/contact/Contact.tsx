@@ -41,7 +41,7 @@ const Contact = () => {
                 <h3 className="text-[22px] font-medium mb-3 sm:text-[30px]">
                   Get In Touch
                 </h3>
-                <p className="text-sm text-secondary leading-[27px]">
+                <p className="text-[15px] text-secondary leading-[27px]">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Commodi cum perferendis nulla fuga porro illum eos id.
                 </p>
@@ -56,7 +56,7 @@ const Contact = () => {
                       <h3 className="text-[15px] font-medium text-primary-text line-clamp-1 mb-1">
                         {contact.title}
                       </h3>
-                      <p className="text-[13.5px] font-normal text-secondary line-clamp-1">
+                      <p className="text-sm font-normal text-secondary line-clamp-1">
                         {contact.email}
                       </p>
                     </div>

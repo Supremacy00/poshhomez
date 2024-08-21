@@ -114,9 +114,9 @@ const LeftNavMobile = () => {
                   return (
                     <button
                       key={item.id}
-                      className="bg-custom13 p-[7px] rounded-full hover:bg-primary-text transition-all duration-200 ease-in-out delay-200 group"
+                      className="bg-primary-text p-[7px] rounded-full hover:bg-custom13 transition-all duration-300 ease-in-out group"
                     >
-                      <div className="text-[24px] cursor-pointer group-hover:text-white transition-all duration-200 ease-in-out delay-200">
+                      <div className="text-[24px] cursor-pointer group-hover:text-white transition-all duration-300 ease-in-out">
                         {item.icon}
                       </div>
                     </button>

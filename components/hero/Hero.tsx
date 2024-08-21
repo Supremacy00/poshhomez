@@ -87,7 +87,7 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className="hidden xxl:block absolute -bottom-[150px] right-[47%] px-5 xxl:px-0">
+            <div className="hidden xxl:block absolute -bottom-[155px] right-[47%] px-5 xxl:px-0">
               <Image
                 src="/assets/images/element-1.png"
                 alt="Hero House"
