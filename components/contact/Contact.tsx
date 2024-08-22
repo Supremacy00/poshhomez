@@ -19,7 +19,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="w-full bg-custom4 text-primary-text pt-24 pb-24 lg:pt-[120px]">
+    <section className="relative w-full bg-custom4 text-primary-text pt-24 pb-24 lg:pt-[120px]">
       <div className="mx-auto px-4 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div>
           <div className="flex items-center gap-1.5 text-secondary font-light text-sm">
@@ -34,14 +34,14 @@ const Contact = () => {
             <h3 className="text-custom2">Contact</h3>
           </div>
         </div>
-        <section className="lg:flex justify-between gap-10 mt-8">
+        <section className="lg:flex justify-between gap-10 mt-8 lg:gap-20">
           <div className="w-full lg:w-[45%]">
-            <div className="w-full xs:max-w-[430px]">
+            <div className="w-full xs:max-w-[410px]">
               <div>
                 <h3 className="text-[22px] font-medium mb-3 sm:text-[30px]">
                   Get In Touch
                 </h3>
-                <p className="text-sm text-secondary leading-[27px]">
+                <p className="text-[15px] text-secondary leading-[27px]">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Commodi cum perferendis nulla fuga porro illum eos id.
                 </p>
@@ -56,7 +56,7 @@ const Contact = () => {
                       <h3 className="text-[15px] font-medium text-primary-text line-clamp-1 mb-1">
                         {contact.title}
                       </h3>
-                      <p className="text-[13.5px] font-normal text-secondary line-clamp-1">
+                      <p className="text-sm font-normal text-secondary line-clamp-1">
                         {contact.email}
                       </p>
                     </div>
