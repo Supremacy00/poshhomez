@@ -4,6 +4,7 @@ import AboutExperience from "./AboutExperience";
 import Link from "next/link";
 import { RiArrowRightSLine } from "react-icons/ri";
 import CustomerReviews from "./CustomerReviews";
+import Team from "./Team";
 
 const About = () => {
   return (
@@ -47,6 +48,7 @@ const About = () => {
           </div>
         </div>
         <div>
+          <Team />
           <CustomerReviews />
         </div>
       </div>

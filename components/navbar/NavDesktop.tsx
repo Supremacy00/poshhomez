@@ -59,7 +59,7 @@ const NavDesktop = () => {
                   <li
                     className={`${
                       pathname === item.link ? "text-custom2" : ""
-                    } py-2 text-[14.5px] hover:text-custom2 transition-colors duration-500 ease-in-out`}
+                    } py-2 hover:text-custom2 transition-colors duration-500 ease-in-out`}
                   >
                     {item.title}
                   </li>
@@ -72,12 +72,12 @@ const NavDesktop = () => {
                   <Link href="/auth/login">
                     <span className="flex items-center gap-1.5 cursor-pointer">
                       <IoPersonCircleOutline className="text-[23px]" />
-                      <h3 className="hidden xl:block text-[14.5px] hover:underline underline-offset-2 py-2 -mr-2">
+                      <h3 className="hidden xl:block text-sm hover:underline underline-offset-2 py-2 -mr-2">
                         Login
                       </h3>
                     </span>
                   </Link>
-                  <span className="hidden xl:flex items-center text-[14.5px] cursor-pointer">
+                  <span className="hidden xl:flex items-center text-sm cursor-pointer">
                     <RxSlash className="text-lg" />
                     <Link href="/auth/signup">
                       <h3 className="hover:underline underline-offset-2 py-2">

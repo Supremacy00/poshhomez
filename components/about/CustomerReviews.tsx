@@ -38,6 +38,7 @@ const CustomerReviews = () => {
       <h1 className="text-[22px] font-semibold text-primary-text sm:text-[30px] tracking-wide">
         Customer Reviews
       </h1>
+      <p className="text-sm text-primary-text font-light mt-1 lg:mt-0 lg:text-base">Our customers are always eager and ready to give a review.</p>
       <div className=" mt-7 px-3 py-10 border-[2px] border-custom13 border-dashed lg:flex justify-between items-center gap-5 sm:px-6 lg:mt-12 lg:px-12 lg:py-14 ">
         <div className="text-primary-text lg:max-w-[380px]">
           <h3 className="text-[30px] font-medium lg:text-[35px] lg:leading-[47px]">What Our Customers Say</h3>
