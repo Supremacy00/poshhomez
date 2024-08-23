@@ -102,7 +102,7 @@ const Team = () => {
       <h1 className="text-[22px] font-semibold text-primary-text sm:text-[30px] tracking-wide">
         Our Agents
       </h1>
-      <p className="text-sm text-primary-text font-light mt-1 lg:mt-0 lg:text-base">
+      <p className="text-sm text-primary-text mt-1 lg:mt-0 lg:text-base">
         Meet the amazing agents behind our agency.
       </p>
       <article className="mt-7 grid grid-col-1 xs:grid-cols-2 gap-x-7 gap-y-10 md:grid-cols-3 lg:grid-cols-4  lg:mt-12">

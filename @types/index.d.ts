@@ -188,7 +188,6 @@ export interface LoginHook {
 }
 
 export interface ProfileMenuProps {
-  isOpen: boolean;
   userRole: string;
   handleClick: () => void;
 }

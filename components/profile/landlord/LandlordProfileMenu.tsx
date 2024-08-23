@@ -13,7 +13,6 @@ import { IoLogOutOutline } from "react-icons/io5";
 import Link from "next/link";
 
 const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
-  isOpen,
   userRole,
   handleClick,
 }) => {
@@ -44,12 +43,8 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
   ));
 
   return (
-    <section className={`${isOpen ? "py-[25px]" : ""}`}>
-      <section
-        className={`${
-          isOpen ? "bg-white w-[270px] shadow-2xl rounded-xl" : ""
-        } py-5`}
-      >
+    <section className="py-[25px]">
+      <section className="bg-white w-[270px] shadow-2xl rounded-xl py-5 overflow-hidden font-normal">
         <div className="flex items-center gap-2 px-5 ">
           <div>
             <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">

@@ -18,13 +18,15 @@ export function useNotifications() {
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
   const token = getToken()
 
-  const { data, error, mutate } = useSWR<Notification[]>(
+  const { data, isLoading, error, mutate } = useSWR<Notification[]>(
     token ? [`${apiBaseUrl}/api/notification/all`, token] : null, 
     (urlAndToken) => fetcher(...urlAndToken as [string, string]),
     {
       onError: (error) => {
         console.error('Fetching notifications failed:', error);
-      }
+      },
+      revalidateOnFocus: false,
+      shouldRetryOnError: false,
     }
   );
 
@@ -52,7 +54,7 @@ export function useNotifications() {
 
   return {
     notifications: data,
-    isLoading: !data && !error,
+    isLoading,
     isError: error,
     unreadCount,
     markAsRead,

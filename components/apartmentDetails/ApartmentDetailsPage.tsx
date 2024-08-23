@@ -2,7 +2,7 @@
 import React from "react";
 import PageLoader from "../loader/PageLoader";
 import ApartmentPhotoCarousel from "./ApartmentPhotoCarousel";
-import { formatDistanceToNowStrict } from "date-fns";
+import { timeAgo } from "@/utils/timeformat";
 import { AiFillClockCircle } from "react-icons/ai";
 import { MdFitScreen } from "react-icons/md";
 import { GoDotFill } from "react-icons/go";
@@ -41,16 +41,9 @@ const ApartmentDetailsPage = () => {
   const { name, address, photos, rent_fee, created_at, id } =
     propertyDetails?.data;
 
-    const timeAgo = (dateString: string) => {
-      const date = new Date(dateString);
-      return formatDistanceToNowStrict(date, { addSuffix: true });
-    };
-
-
   const handlePrint = () => {
     window.print();
   }
-
 
   return (
     <section className="relative">
