@@ -1,30 +1,65 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
-import { useContentMenu } from "../ProfileContentMenuContext";
 import { useNotifications } from "@/hooks/useNotifications";
 import { GoBell } from "react-icons/go";
-import { HiOutlineEnvelope } from "react-icons/hi2";
-import Link from "next/link";
 import TenantProfileMenu from "../tenant/TenantProfileMenu";
 import { getUserRole } from "@/utils/authUtils";
 import LandlordProfileMenu from "../landlord/LandlordProfileMenu";
+import NotificationsMenu from "../profileMenuComponents/notifications/NotificationsModal";
 
 const AuthenticatedNavProfile = () => {
-  const [isProfileMenu, setIsProfileMenu] = useState(false);
+  const [isProfileMenu, setIsProfileMenu] = useState<boolean>(false);
+  const [isNotification, setIsNotification] = useState<boolean>(false);
   const userRole = getUserRole();
   const { user } = useAuth();
   const { unreadCount } = useNotifications();
-  const { handleContentMenu } = useContentMenu();
-  const showProfileMenu = () => setIsProfileMenu(true);
-  const hideProfileMenu = () => setIsProfileMenu(false);
-  const controls = useAnimation();
+  const notificationRef = useRef<HTMLDivElement>(null);
+  const notificationButtonRef = useRef<HTMLDivElement>(null);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const profileButtonRef = useRef<HTMLDivElement>(null);
 
-  const handleClick = () => {
-    setIsProfileMenu(!isProfileMenu);
+  const handleProfileClick = () => {
+    setIsProfileMenu((prev) => !prev);
   };
+
+  const handleNotification = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsNotification((prev) => !prev);
+  };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      notificationRef.current &&
+      !notificationRef.current.contains(event.target as Node) &&
+      notificationButtonRef.current &&
+      !notificationButtonRef.current.contains(event.target as Node)
+    ) {
+      setIsNotification(false);
+    }
+    if (
+      profileRef.current &&
+      !profileRef.current.contains(event.target as Node) &&
+      profileButtonRef.current &&
+      !profileButtonRef.current.contains(event.target as Node)
+    ) {
+      setIsProfileMenu(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isNotification || isProfileMenu) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isNotification, isProfileMenu]);
 
   const gender = user?.gender;
   const defaultAvatarUrl =
@@ -35,9 +70,10 @@ const AuthenticatedNavProfile = () => {
 
   return (
     <nav className="relative flex items-center gap-2 z-40">
-      <Link
-        href="/account/profile"
-        onClick={() => handleContentMenu("Notifications")}
+      <section
+        ref={notificationButtonRef}
+        onClick={handleNotification}
+        className="relative"
       >
         <div className="relative group hidden lg:block">
           <div className="relative bg-opacity-0 group-hover:bg-opacity-30 p-[25px] bg-gray-300 rounded-full cursor-pointer transition-colors duration-500 ease-in-out"></div>
@@ -48,16 +84,25 @@ const AuthenticatedNavProfile = () => {
             {unreadCount}
           </span>
         </div>
-      </Link>
-      <div
-        className="relative"
-        onMouseEnter={showProfileMenu}
-        onMouseLeave={hideProfileMenu}
-      >
+        {isNotification && (
+          <motion.div
+            ref={notificationRef}
+            initial={{ opacity: 1, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-[31px] lg:top-[43px] right-0 z-50"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <NotificationsMenu />
+          </motion.div>
+        )}
+      </section>
+      <section ref={profileButtonRef} className="relative">
         {user && (
           <div
             className="w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 cursor-pointer"
-            onClick={handleClick}
+            onClick={handleProfileClick}
           >
             <Image
               src={avatarUrl}
@@ -70,40 +115,30 @@ const AuthenticatedNavProfile = () => {
           </div>
         )}
         {isProfileMenu && (
-          <>
+          <motion.div
+            ref={profileRef}
+            initial={{ opacity: 1, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-7 lg:top-10 right-0 z-50"
+            onClick={(event) => event.stopPropagation()}
+          >
             {userRole === "Tenant" && (
-              <motion.div
-                initial={{ opacity: 1, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 0 }}
-                transition={{ duration: 0.3 }}
-                className="absolute top-7 lg:top-10 right-0 z-50"
-              >
-                <TenantProfileMenu
-                  isOpen={isProfileMenu}
-                  userRole={userRole}
-                  handleClick={handleClick}
-                />
-              </motion.div>
+              <TenantProfileMenu
+                userRole={userRole}
+                handleClick={handleProfileClick}
+              />
             )}
             {userRole === "LandLord" && (
-              <motion.div
-                initial={{ opacity: 1, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="absolute top-7 lg:top-10 right-0 z-50"
-              >
-                <LandlordProfileMenu
-                  isOpen={isProfileMenu}
-                  userRole={userRole}
-                  handleClick={handleClick}
-                />
-              </motion.div>
+              <LandlordProfileMenu
+                userRole={userRole}
+                handleClick={handleProfileClick}
+              />
             )}
-          </>
+          </motion.div>
         )}
-      </div>
+      </section>
     </nav>
   );
 };

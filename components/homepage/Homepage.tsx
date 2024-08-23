@@ -11,7 +11,6 @@ const Homepage = () => {
         <div>
           <Hero />
           <Trustees />
-          <Cities />
           <PopularProperties />
           <WhyChooseUs />
           <Testimonial />

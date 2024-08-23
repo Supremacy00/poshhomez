@@ -13,7 +13,6 @@ import { IoLogOutOutline } from "react-icons/io5";
 import Link from "next/link";
 
 const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
-  isOpen,
   userRole,
   handleClick,
 }) => {
@@ -43,12 +42,8 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
   ));
 
   return (
-    <section className={`${isOpen ? "py-[25px]" : ""}`}>
-      <section
-        className={`${
-          isOpen ? "bg-white w-[270px] shadow-2xl rounded-xl" : ""
-        } py-5 overflow-hidden font-normal`}
-      >
+    <section className="py-[25px]">
+      <section className="bg-white w-[270px] shadow-2xl rounded-xl py-5 overflow-hidden font-normal">
         <div className="flex items-center gap-2.5 px-5 ">
           <div>
             <div className="w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300">
@@ -59,7 +54,9 @@ const TenantProfileMenu: React.FC<ProfileMenuProps> = ({
             <h1 className="text-[15px] text-primary-text font-semibold truncate max-w-[180px] whitespace-nowrap overflow-hidden">
               {user?.name}
             </h1>
-            <p className="text-[13.5px] text-secondary italic font-light">{userRole}</p>
+            <p className="text-[13.5px] text-secondary italic font-light">
+              {userRole}
+            </p>
           </div>
         </div>
         <div className="w-full h-[1px] bg-gray-200 mt-4"></div>
