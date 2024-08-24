@@ -369,6 +369,8 @@ interface Notification {
   content: string;
   is_read: string;
   created_at: string;
+  slug: string;
+  none: string,
 }
 
 
