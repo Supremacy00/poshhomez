@@ -54,7 +54,7 @@ const ProfileContentMenu = () => {
         </span>
         <h3 className="text-custom2">{contentMenu}</h3>
       </div>
-      <div className="w-full mt-7 bg-white rounded-xl p-5 overflow-hidden md:pt-7">
+      <div className="w-full mt-7 bg-white rounded-xl shadow-2xl p-5 overflow-hidden md:pt-7">
         {isLoading ? (
           <ProfileSkeleton />
         ) : (

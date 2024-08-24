@@ -11,7 +11,7 @@ const PersonalInfo = () => {
           Personal Info
         </h1>
         <div className="mt-5">
-          <h3 className="text-[15px] text-secondary font-light">
+          <h3 className="text-[15px] text-secondary font-normal">
             Your personal info is 50% completed
           </h3>
           <div className="relative w-full mt-2">
@@ -21,13 +21,13 @@ const PersonalInfo = () => {
         </div>
       </div>
       <div className="mt-8">
-        <h4 className="text-primary-text text-[15px] mb-1.5 ">Short bio</h4>
+        <h4 className="text-primary-text text-[15px] font-medium mb-1.5 ">Short bio</h4>
         <div className="xs:flex items-center gap-3">
             <textarea
               name="Bio"
               id="Bio"
               placeholder="Write your bio here. It will be displayed on your public profile."
-              className="w-full p-4 h-40 font-light placeholder:text-[15px] placeholder-secondary rounded-lg border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] outline-none"
+              className="w-full p-4 h-40 font-normal placeholder:text-[15px] placeholder-secondary rounded-lg border-custom11 focus:border-custom9 focus:ring-custom9 focus:ring-[3px] outline-none"
             ></textarea>
           <div>
             <UserFileUploader />

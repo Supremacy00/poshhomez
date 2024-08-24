@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import Notifications from "@/components/profile/profileMenuComponents/notifications/Notifications";
+import Notifications from "@/components/notifications/Notifications";
 import withAuth from "@/utils/withAuth";
 
 const page = () => {

@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Navbar from "@/components/navbar/Navbar";
@@ -17,14 +17,6 @@ const inter = Inter({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
   style: ["normal"],
   subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -46,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.className} ${inter.className}`}>
+      <body className={`${inter.className}`}>
         <ModalProvider>
           <AuthProvider>
             <ContentMenuProvider>

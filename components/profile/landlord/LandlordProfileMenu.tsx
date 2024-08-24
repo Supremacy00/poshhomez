@@ -1,5 +1,4 @@
-import React, { memo } from "react";
-import Image from "next/image";
+import React from "react";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { useContentMenu } from "../ProfileContentMenuContext";
 import { ProfileMenuProps } from "@/@types";
@@ -42,7 +41,7 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
               <h1 className="text-[15px] text-primary-text font-semibold truncate max-w-[180px] whitespace-nowrap overflow-hidden">
                 {user?.name}
               </h1>
-              <p className="text-[13.5px] text-secondary italic font-normal">
+              <p className="text-[13.5px] text-secondary font-normal">
                 {formatedUserRole}
               </p>
             </div>
@@ -92,17 +91,6 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
             <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
               <HiOutlineStar className="text-[21px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
               <h1 className="text-[14.5px]">Reviews</h1>
-            </div>
-          </Link>
-          <Link
-            href="/account/profile"
-            onClick={() => {
-              handleContentMenu("Notifications"), handleClick();
-            }}
-          >
-            <div className="group flex items-center gap-2.5 text-primary-text px-4 py-3 hover:bg-primary-text hover:text-white rounded-lg transition-colors duration-300 ease-in-out  cursor-pointer">
-              <GoBell className="text-[20px] text-gray-600 group-hover:text-white transition-colors duration-300 ease-in-out " />
-              <h1 className="text-[14.5px]">Notifications</h1>
             </div>
           </Link>
           <div className="w-fill h-[1px] bg-gray-200 my-1.5"></div>

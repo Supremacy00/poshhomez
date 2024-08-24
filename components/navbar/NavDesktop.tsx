@@ -1,5 +1,5 @@
-"use client";
-import React, { useEffect } from "react";
+'use client'
+import React from "react";
 import { navData } from "../data";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -12,7 +12,6 @@ import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { getUserRole } from "@/utils/authUtils";
 import AuthenticatedNavProfile from "../profile/profileAuth/AuthenticatedNavProfile";
 import { useContentMenu } from "../profile/ProfileContentMenuContext";
-import { motion, useScroll, useSpring } from "framer-motion";
 
 const NavDesktop = () => {
   const pathname = usePathname();
@@ -21,21 +20,8 @@ const NavDesktop = () => {
   const userRole = getUserRole();
   const { handleContentMenu } = useContentMenu();
 
-  const { scrollYProgress } = useScroll();
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  });
 
   return (
-    <>
-      <motion.div
-        className="w-full py-[2px] lg:py-[3px] bg-custom2 fixed top-0 left-0 z-50"
-        style={{ scaleX }}
-      />
-
       <nav className="bg-white w-full border-b-[1px] border-b-custom4 hidden lg:block fixed right-0 left-0 top-0 text-primary-text z-40 py-5">
         <div className="relative px-5 mx-auto max-w-[993px] xl:max-w-[1200px] xxl:px-0">
           <div className="flex justify-between items-center gap-1">
@@ -114,7 +100,6 @@ const NavDesktop = () => {
           <RightNav />
         </div>
       </nav>
-    </>
   );
 };
 

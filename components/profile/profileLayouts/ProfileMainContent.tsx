@@ -5,7 +5,6 @@ import PasswordAndSecurity from "../profileMenuComponents/passwordAndSecurity/Pa
 import MyProperties from "../profileMenuComponents/myProperties/MyProperties";
 import Wishlist from "../profileMenuComponents/wishlist/Wishlist";
 import Reviews from "../profileMenuComponents/reviews/Reviews";
-import Notifications from "../profileMenuComponents/notifications/Notifications";
 import Help from "../profileMenuComponents/help/Help";
 import { MenuComponentMapProp } from "@/@types";
 import { useContentMenu } from "../ProfileContentMenuContext";
@@ -21,7 +20,6 @@ const ProfileMainContent: React.FC = () => {
     "My Properties": MyProperties,
     Wishlist: Wishlist,
     Reviews: Reviews,
-    Notifications: Notifications,
     Help: Help,
   };
 

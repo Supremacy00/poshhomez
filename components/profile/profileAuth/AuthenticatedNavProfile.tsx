@@ -10,7 +10,7 @@ import { getUserRole } from "@/utils/authUtils";
 import LandlordProfileMenu from "../landlord/LandlordProfileMenu";
 import Avatar from "@mui/material/Avatar";
 import Badge from "@mui/material/Badge";
-import NotificationsModal from "../profileMenuComponents/notifications/NotificationsModal";
+import NotificationsModal from "../../notifications/NotificationsModal";
 
 const AuthenticatedNavProfile = () => {
   const [isProfileMenu, setIsProfileMenu] = useState<boolean>(false);
@@ -122,7 +122,7 @@ const AuthenticatedNavProfile = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-7 lg:top-9 right-0 z-50"
+              className="absolute top-[25px] lg:top-9 right-0 z-50"
               onClick={(event) => event.stopPropagation()}
             >
               <NotificationsModal
@@ -150,7 +150,7 @@ const AuthenticatedNavProfile = () => {
             },
           }}
           invisible={unreadCount === 0}
-          className="cursor-pointer bg-custom4 hover:bg-custom10 rounded-full p-[5px] transition-colors duration-300 ease-in-out"
+          className="cursor-pointer bg-custom4 hover:bg-custom10 rounded-full p-2 transition-colors duration-300 ease-in-out"
         >
           <FaRegBell className=" text-custom7 text-[22px]" />
         </Badge>
@@ -158,7 +158,7 @@ const AuthenticatedNavProfile = () => {
       <section ref={profileButtonRef} className="relative">
         {user && (
           <div
-            className="w-[40px] h-[40px] flex items-center justify-center rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 cursor-pointer"
+            className="w-[37px] h-[37px] flex items-center justify-center rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 cursor-pointer"
             onClick={handleProfileClick}
           >
             <Avatar
@@ -176,7 +176,7 @@ const AuthenticatedNavProfile = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 15, scale: 0.95 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="absolute top-7 lg:top-9 right-0 z-50"
+              className="absolute top-[25px] lg:top-9 right-0 z-50"
               onClick={(event) => event.stopPropagation()}
             >
               {userRole === "Tenant" && (

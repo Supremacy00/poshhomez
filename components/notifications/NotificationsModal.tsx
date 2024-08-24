@@ -46,7 +46,7 @@ const NotificationsModal: React.FC<NotificationsModalProps> = ({handleRegularNot
           </div>
         ) : notifications && notifications.length > 0 ? (
           <section className="overflow-y-auto max-h-[370px]">
-            <NotificationContent />
+            <NotificationContent style="line-clamp-2"/>
           </section>
         ) : (
           <section className="mx-auto flex flex-col justify-center items-center text-center my-3">

@@ -7,7 +7,7 @@ import { footerIcons } from "../data";
 
 const ContactForm = () => {
   return (
-    <form className="bg-white rounded-xl px-5 py-12  xl:px-12 xl:py-16">
+    <form className="bg-white rounded-xl shadow-2xl px-5 py-12  xl:px-12 xl:py-16">
       <div className="sm:flex items-center gap-5">
         <div className="relative w-full">
           <input

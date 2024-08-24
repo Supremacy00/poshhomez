@@ -19,7 +19,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="relative w-full bg-custom4 text-primary-text pt-24 pb-24 lg:pt-[120px]">
+    <section className="relative w-full bg-custom4 text-primary-text pt-24 pb-16 lg:pt-[120px] lg:pb-24">
       <div className="mx-auto px-4 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div>
           <div className="flex items-center gap-1.5 text-secondary font-light text-sm">
@@ -48,7 +48,7 @@ const Contact = () => {
               </div>
               <div className="w-full space-y-5 mt-8">
                 {contactData.map((contact, index) => (
-                  <div key={index} className="w-full flex items-center gap-3.5 bg-white rounded-xl p-5 overflow-hidden">
+                  <div key={index} className="w-full flex items-center gap-3.5 bg-white rounded-xl shadow-2xl p-5 overflow-hidden">
                     <span className="bg-custom8 p-4 rounded-full text-[30px] text-custom6">
                       {contact.logo}
                     </span>

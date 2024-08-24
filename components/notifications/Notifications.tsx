@@ -35,7 +35,7 @@ const Notifications = () => {
             Error loading notifications
           </div>
         ) : notifications && notifications.length > 0 ? (
-          <NotificationContent />
+          <NotificationContent style="line-clamp-3"/>
         ) : (
           <section className="mx-auto flex flex-col justify-center items-center text-center my-8">
             <div className="w-20 h-20 overflow-hidden rounded-full bg-custom8">

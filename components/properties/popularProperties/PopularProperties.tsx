@@ -40,7 +40,7 @@ const PopularProperties: React.FC = () => {
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
             Popular Apartments
           </h1>
-          <p className="text-sm text-primary-text mt-1 lg:mt-0 lg:text-base">
+          <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </div>

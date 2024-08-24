@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
                 <h3 className="text-[15px] font-semibold mb-1">
                   Property Management
                 </h3>
-                <h1 className="text-sm leading-6 text-secondary">
+                <h1 className="text-sm leading-6 text-secondary lg:text-[15px]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Fugiat quam dolorum.
                 </h1>
@@ -67,7 +67,7 @@ const WhyChooseUs = () => {
                 <h3 className="text-sm font-semibold mb-1">
                   Mortgage Services
                 </h3>
-                <h1 className="text-sm leading-6 text-secondary">
+                <h1 className="text-sm leading-6 text-secondary lg:text-[15px]">
                   Nullam sollicitudin blandit eros eu pretium. Nullam maximus
                   ultricies auctor.
                 </h1>
@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
                 <h3 className="text-[15px] font-semibold mb-1">
                   Currency Services
                 </h3>
-                <h1 className="text-sm leading-6 text-secondary">
+                <h1 className="text-sm leading-6 text-secondary lg:text-[15px]">
                   Fugiat quam dolorum, illo voluptate laboriosam maxime,
                   voluptates odio corrupti.
                 </h1>
