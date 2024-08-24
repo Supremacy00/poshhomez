@@ -43,7 +43,7 @@ const PersonalInfoForm = () => {
   };
 
   return (
-    <section className="relative border-[1px] border-custom11 rounded-lg mt-5 p-4">
+    <section className="relative border-[1px] border-custom11 bg-white rounded-lg mt-5 p-4">
       <form onSubmit={handleSubmit}>
         <div>
           <div

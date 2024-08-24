@@ -13,7 +13,7 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { useModal } from "@/contexts/modalContext/ModalContext";
 import useCloseOnOutsideClick from "@/hooks/useCloseOnOutsideClick";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface CustomShareSocialProps {
   title: string;
@@ -111,69 +111,71 @@ const CustomShareSocial: React.FC<CustomShareSocialProps> = ({ title }) => {
 
   return (
     <div className="font-nunito fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 text-primary-text">
-      <motion.div  initial={{ opacity: 0, scale: 0.7 }}
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.1,
-            ease: [0, 0.71, 0.2, 1.01],
-          }} className="fixed xs:inset-0 flex justify-center items-center xs:px-5 bottom-5 right-5 left-5">
-        <div
-          className="relative w-[550px] bg-white rounded-xl px-5 py-10 text-center overflow-hidden no-scrollbar"
-          ref={modalRef}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="fixed xs:inset-0 flex justify-center items-center xs:px-5 bottom-5 right-5 left-5"
         >
-          <h3 className="text-base font-semibold mb-7">Share this page</h3>
-          <div className="w-full flex justify-center items-center mb-8">
-            <div className="flex overflow-x-auto space-x-4">
-              {shareLinks.map((link, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center space-y-2"
-                >
-                  <div className="p-3 rounded-full bg-gray-200 hover:bg-gray-300 text-primary-text hover:text-gray-900 transition-colors duration-300 ease-in-out cursor-pointer">
-                    <Link
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Share on ${link.platform}`}
-                      className="text-[27px]"
-                    >
-                      {link.icon}
-                    </Link>
-                  </div>
-                  <p className="text-sm text-center">{link.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="w-full h-[1px] bg-gray-200 my-7" />
-          <div className="relative w-full flex flex-col space-y-2 p-1.5">
-            <div className="relative w-full">
-              <input
-                type="text"
-                value={url}
-                readOnly
-                className="text-[15px] w-full pl-3 py-3 pr-32 border-[1.5px] border-secondary bg-gray-100 rounded-lg"
-              />
-              <button
-                onClick={handleCopyClick}
-                className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-800 transition-colors duration-300 ease-in-out flex items-center space-x-1"
-              >
-                <FaClipboard className="text-sm" />
-                <span className="text-[13px] font-sans font-medium">
-                  {copySuccess || "Copy URL"}
-                </span>
-              </button>
-            </div>
-          </div>
-          <span
-            className="absolute top-4 right-4 text-[22px] p-2 bg-custom4 rounded-full hover:bg-gray-100 cursor-pointer transition-colors duration-300 ease-in-out"
-            onClick={handleIsModal}
+          <div
+            className="relative w-[550px] bg-white rounded-xl px-5 py-10 text-center overflow-hidden no-scrollbar"
+            ref={modalRef}
           >
-            <AiOutlineClose />
-          </span>
-        </div>
-      </motion.div>
+            <h3 className="text-base font-semibold mb-7">Share this page</h3>
+            <div className="w-full flex justify-center items-center mb-8">
+              <div className="flex overflow-x-auto space-x-4">
+                {shareLinks.map((link, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center space-y-2"
+                  >
+                    <div className="p-3 rounded-full bg-gray-200 hover:bg-gray-300 text-primary-text hover:text-gray-900 transition-colors duration-300 ease-in-out cursor-pointer">
+                      <Link
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Share on ${link.platform}`}
+                        className="text-[27px]"
+                      >
+                        {link.icon}
+                      </Link>
+                    </div>
+                    <p className="text-sm text-center">{link.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="w-full h-[1px] bg-gray-200 my-7" />
+            <div className="relative w-full flex flex-col space-y-2 p-1.5">
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  value={url}
+                  readOnly
+                  className="text-[15px] w-full pl-3 py-3 pr-32 border-[1.5px] border-secondary bg-gray-100 rounded-lg"
+                />
+                <button
+                  onClick={handleCopyClick}
+                  className="absolute top-1/2 right-2 transform -translate-y-1/2 p-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-gray-800 transition-colors duration-300 ease-in-out flex items-center space-x-1"
+                >
+                  <FaClipboard className="text-sm" />
+                  <span className="text-[13px] font-sans font-medium">
+                    {copySuccess || "Copy URL"}
+                  </span>
+                </button>
+              </div>
+            </div>
+            <span
+              className="absolute top-4 right-4 text-[22px] p-2 bg-custom4 rounded-full hover:bg-gray-100 cursor-pointer transition-colors duration-300 ease-in-out"
+              onClick={handleIsModal}
+            >
+              <AiOutlineClose />
+            </span>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

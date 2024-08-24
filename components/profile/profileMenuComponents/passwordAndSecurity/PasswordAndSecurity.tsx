@@ -57,7 +57,7 @@ const PasswordAndSecurity: React.FC = () => {
         <h1 className="text-[22px] font-semibold text-primary-text mb-5 lg:text-[28px]">
           Password & Security
         </h1>
-        <p className="text-[15px] text-secondary font-light mb-5">
+        <p className="text-[15px] text-secondary font-normal mb-5">
           Manage your password settings and secure your account.
         </p>
       </div>

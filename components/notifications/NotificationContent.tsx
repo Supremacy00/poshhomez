@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import { AiOutlineCheckCircle } from "react-icons/ai";
+import { FaCheckSquare } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa6";
 import { FaBell } from "react-icons/fa";
 import { RiContractFill } from "react-icons/ri";
@@ -9,20 +9,23 @@ import { BiSolidUserAccount } from "react-icons/bi";
 import { useNotifications } from "@/hooks/useNotifications";
 import { timeAgo } from "@/utils/timeformat";
 
-const NotificationContent = () => {
-  const { notifications } = useNotifications();
+type NotificationDetails = {
+  icon: JSX.Element;
+  title: string;
+};
+type NotificationContentProps = {
+  style: string
+}
 
-  type NotificationDetails = {
-    icon: JSX.Element;
-    title: string;
-  };
+const NotificationContent: React.FC<NotificationContentProps> = ({ style }) => {
+  const { notifications } = useNotifications();
 
   const getNotificationDetails = (slug: string): NotificationDetails => {
     switch (slug) {
       case "notice":
         return {
           icon: <BiSolidUserAccount className="text-gray-500 text-[25px]" />,
-          title: "Account Update",
+          title: "General Update",
         };
       case "payment":
         return {
@@ -36,7 +39,7 @@ const NotificationContent = () => {
         };
       case "registration":
         return {
-          icon: <AiOutlineCheckCircle className="text-green-500 text-[25px]" />,
+          icon: <FaCheckSquare className="text-green-500 text-[25px]" />,
           title: "Registration Successful",
         };
       default:
@@ -59,11 +62,11 @@ const NotificationContent = () => {
             <div className="flex gap-3 items-start px-5">
               <div className="">{icon}</div>
               <div className="w-full">
-                <h3 className="text-sm font-medium text-primary-text mb-1">
+                <h3 className="text-[15px] font-medium text-primary-text mb-1">
                   {title}
                 </h3>
-                <div className="flex justify-between items-center gap-3">
-                  <p className="text-[13px] text-custom5 font-normal line-clamp-2 leading-[22px] mb-1.5">
+                <div className="flex justify-between gap-3">
+                  <p className={`text-sm text-custom5 font-normal leading-[22px] mb-1.5 ${style}`}>
                     {notification.content}
                   </p>
                   <div
