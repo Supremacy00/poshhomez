@@ -12,10 +12,10 @@ import { GoArrowUpRight } from "react-icons/go";
 const Hero = () => {
   return (
     <>
-      <section className="relative bg-custom4 w-full h-[1000px] ss:h-[690px] md:h-[630px] xl:h-[785px] xxl:h-[780px]">
+      <section className="relative bg-custom4 w-full h-[1000px] ss:h-[640px] md:h-[630px] xl:h-[785px] xxl:h-[780px]">
         <div className="text-primary-text px-4 absolute right-0 left-0 z-20  mx-auto xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
           <section className="pt-[100px] z-30 md:pt-28 lg:pt-32 xl:pt-44 ">
-            <h1 className="text-[36px] font-semibold sm:text-start leading-[50px] xs:max-w-[493px] md:text-[45px] md:leading-[65px] md:max-w-[550px] xl:max-w-[493px]  ">
+            <h1 className="text-[32px] font-semibold sm:text-start leading-[45px] xs:max-w-[493px] md:text-[45px] md:leading-[65px] md:max-w-[550px] xl:max-w-[493px]  ">
               Explore Your New Home, and Live with Ease.
             </h1>
             <Search />
@@ -23,7 +23,7 @@ const Hero = () => {
               <div className="flex items-center gap-3 px-3">
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
-                  <h1 className="text-[25px] font-semibold md:text-[30px]">
+                  <h1 className="text-[23px] font-semibold md:text-[30px]">
                   500K+
                   </h1>
                   <p className="text-[13px] font-normal">Renters</p>
@@ -32,7 +32,7 @@ const Hero = () => {
               <div className="flex items-center gap-3 px-3">
                 <div className="border-l-[2px] border-l-custom1 py-6 md:py-7"></div>
                 <div>
-                  <h1 className="text-[25px] font-semibold md:text-[30px]">
+                  <h1 className="text-[23px] font-semibold md:text-[30px]">
                   200K+
                   </h1>
                   <p className="text-[13px] font-normal">Properties</p>

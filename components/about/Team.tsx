@@ -131,8 +131,8 @@ const Team = () => {
               </span>
             </div>
             <div className="mt-3">
-              <h3 className="text-sm font-semibold">{team.name}</h3>
-              <p className="text-[13px] font-light text-secondary mt0.5">
+              <h3 className="text-[15px] text-primary-text font-semibold">{team.name}</h3>
+              <p className="text-sm font-light text-secondary mt-[1px]">
                 {team.role}
               </p>
             </div>

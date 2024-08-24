@@ -69,7 +69,7 @@ const ApartmentDetailsPage = () => {
             </div>
           </div>
           <div className="mt-8 lg:mt-0 lg:text-end">
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-3 flex-wrap lg:justify-end">
               {isAuthenticated && userRole === "Tenant" && (
                 <WishlistButton
                   property={propertyDetails?.data}
