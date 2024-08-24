@@ -7,8 +7,8 @@ import { RiCurrencyFill } from "react-icons/ri";
 
 const WhyChooseUs = () => {
   return (
-    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:max-w-[1200px] xxl:px-0 xl:py-24">
-      <div className="md:flex items-center gap-7 lg:gap-16 xl:gap-28">
+    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-16 lg:px-5 xl:max-w-[1200px] xxl:px-0">
+      <div className="flex flex-col md:flex-row items-center gap-7 lg:gap-16 xl:gap-28">
         <div className="relative w-full h-full">
           <div className="bg-custom4 overflow-hidden aspect-547/634 rounded-lg ss:h-[350px] xs:w-[547px] md:max-w-[336px] md:h-[450px] lg:max-w-[456px] lg:h-[529px] xl:max-w-[546px] xl:h-[633px] xxl:max-w-[600px] xxl:h-[650px]">
             <Image
@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
                 <AiFillPropertySafety className="text-[30px] text-custom2 group-hover:text-white transition-colors duration-500 delay-100 ease-in-out" />
               </span>
               <div className="mt-2">
-                <h3 className="text-sm font-semibold mb-1">
+                <h3 className="text-[15px] font-semibold mb-1">
                   Mortgage Services
                 </h3>
                 <h1 className="text-sm leading-6 text-secondary lg:text-[15px]">

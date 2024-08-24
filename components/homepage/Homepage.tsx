@@ -1,20 +1,20 @@
 import Hero from "../hero/Hero";
-import Cities from "../properties/popularProperties/Cities";
-import PopularProperties from '../properties/popularProperties/PopularProperties';
-import Testimonial from "../testimonials/Testimonial";
 import Trustees from "../trustees/Trustees";
+import ApartmentByLocation from "../properties/popularProperties/ApartmentByLocation";
+import PopularApartment from "../properties/popularProperties/PopularApartment";
 import WhyChooseUs from "../whyChooseUs/WhyChooseUs";
+import Testimonial from "../testimonials/Testimonial";
 
 const Homepage = () => {
-  
   return (
-        <div>
-          <Hero />
-          <Trustees />
-          <PopularProperties />
-          <WhyChooseUs />
-          <Testimonial />
-        </div>
+    <div>
+      <Hero />
+      <Trustees />
+      <ApartmentByLocation />
+      <PopularApartment />
+      <WhyChooseUs />
+      <Testimonial />
+    </div>
   );
 };
 

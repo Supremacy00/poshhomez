@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary-text">
-      <div className="px-4 pb-8 mx-auto w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px]  xxl:px-0">
+      <div className="px-4 pb-8 mx-auto w-full lg:max-w-[993px] lg:px-5 xl:max-w-[1200px] xxl:px-0">
         <div className="text-white mx-auto py-8 md:flex justify-between items-center xl:py-10">
           <div className="flex items-center gap-2 flex-wrap">
             <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
@@ -36,7 +36,7 @@ const Footer = () => {
               </span>
             </h3>
           </div>
-          <ul className="flex items-center gap-5 flex-wrap mt-5 text-[14px] text-white md:mt-0 xxl:gap-12 font-light">
+          <ul className="flex items-center gap-5 flex-wrap mt-5 text-sm text-white md:mt-0 xxl:gap-12 font-normal">
             <li>Terms of Use</li>
             <li>Privacy Policy</li>
             <li>Services</li>
@@ -47,31 +47,31 @@ const Footer = () => {
         <div className="w-full bg-custom5 h-[1px]" />
         <div className="grid grid-cols-1 xs:grid-cols-2 gap-x-5 lg:grid-cols-3 xl:grid-cols-4">
           <div className="mt-8 font-light lg:mt-11 xl:mt-16">
-            <h1 className="text-[14px] uppercase font-semibold text-white">
+            <h1 className="text-sm uppercase font-semibold text-white">
               {header2}
             </h1>
-            <div className="text-[14px] mt-1.5 leading-6 font-normal text-custom1">
+            <div className="text-sm mt-1.5 leading-6 font-normal text-custom1">
               <p className="mt-5  ">{address1}</p>
               <p className="">{address2}</p>
               <p>{address3}</p>
             </div>
           </div>
           <div className="mt-7 lg:mt-11 xl:mt-16">
-            <h1 className="text-[14px] uppercase font-semibold text-white">
+            <h1 className="text-sm uppercase font-semibold text-white">
               {header1}
             </h1>
             <h3 className="text-[18px] font-medium mt-4 text-white xxl:text-[24px] not-italic no no-underline">
               {tele}
             </h3>
-            <p className="text-[14px] font-normal text-custom1 mt-1 not-italic no-underline">
+            <p className="text-sm font-normal text-custom1 mt-1 not-italic no-underline">
               {email}
             </p>
           </div>
           <div className="mt-7 font-light lg:mt-11 xl:mt-16">
-            <h1 className="text-[14px] uppercase font-semibold text-white">
+            <h1 className="text-sm uppercase font-semibold text-white">
               {header3}
             </h1>
-            <div className="text-[14px] mt-1.5 font-normal leading-6 text-custom1">
+            <div className="text-sm mt-1.5 font-normal leading-6 text-custom1">
               <p className="mt-5">{weekdays1}</p>
               <p>{weekdays2}</p>
               <p>{weekdays3}</p>
@@ -79,7 +79,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-7 xl:mt-16">
-            <h1 className="text-[14px] uppercase font-semibold text-white">
+            <h1 className="text-sm uppercase font-semibold text-white">
               {offers1}
             </h1>
             <div className="mt-6">
@@ -95,7 +95,7 @@ const Footer = () => {
                   Go
                 </button>
               </div>
-              <p className="text-[14px] text-custom1 font-normal mt-3">
+              <p className="text-sm text-custom1 font-normal mt-3">
                 {offerPara}
               </p>
             </div>

@@ -22,7 +22,7 @@ import Link from "next/link";
 import WishlistButton from "@/components/profile/profileMenuComponents/wishlist/WishlistButton";
 import useApartmentDetails from "@/hooks/useApartmentDetails";
 
-const PopularProperties: React.FC = () => {
+const PopularApartment: React.FC = () => {
   const { data, isLoading, isError } = useApiWithSWR(
     process.env.NEXT_PUBLIC_PROPERTY_ENDPOINT || ""
   );
@@ -34,7 +34,7 @@ const PopularProperties: React.FC = () => {
   const defaultFallbackUrl = "/assets/images/hero1.jpg";
 
   return (
-    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-12 lg:px-5 xl:py-24 xl:max-w-[1200px] xxl:px-0">
+    <section className="mx-auto px-4 pb-16 xs:max-w-[550px] md:max-w-[768px] md:px-10 lg:max-w-[993px] lg:py-16 lg:px-5 xl:max-w-[1200px] xxl:px-0">
       <div className="lg:flex justify-between items-center">
         <div>
           <h1 className="text-[20px] font-semibold text-primary-text sm:text-[30px]">
@@ -152,7 +152,7 @@ const PopularProperties: React.FC = () => {
             );
           })}
       </article>
-      <section className="flex justify-center mt-14">
+      <section className="flex justify-center mt-7 lg:mt-14">
         <Link href="/listings">
           <div className="flex items-center gap-3 group cursor-pointer">
             <p className="text-sm text-primary-text font-semibold group-hover:text-custom2 transition-colors delay-100 duration-200 ease-in-out">
@@ -168,4 +168,4 @@ const PopularProperties: React.FC = () => {
   );
 };
 
-export default PopularProperties;
+export default PopularApartment;
