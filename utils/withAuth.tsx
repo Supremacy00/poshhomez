@@ -4,12 +4,14 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContext/Auth-Context";
 import { isAuthenticated } from "./authUtils";
 import PageLoader from "@/components/loader/PageLoader";
+import { useNotifications } from "@/hooks/useNotifications";
 
 function withAuth<T extends {}>(
   WrappedComponent: ComponentType<T>
 ): ComponentType<T> {
   const RequiresAuth = (props: T): ReactElement | null => {
     const { isAuthChecking, isLoading } = useAuth();
+    const { isLoading: isNotification } = useNotifications();
     const router = useRouter();
 
     useEffect(() => {
@@ -19,7 +21,7 @@ function withAuth<T extends {}>(
       }
     }, []);
 
-    if (isLoading || isAuthChecking) {
+    if (isLoading || isAuthChecking || isNotification) {
       return (
         <div>
           <PageLoader />

@@ -1,6 +1,7 @@
 import { Metadata, Viewport } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { AuthProvider } from "@/contexts/authContext/Auth-Context";
@@ -51,6 +52,7 @@ export default function RootLayout({
             <ContentMenuProvider>
               <WishlistProvider>
                 <LoadingProvider>
+                <AppRouterCacheProvider>
                   <Navbar />
                   <LoginModal />
                   <AdvanceSearch />
@@ -62,6 +64,7 @@ export default function RootLayout({
                     duration={3500}
                   />
                   <Footer />
+                  </AppRouterCacheProvider>
                 </LoadingProvider>
               </WishlistProvider>
             </ContentMenuProvider>

@@ -11,6 +11,7 @@ import { GoBell } from "react-icons/go";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { IoLogOutOutline } from "react-icons/io5";
 import Link from "next/link";
+import { Avatar } from "@mui/material";
 
 const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
   userRole,
@@ -27,39 +28,26 @@ const LandlordProfileMenu: React.FC<ProfileMenuProps> = ({
       : "/assets/images/fallback-female-profile.jpeg";
   const avatarUrl = user?.avatar?.secure_url || defaultAvatarUrl;
 
-  const MemoizedImage = memo(() => (
-    <Image
-      src={avatarUrl}
-      alt={`${user?.name || "User"}'s avatar`}
-      width={200}
-      height={200}
-      className="w-full h-full object-cover"
-      quality={100}
-      priority
-      onError={(e) => {
-        e.currentTarget.src = defaultAvatarUrl;
-      }}
-    />
-  ));
-
   return (
     <section className="py-[25px]">
-      <section className="bg-white w-[270px] shadow-2xl rounded-xl py-5 overflow-hidden font-normal">
-        <div className="flex items-center gap-2 px-5 ">
-          <div>
-            <div className="max-w-[45px] h-[45px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">
-              <MemoizedImage />
+      <section className="bg-white w-[280px] shadow-2xl rounded-xl py-5 overflow-hidden font-medium">
+        {user && (
+          <div className="flex items-center gap-2 px-5 ">
+            <div>
+              <div className="max-w-[44px] h-[44px] rounded-full overflow-hidden bg-custom4 border-[2px] border-gray-300 aspect-3/2">
+                <Avatar alt={user.name} src={avatarUrl} />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-[15px] text-primary-text font-semibold truncate max-w-[180px] whitespace-nowrap overflow-hidden">
+                {user?.name}
+              </h1>
+              <p className="text-[13.5px] text-secondary italic font-normal">
+                {formatedUserRole}
+              </p>
             </div>
           </div>
-          <div>
-            <h1 className="text-[15px] text-primary-text font-semibold truncate max-w-[180px] whitespace-nowrap overflow-hidden">
-              {user?.name}
-            </h1>
-            <p className="text-[13.5px] text-secondary italic font-light">
-              {formatedUserRole}
-            </p>
-          </div>
-        </div>
+        )}
         <div className="w-fill h-[1px] bg-gray-200 mt-4"></div>
         <div className="mt-1.5 px-1 font-normal">
           <Link

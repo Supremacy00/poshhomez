@@ -1,11 +1,16 @@
 import React from "react";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
-import NotificationModalContent from "./NotificationModalContent";
 import { useNotifications } from "@/hooks/useNotifications";
 import Image from "next/image";
 import NotificationLoader from "@/components/loader/NotificationLoader";
+import NotificationContent from "./NotificationContent";
+import Link from "next/link";
 
-const NotificationsModal = () => {
+type NotificationsModalProps = {
+  handleRegularNotification: () => void;
+};
+
+const NotificationsModal: React.FC<NotificationsModalProps> = ({handleRegularNotification}) => {
   const { notifications, isError, isLoading, markAsRead } = useNotifications();
 
   const handleMarkAllAsRead = () => {
@@ -16,16 +21,14 @@ const NotificationsModal = () => {
 
   return (
     <section className="py-[25px]">
-      <section className="bg-white w-[450px] max-h-[470px] py-3 shadow-2xl rounded-xl overflow-hidden font-normal">
+      <div className="bg-white w-[450px] max-h-[470px] py-3 shadow-2xl rounded-xl overflow-hidden font-normal">
         <div className="flex justify-between items-center px-5">
           <h1 className="text-base text-primary-text font-medium">
             Notifications
           </h1>
-          {notifications && (
-            <div
-              className="flex items-center gap-1 text-custom6 hover:text-custom2 transition-colors duration-300 ease-in-out"
-            >
-              <IoCheckmarkDoneSharp className="text-lg"/>
+          {notifications && notifications.length > 0 && (
+            <div className="flex items-center gap-1 text-custom6 hover:text-custom2 transition-colors duration-300 ease-in-out">
+              <IoCheckmarkDoneSharp className="text-lg" />
               <button className="text-[13.5px] font-medium">
                 Mark all as read
               </button>
@@ -43,7 +46,7 @@ const NotificationsModal = () => {
           </div>
         ) : notifications && notifications.length > 0 ? (
           <section className="overflow-y-auto max-h-[370px]">
-            <NotificationModalContent />
+            <NotificationContent />
           </section>
         ) : (
           <section className="mx-auto flex flex-col justify-center items-center text-center my-3">
@@ -60,18 +63,20 @@ const NotificationsModal = () => {
             <h3 className="text-sm font-medium text-primary-text mt-2">
               No notifications yet
             </h3>
-            <p className="w-[280px] text-[13px] text-custom5 font-normal leading-[22px] mt-1">You currently do not have any notifications at this moment.</p>
+            <p className="w-[280px] text-[13px] text-custom5 font-normal leading-[22px] mt-1">
+              You currently do not have any notifications at this moment.
+            </p>
           </section>
         )}
         {notifications && notifications.length > 0 && (
           <>
-            <div className="w-full h-[1px] bg-gray-200 mt-3"></div>
-            <button className="text-[13.5px] font-medium text-custom6 mt-3 px-5">
+            <div className="w-full h-[1px] bg-gray-200 grid"></div>
+            <button onClick={handleRegularNotification} className="text-[13.5px] font-medium text-custom6 mt-3 px-5">
               View all notifications
             </button>
           </>
         )}
-      </section>
+      </div>
     </section>
   );
 };

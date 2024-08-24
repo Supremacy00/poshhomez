@@ -10,7 +10,7 @@ const fetcher = async (url: string, token: string): Promise<Notification[]> => {
     headers: {
       Authorization: `Bearer ${token}`
     }
-  }).then(res => res?.data?.data?.data,);
+  }).then(res => res?.data?.data?.data || [],);
 }
 
 
@@ -18,43 +18,50 @@ export function useNotifications() {
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
   const token = getToken()
 
-  const { data, isLoading, error, mutate } = useSWR<Notification[]>(
+  const { data, error, mutate } = useSWR<Notification[]>(
     token ? [`${apiBaseUrl}/api/notification/all`, token] : null, 
     (urlAndToken) => fetcher(...urlAndToken as [string, string]),
     {
       onError: (error) => {
         console.error('Fetching notifications failed:', error);
-      },
-      revalidateOnFocus: false,
-      shouldRetryOnError: false,
+      }
     }
   );
 
   const [unreadCount, setUnreadCount] = useState<number>(0);
 
+  console.log(data)
+
   useEffect(() => {
-    const count = data?.filter(notification => notification.is_read === "False").length ?? 0;
-    setUnreadCount(count);
-  }, [data]);  
+    if (data) {
+      const count = data.filter((notification) => notification.is_read === 'False').length;
+      setUnreadCount(count);
+    }
+  }, [data]); 
 
   const markAsRead = useCallback(async (notificationId: string) => {
     try {
       const response = await axios.post(`${apiBaseUrl}/api/notification/${notificationId}`, {}, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
       if (response.data.status_code === 200) {
-        mutate(data?.map(notification => notification.id === notificationId ? { ...notification, is_read: "True" } : notification), false);
+        mutate((notifications) =>
+          notifications?.map((notification) =>
+            notification.id === notificationId
+              ? { ...notification, is_read: 'True' }
+              : notification
+          )
+        , false);
       }
     } catch (error) {
       console.error('Error marking notification as read:', error);
     }
-  }, [data, mutate, apiBaseUrl, token]);
-
+  }, [apiBaseUrl, mutate, token]);
   return {
     notifications: data,
-    isLoading,
+    isLoading: !data && !error,
     isError: error,
     unreadCount,
     markAsRead,

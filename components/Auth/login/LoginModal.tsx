@@ -41,7 +41,7 @@ const LoginModal: React.FC = () => {
       } mx-auto fixed right-0 left-0 top-0 bottom-0 inset-0 bg-black bg-opacity-50 flex justify-center z-40 text-primary-text`}
     >
       <div className="flex justify-center items-center">
-        <div className="w-full fixed top-12 px-4 md:w-[520px]">
+        <div className="w-full fixed top-12 px-4 xs:w-[520px]">
           <div
             className="absolute right-7 top-3 bg-gray-200 bg-opacity-40 hover:bg-opacity-50 p-2.5 text-primary-text text-opacity-70 text-[22px] rounded-full cursor-pointer transition-all duration-300 ease-in-out md:text-white md:-top-5 md:-right-6 md:bg-custom1 md:hover:bg-opacity-100 md:hover:hover:bg-gray-400 md:p-2 "
             onClick={handleIsLoginModal}

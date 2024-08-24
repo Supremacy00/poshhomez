@@ -14,12 +14,12 @@ const NavMobile = () => {
 
   return (
     <nav className="bg-custom-white px-4 py-2.5 fixed right-0 left-0 top-0 lg:hidden z-40 shadow-sm">
-      <div className="flex justify-between items-center flex-wrap text-primary-text">
+      <div className="flex justify-between items-center gap-1 flex-wrap text-primary-text">
         <div className="space-y-2" onClick={handleIsLeftNav}>
           <div className="w-7 h-[1.5px] bg-primary-text" />
           <div className="w-5 h-[1.5px] bg-primary-text" />
         </div>
-        <Link href="/">
+        <Link href="/" className="hidden ss:block">
           <div className="flex items-center flex-wrap gap-2">
             <div className="relative bg-custom2 w-11 h-11 rounded-[40%]">
               <HiHomeModern className="absolute text-[22px] inset-[11px] text-white" />
