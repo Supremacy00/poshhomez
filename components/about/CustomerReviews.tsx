@@ -38,11 +38,11 @@ const CustomerReviews = () => {
       <h1 className="text-[22px] font-semibold text-primary-text sm:text-[30px] tracking-wide">
         Customer Reviews
       </h1>
-      <p className="text-sm text-primary-text mt-1 lg:mt-0 lg:text-base">Our customers are always eager and ready to give a review.</p>
+      <p className="text-[15px] text-primary-text mt-1 lg:mt-0 lg:text-base">Our customers are always eager and ready to give a review.</p>
       <div className=" mt-7 px-3 py-10 border-[2px] border-custom13 border-dashed lg:flex justify-between items-center gap-5 sm:px-6 lg:mt-12 lg:px-12 lg:py-14 ">
         <div className="text-primary-text lg:max-w-[380px]">
           <h3 className="text-[30px] font-medium lg:text-[35px] lg:leading-[47px]">What Our Customers Say</h3>
-          <p className="text-[15px] text-secondary font-light mt-3 max-w-[500px] leading-[27px] lg:leading-[30px]">
+          <p className="text-[15px] text-secondary font-normal mt-3 max-w-[500px] leading-[27px] lg:leading-[30px]">
             Facere, eum earum corporis est perferendis consequatur error sed sit
             possimus assumenda, fugiat ipsa culpa natus necessitatibus velit
             quia eius, quasi hic possimus assumenda.
@@ -67,7 +67,7 @@ const CustomerReviews = () => {
                     <h4 className="text-[15px] font-medium">{reviews.name}</h4>
                     <span className={`${reviews.color ? "text-custom6" : "text-gray-200"} text-[27px]`}>{reviews.icon}</span>
                   </span>
-                  <p className="text-[13px] text-secondary mt-0.5 font-light tracking-wide leading-5 text-ellipsis italic line-clamp-3 lg:text-[12.5px] lg:mr-7">{reviews.comment}</p>
+                  <p className="text-[13px] text-secondary mt-0.5 font-normal tracking-wide leading-5 text-ellipsis line-clamp-3 lg:text-[12.5px] lg:mr-7">{reviews.comment}</p>
                 </div>
                 <div className={`${reviews.color ? "bg-custom6" : "bg-gray-200"} absolute top-0 left-0  h-full rounded-full w-2`}></div>
               </div>
